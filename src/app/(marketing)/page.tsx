@@ -130,10 +130,10 @@ export default function HomePage() {
 
           <div className="grid md:grid-cols-3 gap-8 lg:gap-12">
             <div className="relative text-center group">
-              <div className="w-20 h-20 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center mx-auto mb-6 transform group-hover:scale-110 transition-transform shadow-lg">
+              <div className="w-20 h-20 rounded-2xl flex items-center justify-center mx-auto mb-6 transform group-hover:scale-110 transition-transform shadow-lg" style={{backgroundColor: '#078AAD'}}>
                 <span className="text-4xl">📋</span>
               </div>
-              <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-3 w-10 h-10 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold text-lg shadow-lg">
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-3 w-10 h-10 text-white rounded-full flex items-center justify-center font-bold text-lg shadow-lg" style={{backgroundColor: '#078AAD'}}>
                 1
               </div>
               <h3 className="text-2xl font-bold mb-3">Request Your Voucher</h3>
@@ -144,10 +144,10 @@ export default function HomePage() {
             </div>
 
             <div className="relative text-center group">
-              <div className="w-20 h-20 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center mx-auto mb-6 transform group-hover:scale-110 transition-transform shadow-lg">
+              <div className="w-20 h-20 rounded-2xl flex items-center justify-center mx-auto mb-6 transform group-hover:scale-110 transition-transform shadow-lg" style={{backgroundColor: '#078AAD'}}>
                 <span className="text-4xl">📅</span>
               </div>
-              <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-3 w-10 h-10 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold text-lg shadow-lg">
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-3 w-10 h-10 text-white rounded-full flex items-center justify-center font-bold text-lg shadow-lg" style={{backgroundColor: '#078AAD'}}>
                 2
               </div>
               <h3 className="text-2xl font-bold mb-3">Schedule Your Visit</h3>
@@ -158,10 +158,10 @@ export default function HomePage() {
             </div>
 
             <div className="relative text-center group">
-              <div className="w-20 h-20 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center mx-auto mb-6 transform group-hover:scale-110 transition-transform shadow-lg">
+              <div className="w-20 h-20 rounded-2xl flex items-center justify-center mx-auto mb-6 transform group-hover:scale-110 transition-transform shadow-lg" style={{backgroundColor: '#078AAD'}}>
                 <span className="text-4xl">✨</span>
               </div>
-              <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-3 w-10 h-10 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold text-lg shadow-lg">
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-3 w-10 h-10 text-white rounded-full flex items-center justify-center font-bold text-lg shadow-lg" style={{backgroundColor: '#078AAD'}}>
                 3
               </div>
               <h3 className="text-2xl font-bold mb-3">
@@ -285,7 +285,7 @@ export default function HomePage() {
 
           <div className="grid md:grid-cols-3 gap-8">
             <div className="bg-gradient-to-br from-blue-50 to-white rounded-2xl p-8 shadow-lg border border-blue-100 hover:shadow-xl transition-shadow">
-              <div className="w-14 h-14 bg-blue-600 rounded-xl flex items-center justify-center mb-4">
+              <div className="w-14 h-14 rounded-xl flex items-center justify-center mb-4" style={{backgroundColor: '#078AAD'}}>
                 <span className="text-2xl">📍</span>
               </div>
               <h3 className="text-2xl font-bold mb-3">Tampa</h3>
@@ -318,7 +318,7 @@ export default function HomePage() {
             </div>
 
             <div className="bg-gradient-to-br from-blue-50 to-white rounded-2xl p-8 shadow-lg border border-blue-100 hover:shadow-xl transition-shadow">
-              <div className="w-14 h-14 bg-blue-600 rounded-xl flex items-center justify-center mb-4">
+              <div className="w-14 h-14 rounded-xl flex items-center justify-center mb-4" style={{backgroundColor: '#078AAD'}}>
                 <span className="text-2xl">📍</span>
               </div>
               <h3 className="text-2xl font-bold mb-3">Lakeland</h3>
@@ -350,7 +350,7 @@ export default function HomePage() {
             </div>
 
             <div className="bg-gradient-to-br from-blue-50 to-white rounded-2xl p-8 shadow-lg border border-blue-100 hover:shadow-xl transition-shadow">
-              <div className="w-14 h-14 bg-blue-600 rounded-xl flex items-center justify-center mb-4">
+              <div className="w-14 h-14 rounded-xl flex items-center justify-center mb-4" style={{backgroundColor: '#078AAD'}}>
                 <span className="text-2xl">📍</span>
               </div>
               <h3 className="text-2xl font-bold mb-3">New Port Richey</h3>
