@@ -81,9 +81,7 @@ export default function PrivacyPolicyTermsPage() {
         </div>
 
         <div>
-          <h3 className="text-2xl font-semibold mb-3">
-            Medical Disclaimer
-          </h3>
+          <h3 className="text-2xl font-semibold mb-3">Medical Disclaimer</h3>
           <p className="text-gray-700 leading-relaxed">
             The information provided on this website is for informational
             purposes only and is not intended as a substitute for professional

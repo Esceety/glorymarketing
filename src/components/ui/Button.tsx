@@ -22,7 +22,8 @@ export function Button({
     'inline-flex items-center justify-center px-6 py-3 rounded-lg font-semibold transition-all duration-200 text-center';
 
   const variantClasses = {
-    primary: 'bg-blue-700 text-white hover:bg-blue-800 shadow-md hover:shadow-lg',
+    primary:
+      'bg-blue-700 text-white hover:bg-blue-800 shadow-md hover:shadow-lg',
     outline:
       'border-2 border-blue-700 text-blue-700 hover:bg-blue-50 bg-transparent',
   };

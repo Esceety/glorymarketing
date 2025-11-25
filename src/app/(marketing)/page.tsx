@@ -11,106 +11,107 @@ export const metadata: Metadata = {
 export default function HomePage() {
   return (
     <div className="min-h-screen">
-      {/* Hero Section - Full Screen */}
-      <section className="relative min-h-[calc(100vh-4rem)] bg-gradient-to-br from-cyan-500 via-blue-600 to-blue-700 text-white overflow-hidden">
-        {/* Background Pattern */}
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.1),transparent_50%)]"></div>
+      {/* Hero Section - Inspired by Florida Regenerative */}
+      <section className="relative h-[85vh] min-h-[600px] max-h-[800px] w-full text-white overflow-hidden">
+        {/* Background Image with Overlay */}
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/images/gloryregenerativeimage.png"
+            alt="Glory Regenerative Center Background"
+            fill
+            className="object-cover"
+            priority
+            quality={100}
+            sizes="100vw"
+            style={{ objectPosition: 'center center' }}
+          />
+          {/* Dark overlay for better text readability */}
+          <div className="absolute inset-0 bg-slate-900/75"></div>
         </div>
 
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-20">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            {/* Left Column - Copy */}
-            <div className="text-center lg:text-left space-y-8">
-              {/* Logo/Branding Area */}
-              <div className="space-y-4">
-                <div className="inline-block bg-white/10 backdrop-blur-sm rounded-lg px-4 py-2 border border-white/20">
-                  <p className="text-sm font-semibold uppercase tracking-wider">
-                    Glory Regenerative Center
-                  </p>
-                </div>
-                <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight">
-                  Glory Regenerative Center is Giving Away{' '}
-                  <span className="text-yellow-300">50 Knee & Hip Pain Relief Vouchers!</span>
-                </h1>
-              </div>
-
-              {/* Main Copy */}
-              <div className="space-y-6 text-lg lg:text-xl">
-                <p className="font-bold text-2xl lg:text-3xl">Hey Tampa!</p>
-                
-                <p className="leading-relaxed">
-                  If <strong className="text-yellow-300">chronic knee or hip pain</strong> is limiting your mobility
-                  and quality of life, it may feel like you&apos;ve run out of
-                  options. But for a LONG-LASTING solution, look no further.
-                </p>
-
-                <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20">
-                  <p className="font-bold text-xl mb-3">For the Next Week,</p>
-                  <p className="text-lg leading-relaxed">
-                    We are Giving Away <strong className="text-yellow-300">50 Vouchers</strong> for a{' '}
-                    <strong>Knee & Hip Pain Relief Assessment</strong>,
-                    including a <strong>Full Health History Consultation</strong>,{' '}
-                    <strong>Evaluation</strong>, and a{' '}
-                    <strong>Personalized Treatment Plan</strong>, all for just{' '}
-                    <span className="text-3xl font-black text-yellow-300">$69 Dollars!</span>
-                  </p>
-                  <p className="text-sm mt-4 italic">
-                    *This is a cash pay offer. We do not accept insurance.
-                  </p>
-                </div>
-
-                <p className="text-lg">
-                  Ready to take control? Learn what really works!{' '}
-                  <strong>Click Below to Claim your Voucher now!</strong>
-                </p>
-              </div>
-
-              {/* CTA Button */}
-              <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                <a
-                  href="#optin"
-                  className="inline-flex items-center justify-center px-10 py-5 text-xl font-bold bg-red-600 hover:bg-red-700 text-white rounded-lg shadow-2xl transform hover:scale-105 transition-all duration-200 uppercase tracking-wide"
-                >
-                  Receive My Knee & Hip Pain Relief Voucher Now!
-                </a>
+        {/* Content - Centered */}
+        <div className="relative z-10 w-full h-full flex items-center justify-center">
+          <div className="w-full max-w-5xl px-6 sm:px-8 lg:px-12 py-12 text-center">
+            {/* Top Badge */}
+            <div className="mb-6">
+              <div className="inline-flex items-center backdrop-blur-sm rounded-full px-6 py-2.5 border shadow-lg" style={{backgroundColor: '#078AAD', borderColor: 'rgba(7, 138, 173, 0.3)'}}>
+                <span className="text-sm font-bold uppercase tracking-wider">
+                  🏥 Glory Regenerative Center
+                </span>
               </div>
             </div>
 
-            {/* Right Column - Image */}
-            <div className="relative">
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl border-4 border-white/20 bg-white">
-                <Image
-                  src="/images/gloryregenerativeimage.png"
-                  alt="Glory Regenerative Center - Knee and Hip Pain Relief Treatment"
-                  width={800}
-                  height={600}
-                  className="w-full h-auto"
-                  priority
-                />
+            {/* Main Headline */}
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-extrabold leading-tight mb-6 max-w-4xl mx-auto">
+              Glory Regenerative Center is Giving Away{' '}
+              <span className="text-yellow-400">
+                50 Knee & Hip Pain Relief Vouchers!
+              </span>
+            </h1>
+
+            {/* Subheading */}
+            <p className="text-xl sm:text-2xl font-bold mb-4 text-cyan-100">
+              Hey Tampa! 👋
+            </p>
+
+            {/* Body Copy */}
+            <p className="text-base sm:text-lg leading-relaxed mb-8 text-gray-100 max-w-3xl mx-auto">
+              If{' '}
+              <strong className="text-yellow-400">
+                chronic knee or hip pain
+              </strong>{' '}
+              is limiting your mobility and quality of life, it may feel like
+              you&apos;ve run out of options. But for a{' '}
+              <strong>LONG-LASTING solution</strong>, look no further.
+            </p>
+
+            {/* Value Prop Box */}
+            <div className="backdrop-blur-md rounded-2xl p-6 sm:p-8 border-2 shadow-2xl mb-8 max-w-2xl mx-auto" style={{background: 'linear-gradient(to bottom right, rgba(7, 138, 173, 0.15), rgba(7, 138, 173, 0.15))', borderColor: 'rgba(7, 138, 173, 0.3)'}}>
+              <p className="font-bold text-xl sm:text-2xl mb-3 text-yellow-400">
+                ⏰ For the Next Week Only:
+              </p>
+              <p className="text-base sm:text-lg leading-relaxed text-white mb-2">
+                We are Giving Away{' '}
+                <strong className="text-yellow-400 text-xl sm:text-2xl">
+                  50 Vouchers
+                </strong>{' '}
+                for a <strong>Knee & Hip Pain Relief Assessment</strong>,
+                including a <strong>Full Health History Consultation</strong>,{' '}
+                <strong>Evaluation</strong>, and a{' '}
+                <strong>Personalized Treatment Plan</strong>, all for just
+              </p>
+              <div className="text-4xl sm:text-5xl font-black text-yellow-400 my-3">
+                $69 Dollars!
               </div>
-              {/* Decorative Elements */}
-              <div className="absolute -top-6 -right-6 w-32 h-32 bg-yellow-300 rounded-full opacity-20 blur-3xl"></div>
-              <div className="absolute -bottom-6 -left-6 w-40 h-40 bg-cyan-300 rounded-full opacity-20 blur-3xl"></div>
+              <p className="text-xs sm:text-sm italic text-cyan-100 border-t border-white/20 pt-3">
+                *This is a cash pay offer. We do not accept insurance.
+              </p>
+            </div>
+
+            {/* CTA Button */}
+            <div className="mt-8">
+              <a
+                href="#optin"
+                className="group inline-flex items-center justify-center px-8 py-4 text-base sm:text-lg font-bold bg-red-600 hover:bg-red-700 text-white rounded-xl shadow-2xl transform hover:scale-105 transition-all duration-300 uppercase tracking-wide"
+              >
+                <span className="mr-2 text-xl">🎁</span>
+                Receive My Knee & Hip Pain Relief Voucher Now!
+                <svg
+                  className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={3}
+                    d="M13 7l5 5m0 0l-5 5m5-5H6"
+                  />
+                </svg>
+              </a>
             </div>
           </div>
-        </div>
-
-        {/* Scroll Indicator */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
-          <svg
-            className="w-6 h-6 text-white"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M19 14l-7 7m0 0l-7-7m7 7V3"
-            />
-          </svg>
         </div>
       </section>
 
@@ -297,7 +298,7 @@ export default function HomePage() {
               </p>
               <a
                 href="#"
-                className="inline-flex items-center text-blue-600 hover:text-blue-800 font-semibold"
+                className="inline-flex items-center location-link font-semibold"
               >
                 View on map
                 <svg
@@ -329,7 +330,7 @@ export default function HomePage() {
               </p>
               <a
                 href="#"
-                className="inline-flex items-center text-blue-600 hover:text-blue-800 font-semibold"
+                className="inline-flex items-center location-link font-semibold"
               >
                 View on map
                 <svg
@@ -361,7 +362,7 @@ export default function HomePage() {
               </p>
               <a
                 href="#"
-                className="inline-flex items-center text-blue-600 hover:text-blue-800 font-semibold"
+                className="inline-flex items-center location-link font-semibold"
               >
                 View on map
                 <svg

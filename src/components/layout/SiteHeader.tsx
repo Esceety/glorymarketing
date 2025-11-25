@@ -1,4 +1,7 @@
+'use client';
+
 import Link from 'next/link';
+import Image from 'next/image';
 
 const navItems = [
   { label: 'Home', href: '/' },
@@ -13,9 +16,16 @@ export function SiteHeader() {
           {/* Logo */}
           <Link
             href="/"
-            className="text-xl lg:text-2xl font-extrabold bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent hover:from-blue-700 hover:to-cyan-700 transition-all"
+            className="flex items-center hover:opacity-80 transition-opacity"
           >
-            Glory Regenerative
+            <Image
+              src="/images/glorylogo-2x.jpg.webp"
+              alt="Glory Regenerative Center"
+              width={280}
+              height={70}
+              className="h-14 w-auto"
+              priority
+            />
           </Link>
 
           {/* Navigation */}
@@ -24,7 +34,7 @@ export function SiteHeader() {
               <Link
                 key={item.href}
                 href={item.href}
-                className="text-gray-700 hover:text-blue-600 font-medium transition-colors"
+                className="text-gray-700 hover-link font-medium transition-colors"
               >
                 {item.label}
               </Link>
@@ -34,7 +44,7 @@ export function SiteHeader() {
           {/* CTA Button */}
           <Link
             href="/book"
-            className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-6 py-2.5 rounded-lg font-bold shadow-lg hover:shadow-xl transition-all transform hover:scale-105"
+            className="book-now-button text-white px-6 py-2.5 rounded-lg font-bold shadow-lg hover:shadow-xl transition-all transform hover:scale-105"
           >
             Book Now
           </Link>
@@ -46,13 +56,25 @@ export function SiteHeader() {
             <Link
               key={item.href}
               href={item.href}
-              className="text-gray-700 hover:text-blue-600 font-medium transition-colors"
+              className="text-gray-700 hover-link font-medium transition-colors"
             >
               {item.label}
             </Link>
           ))}
         </nav>
       </div>
+
+      <style jsx global>{`
+        .hover-link:hover {
+          color: #078AAD;
+        }
+        .book-now-button {
+          background: #078AAD;
+        }
+        .book-now-button:hover {
+          background: #056a85;
+        }
+      `}</style>
     </header>
   );
 }

@@ -32,9 +32,7 @@ export default function SuccessPage() {
         </h1>
         <p className="text-xl text-gray-600 leading-relaxed">
           We&apos;ve received your appointment request. Please note that{' '}
-          <strong className="text-gray-900">
-            this is not yet confirmed
-          </strong>{' '}
+          <strong className="text-gray-900">this is not yet confirmed</strong>{' '}
           until our clinic contacts you directly.
         </p>
       </section>

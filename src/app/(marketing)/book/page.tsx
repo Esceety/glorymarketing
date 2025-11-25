@@ -28,9 +28,7 @@ export default function BookPage() {
         <div className="space-y-8">
           {/* Video Section */}
           <div>
-            <h2 className="text-2xl font-bold mb-4">
-              Learn About Your Visit
-            </h2>
+            <h2 className="text-2xl font-bold mb-4">Learn About Your Visit</h2>
             <div className="bg-gray-200 rounded-lg aspect-video flex items-center justify-center">
               <div className="text-center px-8">
                 <p className="text-gray-600 font-semibold mb-2">
