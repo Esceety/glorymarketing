@@ -1,141 +1,268 @@
 import { Metadata } from 'next';
-import { Button } from '@/components/ui/Button';
+import Image from 'next/image';
 import { Section } from '@/components/ui/Section';
-import { Badge } from '@/components/ui/Badge';
 
 export const metadata: Metadata = {
-  title: 'Glory Regenerative | Knee & Hip Pain Relief Without Surgery',
+  title: 'Glory Regenerative Center - 50 Knee & Hip Pain Relief Vouchers!',
   description:
-    'Experience relief from knee and hip pain with advanced regenerative medicine at Glory Regenerative Center. Non-surgical treatment options in Tampa Bay.',
+    'Glory Regenerative Center is giving away 50 Knee & Hip Pain Relief Vouchers! Full Health History Consultation, Evaluation, and Personalized Treatment Plan for just $69.',
 };
 
 export default function HomePage() {
   return (
-    <div className="space-y-0">
-      {/* Hero Section */}
-      <Section id="hero" className="py-20 bg-gradient-to-b from-blue-50 to-white">
-        <div className="max-w-6xl mx-auto">
+    <div className="min-h-screen">
+      {/* Hero Section - Full Screen */}
+      <section className="relative min-h-[calc(100vh-4rem)] bg-gradient-to-br from-cyan-500 via-blue-600 to-blue-700 text-white overflow-hidden">
+        {/* Background Pattern */}
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.1),transparent_50%)]"></div>
+        </div>
+
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-20">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <Badge className="mb-4">New Patient Offer</Badge>
-              <h1 className="text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-                Relieve Knee & Hip Pain Without Surgery
-              </h1>
-              <p className="text-xl text-gray-600 mb-8">
-                Experience advanced regenerative medicine at Glory Regenerative
-                Center. Our innovative treatments help you return to the
-                activities you love—without lengthy downtime or invasive
-                procedures.
-              </p>
-              <Button href="#optin" className="text-lg px-8 py-4">
-                Claim My Pain Relief Voucher
-              </Button>
+            {/* Left Column - Copy */}
+            <div className="text-center lg:text-left space-y-8">
+              {/* Logo/Branding Area */}
+              <div className="space-y-4">
+                <div className="inline-block bg-white/10 backdrop-blur-sm rounded-lg px-4 py-2 border border-white/20">
+                  <p className="text-sm font-semibold uppercase tracking-wider">
+                    Glory Regenerative Center
+                  </p>
+                </div>
+                <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight">
+                  Glory Regenerative Center is Giving Away{' '}
+                  <span className="text-yellow-300">50 Knee & Hip Pain Relief Vouchers!</span>
+                </h1>
+              </div>
+
+              {/* Main Copy */}
+              <div className="space-y-6 text-lg lg:text-xl">
+                <p className="font-bold text-2xl lg:text-3xl">Hey Tampa!</p>
+                
+                <p className="leading-relaxed">
+                  If <strong className="text-yellow-300">chronic knee or hip pain</strong> is limiting your mobility
+                  and quality of life, it may feel like you&apos;ve run out of
+                  options. But for a LONG-LASTING solution, look no further.
+                </p>
+
+                <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20">
+                  <p className="font-bold text-xl mb-3">For the Next Week,</p>
+                  <p className="text-lg leading-relaxed">
+                    We are Giving Away <strong className="text-yellow-300">50 Vouchers</strong> for a{' '}
+                    <strong>Knee & Hip Pain Relief Assessment</strong>,
+                    including a <strong>Full Health History Consultation</strong>,{' '}
+                    <strong>Evaluation</strong>, and a{' '}
+                    <strong>Personalized Treatment Plan</strong>, all for just{' '}
+                    <span className="text-3xl font-black text-yellow-300">$69 Dollars!</span>
+                  </p>
+                  <p className="text-sm mt-4 italic">
+                    *This is a cash pay offer. We do not accept insurance.
+                  </p>
+                </div>
+
+                <p className="text-lg">
+                  Ready to take control? Learn what really works!{' '}
+                  <strong>Click Below to Claim your Voucher now!</strong>
+                </p>
+              </div>
+
+              {/* CTA Button */}
+              <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                <a
+                  href="#optin"
+                  className="inline-flex items-center justify-center px-10 py-5 text-xl font-bold bg-red-600 hover:bg-red-700 text-white rounded-lg shadow-2xl transform hover:scale-105 transition-all duration-200 uppercase tracking-wide"
+                >
+                  Receive My Knee & Hip Pain Relief Voucher Now!
+                </a>
+              </div>
             </div>
-            <div className="bg-gray-200 rounded-lg aspect-[4/3] flex items-center justify-center">
-              <p className="text-gray-500 text-center px-8">
-                Hero image placeholder – patient + doctor
-              </p>
+
+            {/* Right Column - Image */}
+            <div className="relative">
+              <div className="relative rounded-2xl overflow-hidden shadow-2xl border-4 border-white/20 bg-white">
+                <Image
+                  src="/images/gloryregenerativeimage.png"
+                  alt="Glory Regenerative Center - Knee and Hip Pain Relief Treatment"
+                  width={800}
+                  height={600}
+                  className="w-full h-auto"
+                  priority
+                />
+              </div>
+              {/* Decorative Elements */}
+              <div className="absolute -top-6 -right-6 w-32 h-32 bg-yellow-300 rounded-full opacity-20 blur-3xl"></div>
+              <div className="absolute -bottom-6 -left-6 w-40 h-40 bg-cyan-300 rounded-full opacity-20 blur-3xl"></div>
             </div>
           </div>
         </div>
-      </Section>
+
+        {/* Scroll Indicator */}
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+          <svg
+            className="w-6 h-6 text-white"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M19 14l-7 7m0 0l-7-7m7 7V3"
+            />
+          </svg>
+        </div>
+      </section>
 
       {/* How It Works Section */}
-      <Section title="How It Works" eyebrow="Simple Process">
-        <div className="max-w-5xl mx-auto grid md:grid-cols-3 gap-8">
-          <div className="text-center">
-            <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-              <span className="text-2xl">📋</span>
-            </div>
-            <h3 className="text-xl font-bold mb-3">1. Request Your Voucher</h3>
-            <p className="text-gray-600">
-              Fill out our simple form to claim your new patient consultation
-              voucher.
+      <Section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <p className="text-blue-600 font-semibold uppercase tracking-wide text-sm mb-2">
+              Simple Process
+            </p>
+            <h2 className="text-4xl lg:text-5xl font-bold mb-4">How It Works</h2>
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+              Three easy steps to start your journey toward pain-free living
             </p>
           </div>
-          <div className="text-center">
-            <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-              <span className="text-2xl">📅</span>
+
+          <div className="grid md:grid-cols-3 gap-8 lg:gap-12">
+            <div className="relative text-center group">
+              <div className="w-20 h-20 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center mx-auto mb-6 transform group-hover:scale-110 transition-transform shadow-lg">
+                <span className="text-4xl">📋</span>
+              </div>
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-3 w-10 h-10 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold text-lg shadow-lg">
+                1
+              </div>
+              <h3 className="text-2xl font-bold mb-3">Request Your Voucher</h3>
+              <p className="text-gray-600 leading-relaxed">
+                Fill out our simple form to claim your new patient consultation
+                voucher worth $69.
+              </p>
             </div>
-            <h3 className="text-xl font-bold mb-3">2. Schedule Your Visit</h3>
-            <p className="text-gray-600">
-              Book a convenient appointment time at one of our Tampa Bay
-              locations.
-            </p>
-          </div>
-          <div className="text-center">
-            <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-              <span className="text-2xl">✨</span>
+
+            <div className="relative text-center group">
+              <div className="w-20 h-20 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center mx-auto mb-6 transform group-hover:scale-110 transition-transform shadow-lg">
+                <span className="text-4xl">📅</span>
+              </div>
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-3 w-10 h-10 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold text-lg shadow-lg">
+                2
+              </div>
+              <h3 className="text-2xl font-bold mb-3">Schedule Your Visit</h3>
+              <p className="text-gray-600 leading-relaxed">
+                Book a convenient appointment time at one of our Tampa Bay
+                locations.
+              </p>
             </div>
-            <h3 className="text-xl font-bold mb-3">
-              3. Meet Our Regenerative Medicine Team
-            </h3>
-            <p className="text-gray-600">
-              Get a comprehensive evaluation and personalized treatment plan for
-              lasting relief.
-            </p>
+
+            <div className="relative text-center group">
+              <div className="w-20 h-20 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center mx-auto mb-6 transform group-hover:scale-110 transition-transform shadow-lg">
+                <span className="text-4xl">✨</span>
+              </div>
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-3 w-10 h-10 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold text-lg shadow-lg">
+                3
+              </div>
+              <h3 className="text-2xl font-bold mb-3">
+                Meet Our Regenerative Medicine Team
+              </h3>
+              <p className="text-gray-600 leading-relaxed">
+                Get a comprehensive evaluation and personalized treatment plan for
+                lasting relief.
+              </p>
+            </div>
           </div>
         </div>
       </Section>
 
       {/* Conditions & Benefits Section */}
-      <Section className="bg-gray-50">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl font-bold text-center mb-12">
+      <Section className="py-20 bg-gradient-to-b from-gray-50 to-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-4xl lg:text-5xl font-bold text-center mb-16">
             Conditions We Treat & Expected Benefits
           </h2>
-          <div className="grid md:grid-cols-2 gap-12">
-            <div>
-              <h3 className="text-2xl font-bold mb-6 text-blue-700">
-                Common Knee & Hip Issues
-              </h3>
-              <ul className="space-y-3">
+          <div className="grid lg:grid-cols-2 gap-12">
+            <div className="bg-white rounded-2xl p-8 shadow-lg border border-blue-100">
+              <div className="flex items-center mb-6">
+                <div className="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mr-4">
+                  <span className="text-2xl">⚠️</span>
+                </div>
+                <h3 className="text-3xl font-bold text-red-700">
+                  Common Knee & Hip Issues
+                </h3>
+              </div>
+              <ul className="space-y-4">
                 <li className="flex items-start">
-                  <span className="text-blue-600 mr-3">✓</span>
-                  <span>Chronic pain when walking or climbing stairs</span>
+                  <span className="text-red-600 mr-3 text-xl mt-1">✗</span>
+                  <span className="text-gray-700 text-lg">
+                    Chronic pain when walking or climbing stairs
+                  </span>
                 </li>
                 <li className="flex items-start">
-                  <span className="text-blue-600 mr-3">✓</span>
-                  <span>Stiffness and reduced range of motion</span>
+                  <span className="text-red-600 mr-3 text-xl mt-1">✗</span>
+                  <span className="text-gray-700 text-lg">
+                    Stiffness and reduced range of motion
+                  </span>
                 </li>
                 <li className="flex items-start">
-                  <span className="text-blue-600 mr-3">✓</span>
-                  <span>Joint instability and weakness</span>
+                  <span className="text-red-600 mr-3 text-xl mt-1">✗</span>
+                  <span className="text-gray-700 text-lg">
+                    Joint instability and weakness
+                  </span>
                 </li>
                 <li className="flex items-start">
-                  <span className="text-blue-600 mr-3">✓</span>
-                  <span>Difficulty with daily activities</span>
+                  <span className="text-red-600 mr-3 text-xl mt-1">✗</span>
+                  <span className="text-gray-700 text-lg">
+                    Difficulty with daily activities
+                  </span>
                 </li>
                 <li className="flex items-start">
-                  <span className="text-blue-600 mr-3">✓</span>
-                  <span>Arthritis-related discomfort</span>
+                  <span className="text-red-600 mr-3 text-xl mt-1">✗</span>
+                  <span className="text-gray-700 text-lg">
+                    Arthritis-related discomfort
+                  </span>
                 </li>
               </ul>
             </div>
-            <div>
-              <h3 className="text-2xl font-bold mb-6 text-green-700">
-                Expected Benefits
-              </h3>
-              <ul className="space-y-3">
+            <div className="bg-white rounded-2xl p-8 shadow-lg border border-green-100">
+              <div className="flex items-center mb-6">
+                <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mr-4">
+                  <span className="text-2xl">✨</span>
+                </div>
+                <h3 className="text-3xl font-bold text-green-700">
+                  Expected Benefits
+                </h3>
+              </div>
+              <ul className="space-y-4">
                 <li className="flex items-start">
-                  <span className="text-green-600 mr-3">✓</span>
-                  <span>Significant reduction in pain levels</span>
+                  <span className="text-green-600 mr-3 text-xl mt-1">✓</span>
+                  <span className="text-gray-700 text-lg">
+                    Significant reduction in pain levels
+                  </span>
                 </li>
                 <li className="flex items-start">
-                  <span className="text-green-600 mr-3">✓</span>
-                  <span>Improved mobility and flexibility</span>
+                  <span className="text-green-600 mr-3 text-xl mt-1">✓</span>
+                  <span className="text-gray-700 text-lg">
+                    Improved mobility and flexibility
+                  </span>
                 </li>
                 <li className="flex items-start">
-                  <span className="text-green-600 mr-3">✓</span>
-                  <span>Non-surgical, minimally invasive approach</span>
+                  <span className="text-green-600 mr-3 text-xl mt-1">✓</span>
+                  <span className="text-gray-700 text-lg">
+                    Non-surgical, minimally invasive approach
+                  </span>
                 </li>
                 <li className="flex items-start">
-                  <span className="text-green-600 mr-3">✓</span>
-                  <span>Faster recovery compared to surgery</span>
+                  <span className="text-green-600 mr-3 text-xl mt-1">✓</span>
+                  <span className="text-gray-700 text-lg">
+                    Faster recovery compared to surgery
+                  </span>
                 </li>
                 <li className="flex items-start">
-                  <span className="text-green-600 mr-3">✓</span>
-                  <span>Return to activities you enjoy</span>
+                  <span className="text-green-600 mr-3 text-xl mt-1">✓</span>
+                  <span className="text-gray-700 text-lg">
+                    Return to activities you enjoy
+                  </span>
                 </li>
               </ul>
             </div>
@@ -144,72 +271,151 @@ export default function HomePage() {
       </Section>
 
       {/* Locations Section */}
-      <Section title="Convenient Locations in Tampa Bay" eyebrow="Where We Serve">
-        <div className="max-w-5xl mx-auto grid md:grid-cols-3 gap-8">
-          <div className="bg-white border rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow">
-            <h3 className="text-xl font-bold mb-3">Tampa</h3>
-            <p className="text-gray-600 mb-4">
-              Serving the greater Tampa area with convenient access from I-275
-              and I-4.
+      <Section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <p className="text-blue-600 font-semibold uppercase tracking-wide text-sm mb-2">
+              Where We Serve
             </p>
-            <p className="text-sm text-gray-500 mb-3">Call: (813) 555-0100</p>
-            <a
-              href="#"
-              className="text-blue-600 hover:text-blue-800 font-semibold text-sm"
-            >
-              View on map →
-            </a>
+            <h2 className="text-4xl lg:text-5xl font-bold mb-4">
+              Convenient Locations in Tampa Bay
+            </h2>
           </div>
-          <div className="bg-white border rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow">
-            <h3 className="text-xl font-bold mb-3">Lakeland</h3>
-            <p className="text-gray-600 mb-4">
-              Conveniently located between Tampa and Orlando on I-4 corridor.
-            </p>
-            <p className="text-sm text-gray-500 mb-3">Call: (863) 555-0100</p>
-            <a
-              href="#"
-              className="text-blue-600 hover:text-blue-800 font-semibold text-sm"
-            >
-              View on map →
-            </a>
-          </div>
-          <div className="bg-white border rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow">
-            <h3 className="text-xl font-bold mb-3">New Port Richey</h3>
-            <p className="text-gray-600 mb-4">
-              Easy access from US-19 serving Pasco County and surrounding areas.
-            </p>
-            <p className="text-sm text-gray-500 mb-3">Call: (727) 555-0100</p>
-            <a
-              href="#"
-              className="text-blue-600 hover:text-blue-800 font-semibold text-sm"
-            >
-              View on map →
-            </a>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="bg-gradient-to-br from-blue-50 to-white rounded-2xl p-8 shadow-lg border border-blue-100 hover:shadow-xl transition-shadow">
+              <div className="w-14 h-14 bg-blue-600 rounded-xl flex items-center justify-center mb-4">
+                <span className="text-2xl">📍</span>
+              </div>
+              <h3 className="text-2xl font-bold mb-3">Tampa</h3>
+              <p className="text-gray-600 mb-4 leading-relaxed">
+                Serving the greater Tampa area with convenient access from I-275
+                and I-4.
+              </p>
+              <p className="text-lg font-semibold text-blue-600 mb-3">
+                (813) 555-0100
+              </p>
+              <a
+                href="#"
+                className="inline-flex items-center text-blue-600 hover:text-blue-800 font-semibold"
+              >
+                View on map
+                <svg
+                  className="w-4 h-4 ml-1"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M9 5l7 7-7 7"
+                  />
+                </svg>
+              </a>
+            </div>
+
+            <div className="bg-gradient-to-br from-blue-50 to-white rounded-2xl p-8 shadow-lg border border-blue-100 hover:shadow-xl transition-shadow">
+              <div className="w-14 h-14 bg-blue-600 rounded-xl flex items-center justify-center mb-4">
+                <span className="text-2xl">📍</span>
+              </div>
+              <h3 className="text-2xl font-bold mb-3">Lakeland</h3>
+              <p className="text-gray-600 mb-4 leading-relaxed">
+                Conveniently located between Tampa and Orlando on I-4 corridor.
+              </p>
+              <p className="text-lg font-semibold text-blue-600 mb-3">
+                (863) 555-0100
+              </p>
+              <a
+                href="#"
+                className="inline-flex items-center text-blue-600 hover:text-blue-800 font-semibold"
+              >
+                View on map
+                <svg
+                  className="w-4 h-4 ml-1"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M9 5l7 7-7 7"
+                  />
+                </svg>
+              </a>
+            </div>
+
+            <div className="bg-gradient-to-br from-blue-50 to-white rounded-2xl p-8 shadow-lg border border-blue-100 hover:shadow-xl transition-shadow">
+              <div className="w-14 h-14 bg-blue-600 rounded-xl flex items-center justify-center mb-4">
+                <span className="text-2xl">📍</span>
+              </div>
+              <h3 className="text-2xl font-bold mb-3">New Port Richey</h3>
+              <p className="text-gray-600 mb-4 leading-relaxed">
+                Easy access from US-19 serving Pasco County and surrounding areas.
+              </p>
+              <p className="text-lg font-semibold text-blue-600 mb-3">
+                (727) 555-0100
+              </p>
+              <a
+                href="#"
+                className="inline-flex items-center text-blue-600 hover:text-blue-800 font-semibold"
+              >
+                View on map
+                <svg
+                  className="w-4 h-4 ml-1"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M9 5l7 7-7 7"
+                  />
+                </svg>
+              </a>
+            </div>
           </div>
         </div>
       </Section>
 
       {/* Doctor / Trust Section */}
-      <Section className="bg-blue-50">
-        <div className="max-w-4xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div className="bg-gray-200 rounded-lg aspect-square flex items-center justify-center">
-              <p className="text-gray-500 text-center px-8">
-                Headshot image placeholder with accessible alt text
-              </p>
+      <Section className="py-20 bg-gradient-to-b from-blue-50 to-white">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="relative order-2 lg:order-1">
+              <div className="aspect-square bg-gradient-to-br from-blue-100 to-cyan-100 rounded-3xl flex items-center justify-center shadow-xl">
+                <p className="text-gray-500 text-center px-8">
+                  Dr. David Ikudayisi
+                  <br />
+                  Professional Headshot
+                </p>
+              </div>
+              <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-blue-600 rounded-3xl opacity-10"></div>
             </div>
-            <div>
-              <h2 className="text-3xl font-bold mb-6">
+            <div className="order-1 lg:order-2">
+              <div className="inline-block bg-blue-100 rounded-lg px-4 py-2 mb-4">
+                <p className="text-blue-600 font-semibold uppercase tracking-wide text-sm">
+                  Expert Care
+                </p>
+              </div>
+              <h2 className="text-4xl lg:text-5xl font-bold mb-6">
                 Meet Dr. David Ikudayisi
               </h2>
-              <p className="text-gray-700 mb-4 leading-relaxed">
+              <p className="text-xl text-gray-700 mb-6 leading-relaxed">
                 Dr. Ikudayisi is a board-certified physician specializing in
-                regenerative medicine and aesthetic treatments. With years of
-                experience helping patients find relief from chronic pain, he
-                combines cutting-edge techniques with compassionate,
+                regenerative medicine and aesthetic treatments.
+              </p>
+              <p className="text-lg text-gray-600 mb-6 leading-relaxed">
+                With years of experience helping patients find relief from chronic
+                pain, he combines cutting-edge techniques with compassionate,
                 patient-centered care.
               </p>
-              <p className="text-gray-700 leading-relaxed">
+              <p className="text-lg text-gray-600 leading-relaxed">
                 His approach focuses on treating the root cause of pain rather
                 than just managing symptoms, helping patients achieve lasting
                 results without surgery.
@@ -220,61 +426,123 @@ export default function HomePage() {
       </Section>
 
       {/* Testimonials Section */}
-      <Section title="What Our Patients Say" eyebrow="Patient Success Stories">
-        <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-8">
-          <div className="bg-white border rounded-lg p-8 shadow-sm">
-            <div className="mb-4 text-yellow-500 text-2xl">★★★★★</div>
-            <p className="text-gray-700 italic mb-6 leading-relaxed">
-              &quot;After years of knee pain, I can finally walk without
-              discomfort. The regenerative treatment was life-changing, and Dr.
-              Ikudayisi&apos;s team made me feel cared for every step of the
-              way.&quot;
+      <Section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <p className="text-blue-600 font-semibold uppercase tracking-wide text-sm mb-2">
+              Patient Success Stories
             </p>
-            <p className="font-semibold">— Margaret T., Tampa</p>
+            <h2 className="text-4xl lg:text-5xl font-bold mb-4">
+              What Our Patients Say
+            </h2>
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+              Real results from real people who found relief at Glory Regenerative
+            </p>
           </div>
-          <div className="bg-white border rounded-lg p-8 shadow-sm">
-            <div className="mb-4 text-yellow-500 text-2xl">★★★★★</div>
-            <p className="text-gray-700 italic mb-6 leading-relaxed">
-              &quot;I was skeptical at first, but the results speak for
-              themselves. My hip pain has decreased dramatically, and I avoided
-              surgery. Highly recommend Glory Regenerative!&quot;
-            </p>
-            <p className="font-semibold">— Robert K., Lakeland</p>
-          </div>
-          <div className="bg-white border rounded-lg p-8 shadow-sm">
-            <div className="mb-4 text-yellow-500 text-2xl">★★★★★</div>
-            <p className="text-gray-700 italic mb-6 leading-relaxed">
-              &quot;The personalized care I received was exceptional. Within
-              weeks, I noticed significant improvement in my mobility and pain
-              levels. Thank you!&quot;
-            </p>
-            <p className="font-semibold">— Linda M., New Port Richey</p>
-          </div>
-          <div className="bg-white border rounded-lg p-8 shadow-sm">
-            <div className="mb-4 text-yellow-500 text-2xl">★★★★★</div>
-            <p className="text-gray-700 italic mb-6 leading-relaxed">
-              &quot;Professional, knowledgeable, and genuinely caring. The
-              regenerative medicine approach gave me my quality of life back
-              without going under the knife.&quot;
-            </p>
-            <p className="font-semibold">— James D., Tampa</p>
+
+          <div className="grid md:grid-cols-2 gap-8">
+            <div className="bg-gradient-to-br from-white to-blue-50 rounded-2xl p-8 shadow-lg border border-blue-100">
+              <div className="flex mb-4 text-yellow-400 text-xl">
+                ★★★★★
+              </div>
+              <p className="text-gray-700 italic text-lg mb-6 leading-relaxed">
+                &quot;After years of knee pain, I can finally walk without
+                discomfort. The regenerative treatment was life-changing, and Dr.
+                Ikudayisi&apos;s team made me feel cared for every step of the
+                way.&quot;
+              </p>
+              <p className="font-bold text-gray-900">— Margaret T., Tampa</p>
+            </div>
+
+            <div className="bg-gradient-to-br from-white to-blue-50 rounded-2xl p-8 shadow-lg border border-blue-100">
+              <div className="flex mb-4 text-yellow-400 text-xl">
+                ★★★★★
+              </div>
+              <p className="text-gray-700 italic text-lg mb-6 leading-relaxed">
+                &quot;I was skeptical at first, but the results speak for
+                themselves. My hip pain has decreased dramatically, and I avoided
+                surgery. Highly recommend Glory Regenerative!&quot;
+              </p>
+              <p className="font-bold text-gray-900">— Robert K., Lakeland</p>
+            </div>
+
+            <div className="bg-gradient-to-br from-white to-blue-50 rounded-2xl p-8 shadow-lg border border-blue-100">
+              <div className="flex mb-4 text-yellow-400 text-xl">
+                ★★★★★
+              </div>
+              <p className="text-gray-700 italic text-lg mb-6 leading-relaxed">
+                &quot;The personalized care I received was exceptional. Within
+                weeks, I noticed significant improvement in my mobility and pain
+                levels. Thank you!&quot;
+              </p>
+              <p className="font-bold text-gray-900">
+                — Linda M., New Port Richey
+              </p>
+            </div>
+
+            <div className="bg-gradient-to-br from-white to-blue-50 rounded-2xl p-8 shadow-lg border border-blue-100">
+              <div className="flex mb-4 text-yellow-400 text-xl">
+                ★★★★★
+              </div>
+              <p className="text-gray-700 italic text-lg mb-6 leading-relaxed">
+                &quot;Professional, knowledgeable, and genuinely caring. The
+                regenerative medicine approach gave me my quality of life back
+                without going under the knife.&quot;
+              </p>
+              <p className="font-bold text-gray-900">— James D., Tampa</p>
+            </div>
           </div>
         </div>
       </Section>
 
       {/* Opt-in Section */}
-      <Section id="optin" className="bg-gradient-to-b from-blue-700 to-blue-800 text-white">
-        <div className="max-w-3xl mx-auto text-center">
-          <h2 className="text-4xl font-bold mb-6">Request Your Voucher</h2>
-          <p className="text-xl mb-8 text-blue-100">
-            Take the first step toward pain-free living. Fill out the form below
-            to receive your new patient consultation voucher.
-          </p>
-          <div className="bg-white/10 backdrop-blur-sm rounded-lg p-8 border border-white/20">
-            <p className="text-lg text-blue-100">
-              Form placeholder – GHL opt-in form will be embedded here in Gate 3
-            </p>
+      <Section
+        id="optin"
+        className="py-20 bg-gradient-to-br from-red-600 via-red-700 to-red-800 text-white relative overflow-hidden"
+      >
+        {/* Background Pattern */}
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(255,255,255,0.2),transparent_50%)]"></div>
+        </div>
+
+        <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <div className="inline-block bg-yellow-400 text-red-900 rounded-lg px-6 py-2 mb-6 font-bold uppercase tracking-wide text-sm">
+            Limited Time Offer
           </div>
+          <h2 className="text-4xl lg:text-5xl font-extrabold mb-6">
+            Request Your $69 Voucher Now!
+          </h2>
+          <p className="text-2xl mb-4 font-semibold">
+            Don&apos;t Miss Out on This Exclusive Offer
+          </p>
+          <p className="text-xl mb-12 text-red-100 leading-relaxed max-w-2xl mx-auto">
+            Take the first step toward pain-free living. Fill out the form below
+            to receive your new patient consultation voucher worth $69.
+          </p>
+
+          <div className="bg-white/95 backdrop-blur-sm rounded-2xl p-10 shadow-2xl border-4 border-yellow-400">
+            <div className="text-gray-800">
+              <div className="mb-6">
+                <p className="text-2xl font-bold text-red-700 mb-2">
+                  🎯 Reserve Your Spot Today
+                </p>
+                <p className="text-lg text-gray-600">
+                  Only 50 vouchers available this week!
+                </p>
+              </div>
+              <div className="bg-gray-100 rounded-xl p-8 border-2 border-dashed border-gray-300">
+                <p className="text-lg font-semibold text-gray-700">
+                  📋 Form placeholder – GHL opt-in form will be embedded here in
+                  Gate 3
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <p className="text-sm text-red-100 mt-8 italic">
+            *This is a cash pay offer. We do not accept insurance for this
+            promotional voucher.
+          </p>
         </div>
       </Section>
     </div>
