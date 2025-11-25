@@ -115,6 +115,97 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* Conditions We Treat - Image Showcase */}
+      <section className="py-16 bg-gradient-to-b from-slate-50 to-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <p className="font-semibold uppercase tracking-wide text-sm mb-2" style={{color: '#078AAD'}}>
+              What We Treat
+            </p>
+            <h2 className="text-3xl lg:text-4xl font-bold mb-4">
+              Advanced Treatment for Joint Pain
+            </h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              Specialized regenerative medicine solutions for lasting relief
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-6 lg:gap-8">
+            {/* Chronic Knee & Hip Pain */}
+            <div className="group relative overflow-hidden rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
+              <div className="aspect-[4/3] relative overflow-hidden">
+                <Image
+                  src="/images/regenerative-img1.png"
+                  alt="Chronic Knee & Hip Pain Treatment"
+                  fill
+                  className="object-cover group-hover:scale-110 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/40 to-transparent"></div>
+              </div>
+              <div className="absolute bottom-0 left-0 right-0 p-6">
+                <div className="inline-block px-3 py-1 rounded-full text-xs font-semibold mb-3" style={{backgroundColor: '#078AAD', color: 'white'}}>
+                  SPECIALIZED CARE
+                </div>
+                <h3 className="text-2xl font-bold text-white mb-2">
+                  Chronic Knee & Hip Pain
+                </h3>
+                <p className="text-gray-200 text-sm">
+                  Advanced regenerative treatments for lasting pain relief
+                </p>
+              </div>
+            </div>
+
+            {/* Osteoarthritis */}
+            <div className="group relative overflow-hidden rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
+              <div className="aspect-[4/3] relative overflow-hidden">
+                <Image
+                  src="/images/regenerative-img2.png"
+                  alt="Osteoarthritis Treatment"
+                  fill
+                  className="object-cover group-hover:scale-110 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/40 to-transparent"></div>
+              </div>
+              <div className="absolute bottom-0 left-0 right-0 p-6">
+                <div className="inline-block px-3 py-1 rounded-full text-xs font-semibold mb-3" style={{backgroundColor: '#078AAD', color: 'white'}}>
+                  SPECIALIZED CARE
+                </div>
+                <h3 className="text-2xl font-bold text-white mb-2">
+                  Osteoarthritis
+                </h3>
+                <p className="text-gray-200 text-sm">
+                  Non-surgical solutions to manage and reduce arthritis symptoms
+                </p>
+              </div>
+            </div>
+
+            {/* Bone-on-Bone Conditions */}
+            <div className="group relative overflow-hidden rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
+              <div className="aspect-[4/3] relative overflow-hidden">
+                <Image
+                  src="/images/regenerative-img3.jpeg"
+                  alt="Bone-on-Bone Conditions Treatment"
+                  fill
+                  className="object-cover group-hover:scale-110 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/40 to-transparent"></div>
+              </div>
+              <div className="absolute bottom-0 left-0 right-0 p-6">
+                <div className="inline-block px-3 py-1 rounded-full text-xs font-semibold mb-3" style={{backgroundColor: '#078AAD', color: 'white'}}>
+                  SPECIALIZED CARE
+                </div>
+                <h3 className="text-2xl font-bold text-white mb-2">
+                  Bone-on-Bone Conditions
+                </h3>
+                <p className="text-gray-200 text-sm">
+                  Innovative treatments for severe joint degeneration
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* How It Works Section */}
       <Section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
