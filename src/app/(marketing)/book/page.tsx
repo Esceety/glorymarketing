@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import { Badge } from '@/components/ui/Badge';
+import { CalendarEmbed } from '@/components/ui/CalendarEmbed';
 
 export const metadata: Metadata = {
   title: 'Book Your Voucher Visit | Glory Regenerative',
@@ -29,15 +30,17 @@ export default function BookPage() {
           {/* Video Section */}
           <div>
             <h2 className="text-2xl font-bold mb-4">Learn About Your Visit</h2>
-            <div className="bg-gray-200 rounded-lg aspect-video flex items-center justify-center">
-              <div className="text-center px-8">
-                <p className="text-gray-600 font-semibold mb-2">
-                  YouTube video placeholder
-                </p>
-                <p className="text-sm text-gray-500">
-                  Dr. David explains treatment options
-                </p>
-              </div>
+            <div className="rounded-lg aspect-video overflow-hidden">
+              <iframe
+                width="100%"
+                height="100%"
+                src="https://www.youtube.com/embed/OLP_zLSOCRc"
+                title="YouTube video player"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
+                className="w-full h-full"
+              />
             </div>
           </div>
 
@@ -102,16 +105,7 @@ export default function BookPage() {
             <h2 className="text-2xl font-bold mb-4">
               Choose Your Location & Time
             </h2>
-            <div className="bg-gray-100 rounded-lg p-12 min-h-[400px] flex items-center justify-center">
-              <div className="text-center">
-                <p className="text-gray-600 font-semibold mb-2">
-                  GHL calendar embed placeholder (Gate 3)
-                </p>
-                <p className="text-sm text-gray-500">
-                  Interactive booking calendar will appear here
-                </p>
-              </div>
-            </div>
+            <CalendarEmbed />
             <p className="text-sm text-gray-500 mt-4 text-center">
               After booking, you&apos;ll receive a confirmation call/text from
               our clinic.

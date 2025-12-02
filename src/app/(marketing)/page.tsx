@@ -1,6 +1,8 @@
 import { Metadata } from 'next';
 import Image from 'next/image';
 import { Section } from '@/components/ui/Section';
+import { BookingButton } from '@/components/ui/BookingButton';
+import { ScrollToTopButton } from '@/components/ui/ScrollToTopButton';
 
 export const metadata: Metadata = {
   title: 'Glory Regenerative Center - 50 Knee & Hip Pain Relief Vouchers!',
@@ -34,7 +36,13 @@ export default function HomePage() {
           <div className="w-full max-w-5xl px-6 sm:px-8 lg:px-12 py-12 text-center">
             {/* Top Badge */}
             <div className="mb-6">
-              <div className="inline-flex items-center backdrop-blur-sm rounded-full px-6 py-2.5 border shadow-lg" style={{backgroundColor: '#078AAD', borderColor: 'rgba(7, 138, 173, 0.3)'}}>
+              <div
+                className="inline-flex items-center backdrop-blur-sm rounded-full px-6 py-2.5 border shadow-lg"
+                style={{
+                  backgroundColor: '#078AAD',
+                  borderColor: 'rgba(7, 138, 173, 0.3)',
+                }}
+              >
                 <span className="text-sm font-bold uppercase tracking-wider">
                   🏥 Glory Regenerative Center
                 </span>
@@ -66,7 +74,14 @@ export default function HomePage() {
             </p>
 
             {/* Value Prop Box */}
-            <div className="backdrop-blur-md rounded-2xl p-6 sm:p-8 border-2 shadow-2xl mb-8 max-w-2xl mx-auto" style={{background: 'linear-gradient(to bottom right, rgba(7, 138, 173, 0.15), rgba(7, 138, 173, 0.15))', borderColor: 'rgba(7, 138, 173, 0.3)'}}>
+            <div
+              className="backdrop-blur-md rounded-2xl p-6 sm:p-8 border-2 shadow-2xl mb-8 max-w-2xl mx-auto"
+              style={{
+                background:
+                  'linear-gradient(to bottom right, rgba(7, 138, 173, 0.15), rgba(7, 138, 173, 0.15))',
+                borderColor: 'rgba(7, 138, 173, 0.3)',
+              }}
+            >
               <p className="font-bold text-xl sm:text-2xl mb-3 text-yellow-400">
                 ⏰ For the Next Week Only:
               </p>
@@ -90,10 +105,7 @@ export default function HomePage() {
 
             {/* CTA Button */}
             <div className="mt-8">
-              <a
-                href="#optin"
-                className="group inline-flex items-center justify-center px-8 py-4 text-base sm:text-lg font-bold bg-red-600 hover:bg-red-700 text-white rounded-xl shadow-2xl transform hover:scale-105 transition-all duration-300 uppercase tracking-wide"
-              >
+              <BookingButton className="group inline-flex items-center justify-center px-8 py-4 text-base sm:text-lg font-bold bg-red-600 hover:bg-red-700 text-white rounded-xl shadow-2xl transform hover:scale-105 transition-all duration-300 uppercase tracking-wide">
                 <span className="mr-2 text-xl">🎁</span>
                 Receive My Knee & Hip Pain Relief Voucher Now!
                 <svg
@@ -109,7 +121,7 @@ export default function HomePage() {
                     d="M13 7l5 5m0 0l-5 5m5-5H6"
                   />
                 </svg>
-              </a>
+              </BookingButton>
             </div>
           </div>
         </div>
@@ -119,7 +131,10 @@ export default function HomePage() {
       <section className="py-16 bg-gradient-to-b from-slate-50 to-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <p className="font-semibold uppercase tracking-wide text-sm mb-2" style={{color: '#078AAD'}}>
+            <p
+              className="font-semibold uppercase tracking-wide text-sm mb-2"
+              style={{ color: '#078AAD' }}
+            >
               What We Treat
             </p>
             <h2 className="text-3xl lg:text-4xl font-bold mb-4">
@@ -143,7 +158,10 @@ export default function HomePage() {
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/40 to-transparent"></div>
               </div>
               <div className="absolute bottom-0 left-0 right-0 p-6">
-                <div className="inline-block px-3 py-1 rounded-full text-xs font-semibold mb-3" style={{backgroundColor: '#078AAD', color: 'white'}}>
+                <div
+                  className="inline-block px-3 py-1 rounded-full text-xs font-semibold mb-3"
+                  style={{ backgroundColor: '#078AAD', color: 'white' }}
+                >
                   SPECIALIZED CARE
                 </div>
                 <h3 className="text-2xl font-bold text-white mb-2">
@@ -167,7 +185,10 @@ export default function HomePage() {
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/40 to-transparent"></div>
               </div>
               <div className="absolute bottom-0 left-0 right-0 p-6">
-                <div className="inline-block px-3 py-1 rounded-full text-xs font-semibold mb-3" style={{backgroundColor: '#078AAD', color: 'white'}}>
+                <div
+                  className="inline-block px-3 py-1 rounded-full text-xs font-semibold mb-3"
+                  style={{ backgroundColor: '#078AAD', color: 'white' }}
+                >
                   SPECIALIZED CARE
                 </div>
                 <h3 className="text-2xl font-bold text-white mb-2">
@@ -191,7 +212,10 @@ export default function HomePage() {
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/40 to-transparent"></div>
               </div>
               <div className="absolute bottom-0 left-0 right-0 p-6">
-                <div className="inline-block px-3 py-1 rounded-full text-xs font-semibold mb-3" style={{backgroundColor: '#078AAD', color: 'white'}}>
+                <div
+                  className="inline-block px-3 py-1 rounded-full text-xs font-semibold mb-3"
+                  style={{ backgroundColor: '#078AAD', color: 'white' }}
+                >
                   SPECIALIZED CARE
                 </div>
                 <h3 className="text-2xl font-bold text-white mb-2">
@@ -213,7 +237,9 @@ export default function HomePage() {
             <p className="text-blue-600 font-semibold uppercase tracking-wide text-sm mb-2">
               Simple Process
             </p>
-            <h2 className="text-4xl lg:text-5xl font-bold mb-4">How It Works</h2>
+            <h2 className="text-4xl lg:text-5xl font-bold mb-4">
+              How It Works
+            </h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
               Three easy steps to start your journey toward pain-free living
             </p>
@@ -221,10 +247,16 @@ export default function HomePage() {
 
           <div className="grid md:grid-cols-3 gap-8 lg:gap-12">
             <div className="relative text-center group">
-              <div className="w-20 h-20 rounded-2xl flex items-center justify-center mx-auto mb-6 transform group-hover:scale-110 transition-transform shadow-lg" style={{backgroundColor: '#078AAD'}}>
+              <div
+                className="w-20 h-20 rounded-2xl flex items-center justify-center mx-auto mb-6 transform group-hover:scale-110 transition-transform shadow-lg"
+                style={{ backgroundColor: '#078AAD' }}
+              >
                 <span className="text-4xl">📋</span>
               </div>
-              <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-3 w-10 h-10 text-white rounded-full flex items-center justify-center font-bold text-lg shadow-lg" style={{backgroundColor: '#078AAD'}}>
+              <div
+                className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-3 w-10 h-10 text-white rounded-full flex items-center justify-center font-bold text-lg shadow-lg"
+                style={{ backgroundColor: '#078AAD' }}
+              >
                 1
               </div>
               <h3 className="text-2xl font-bold mb-3">Request Your Voucher</h3>
@@ -235,10 +267,16 @@ export default function HomePage() {
             </div>
 
             <div className="relative text-center group">
-              <div className="w-20 h-20 rounded-2xl flex items-center justify-center mx-auto mb-6 transform group-hover:scale-110 transition-transform shadow-lg" style={{backgroundColor: '#078AAD'}}>
+              <div
+                className="w-20 h-20 rounded-2xl flex items-center justify-center mx-auto mb-6 transform group-hover:scale-110 transition-transform shadow-lg"
+                style={{ backgroundColor: '#078AAD' }}
+              >
                 <span className="text-4xl">📅</span>
               </div>
-              <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-3 w-10 h-10 text-white rounded-full flex items-center justify-center font-bold text-lg shadow-lg" style={{backgroundColor: '#078AAD'}}>
+              <div
+                className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-3 w-10 h-10 text-white rounded-full flex items-center justify-center font-bold text-lg shadow-lg"
+                style={{ backgroundColor: '#078AAD' }}
+              >
                 2
               </div>
               <h3 className="text-2xl font-bold mb-3">Schedule Your Visit</h3>
@@ -249,18 +287,24 @@ export default function HomePage() {
             </div>
 
             <div className="relative text-center group">
-              <div className="w-20 h-20 rounded-2xl flex items-center justify-center mx-auto mb-6 transform group-hover:scale-110 transition-transform shadow-lg" style={{backgroundColor: '#078AAD'}}>
+              <div
+                className="w-20 h-20 rounded-2xl flex items-center justify-center mx-auto mb-6 transform group-hover:scale-110 transition-transform shadow-lg"
+                style={{ backgroundColor: '#078AAD' }}
+              >
                 <span className="text-4xl">✨</span>
               </div>
-              <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-3 w-10 h-10 text-white rounded-full flex items-center justify-center font-bold text-lg shadow-lg" style={{backgroundColor: '#078AAD'}}>
+              <div
+                className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-3 w-10 h-10 text-white rounded-full flex items-center justify-center font-bold text-lg shadow-lg"
+                style={{ backgroundColor: '#078AAD' }}
+              >
                 3
               </div>
               <h3 className="text-2xl font-bold mb-3">
                 Meet Our Regenerative Medicine Team
               </h3>
               <p className="text-gray-600 leading-relaxed">
-                Get a comprehensive evaluation and personalized treatment plan for
-                lasting relief.
+                Get a comprehensive evaluation and personalized treatment plan
+                for lasting relief.
               </p>
             </div>
           </div>
@@ -376,7 +420,10 @@ export default function HomePage() {
 
           <div className="grid md:grid-cols-3 gap-8">
             <div className="bg-gradient-to-br from-blue-50 to-white rounded-2xl p-8 shadow-lg border border-blue-100 hover:shadow-xl transition-shadow">
-              <div className="w-14 h-14 rounded-xl flex items-center justify-center mb-4" style={{backgroundColor: '#078AAD'}}>
+              <div
+                className="w-14 h-14 rounded-xl flex items-center justify-center mb-4"
+                style={{ backgroundColor: '#078AAD' }}
+              >
                 <span className="text-2xl">📍</span>
               </div>
               <h3 className="text-2xl font-bold mb-3">Tampa</h3>
@@ -409,7 +456,10 @@ export default function HomePage() {
             </div>
 
             <div className="bg-gradient-to-br from-blue-50 to-white rounded-2xl p-8 shadow-lg border border-blue-100 hover:shadow-xl transition-shadow">
-              <div className="w-14 h-14 rounded-xl flex items-center justify-center mb-4" style={{backgroundColor: '#078AAD'}}>
+              <div
+                className="w-14 h-14 rounded-xl flex items-center justify-center mb-4"
+                style={{ backgroundColor: '#078AAD' }}
+              >
                 <span className="text-2xl">📍</span>
               </div>
               <h3 className="text-2xl font-bold mb-3">Lakeland</h3>
@@ -441,12 +491,16 @@ export default function HomePage() {
             </div>
 
             <div className="bg-gradient-to-br from-blue-50 to-white rounded-2xl p-8 shadow-lg border border-blue-100 hover:shadow-xl transition-shadow">
-              <div className="w-14 h-14 rounded-xl flex items-center justify-center mb-4" style={{backgroundColor: '#078AAD'}}>
+              <div
+                className="w-14 h-14 rounded-xl flex items-center justify-center mb-4"
+                style={{ backgroundColor: '#078AAD' }}
+              >
                 <span className="text-2xl">📍</span>
               </div>
               <h3 className="text-2xl font-bold mb-3">New Port Richey</h3>
               <p className="text-gray-600 mb-4 leading-relaxed">
-                Easy access from US-19 serving Pasco County and surrounding areas.
+                Easy access from US-19 serving Pasco County and surrounding
+                areas.
               </p>
               <p className="text-lg font-semibold text-blue-600 mb-3">
                 (727) 555-0100
@@ -480,18 +534,29 @@ export default function HomePage() {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="relative order-2 lg:order-1">
-              <div className="aspect-square bg-gradient-to-br from-blue-100 to-cyan-100 rounded-3xl flex items-center justify-center shadow-xl">
-                <p className="text-gray-500 text-center px-8">
-                  Dr. David Ikudayisi
-                  <br />
-                  Professional Headshot
-                </p>
+              <div className="relative aspect-square rounded-3xl overflow-hidden shadow-xl">
+                <Image
+                  src="/images/drdavidikudayisi.jpeg"
+                  alt="Dr. David Ikudayisi - Board-Certified Physician"
+                  fill
+                  className="object-cover"
+                  priority
+                />
               </div>
-              <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-blue-600 rounded-3xl opacity-10"></div>
+              <div
+                className="absolute -bottom-6 -right-6 w-32 h-32 rounded-3xl opacity-10"
+                style={{ backgroundColor: '#078AAD' }}
+              ></div>
             </div>
             <div className="order-1 lg:order-2">
-              <div className="inline-block bg-blue-100 rounded-lg px-4 py-2 mb-4">
-                <p className="text-blue-600 font-semibold uppercase tracking-wide text-sm">
+              <div
+                className="inline-block rounded-lg px-4 py-2 mb-4"
+                style={{ backgroundColor: 'rgba(7, 138, 173, 0.1)' }}
+              >
+                <p
+                  className="font-semibold uppercase tracking-wide text-sm"
+                  style={{ color: '#078AAD' }}
+                >
                   Expert Care
                 </p>
               </div>
@@ -503,9 +568,9 @@ export default function HomePage() {
                 regenerative medicine and aesthetic treatments.
               </p>
               <p className="text-lg text-gray-600 mb-6 leading-relaxed">
-                With years of experience helping patients find relief from chronic
-                pain, he combines cutting-edge techniques with compassionate,
-                patient-centered care.
+                With years of experience helping patients find relief from
+                chronic pain, he combines cutting-edge techniques with
+                compassionate, patient-centered care.
               </p>
               <p className="text-lg text-gray-600 leading-relaxed">
                 His approach focuses on treating the root cause of pain rather
@@ -528,60 +593,68 @@ export default function HomePage() {
               What Our Patients Say
             </h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Real results from real people who found relief at Glory Regenerative
+              Real results from real people who found relief at Glory
+              Regenerative
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             <div className="bg-gradient-to-br from-white to-blue-50 rounded-2xl p-8 shadow-lg border border-blue-100">
-              <div className="flex mb-4 text-yellow-400 text-xl">
-                ★★★★★
-              </div>
+              <div className="flex mb-4 text-yellow-400 text-xl">★★★★★</div>
               <p className="text-gray-700 italic text-lg mb-6 leading-relaxed">
-                &quot;After years of knee pain, I can finally walk without
-                discomfort. The regenerative treatment was life-changing, and Dr.
-                Ikudayisi&apos;s team made me feel cared for every step of the
-                way.&quot;
+                &quot;Excellent staff. Excellent care. After the treatment we
+                feel so great. Thanks to Dr David Ikudayisi and his staff for
+                the treatment.&quot;
               </p>
-              <p className="font-bold text-gray-900">— Margaret T., Tampa</p>
+              <p className="font-bold text-gray-900">— Adesayo Ilesanmi</p>
             </div>
 
             <div className="bg-gradient-to-br from-white to-blue-50 rounded-2xl p-8 shadow-lg border border-blue-100">
-              <div className="flex mb-4 text-yellow-400 text-xl">
-                ★★★★★
-              </div>
+              <div className="flex mb-4 text-yellow-400 text-xl">★★★★★</div>
               <p className="text-gray-700 italic text-lg mb-6 leading-relaxed">
-                &quot;I was skeptical at first, but the results speak for
-                themselves. My hip pain has decreased dramatically, and I avoided
-                surgery. Highly recommend Glory Regenerative!&quot;
+                &quot;Impressive results and professional staff to assist in
+                this journey.&quot;
               </p>
-              <p className="font-bold text-gray-900">— Robert K., Lakeland</p>
+              <p className="font-bold text-gray-900">— Kathleen Bowman</p>
             </div>
 
             <div className="bg-gradient-to-br from-white to-blue-50 rounded-2xl p-8 shadow-lg border border-blue-100">
-              <div className="flex mb-4 text-yellow-400 text-xl">
-                ★★★★★
-              </div>
+              <div className="flex mb-4 text-yellow-400 text-xl">★★★★★</div>
               <p className="text-gray-700 italic text-lg mb-6 leading-relaxed">
-                &quot;The personalized care I received was exceptional. Within
-                weeks, I noticed significant improvement in my mobility and pain
-                levels. Thank you!&quot;
+                &quot;Thank you Dr. Dave for insisting I get the supplement stem
+                regen, noticed positive results within four days, after three
+                weeks I feel like a new man. I am so glad I took your
+                advice.&quot;
               </p>
-              <p className="font-bold text-gray-900">
-                — Linda M., New Port Richey
-              </p>
+              <p className="font-bold text-gray-900">— Jon Rentillo</p>
             </div>
 
             <div className="bg-gradient-to-br from-white to-blue-50 rounded-2xl p-8 shadow-lg border border-blue-100">
-              <div className="flex mb-4 text-yellow-400 text-xl">
-                ★★★★★
-              </div>
+              <div className="flex mb-4 text-yellow-400 text-xl">★★★★★</div>
               <p className="text-gray-700 italic text-lg mb-6 leading-relaxed">
-                &quot;Professional, knowledgeable, and genuinely caring. The
-                regenerative medicine approach gave me my quality of life back
-                without going under the knife.&quot;
+                &quot;Amazing customer service. The medical staff are caring,
+                courteous, supportive and knowledgeable. Would recommend to a
+                friend. I had an issue and the medical team worked to help me
+                resolve it.&quot;
               </p>
-              <p className="font-bold text-gray-900">— James D., Tampa</p>
+              <p className="font-bold text-gray-900">— Cboogie</p>
+            </div>
+
+            <div className="bg-gradient-to-br from-white to-blue-50 rounded-2xl p-8 shadow-lg border border-blue-100">
+              <div className="flex mb-4 text-yellow-400 text-xl">★★★★★</div>
+              <p className="text-gray-700 italic text-lg mb-6 leading-relaxed">
+                &quot;Dr. Ikudayisi is very thorough and listens to your
+                concerns.&quot;
+              </p>
+              <p className="font-bold text-gray-900">— Kristie Reynolds</p>
+            </div>
+
+            <div className="bg-gradient-to-br from-white to-blue-50 rounded-2xl p-8 shadow-lg border border-blue-100">
+              <div className="flex mb-4 text-yellow-400 text-xl">★★★★★</div>
+              <p className="text-gray-700 italic text-lg mb-6 leading-relaxed">
+                &quot;Very friendly staff. No wait. Very good experience.&quot;
+              </p>
+              <p className="font-bold text-gray-900">— Angelo Setta</p>
             </div>
           </div>
         </div>
@@ -622,12 +695,9 @@ export default function HomePage() {
                   Only 50 vouchers available this week!
                 </p>
               </div>
-              <div className="bg-gray-100 rounded-xl p-8 border-2 border-dashed border-gray-300">
-                <p className="text-lg font-semibold text-gray-700">
-                  📋 Form placeholder – GHL opt-in form will be embedded here in
-                  Gate 3
-                </p>
-              </div>
+              <ScrollToTopButton className="w-full bg-red-600 hover:bg-red-700 text-white font-bold text-xl py-6 px-8 rounded-xl shadow-lg transform hover:scale-105 transition-all duration-300 uppercase tracking-wide">
+                🎁 Click Here to Claim Your Voucher Now!
+              </ScrollToTopButton>
             </div>
           </div>
 

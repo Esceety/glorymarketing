@@ -66,10 +66,10 @@ export function SiteHeader() {
 
       <style jsx global>{`
         .hover-link:hover {
-          color: #078AAD;
+          color: #078aad;
         }
         .book-now-button {
-          background: #078AAD;
+          background: #078aad;
         }
         .book-now-button:hover {
           background: #056a85;
