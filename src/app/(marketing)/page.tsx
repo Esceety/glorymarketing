@@ -8,7 +8,7 @@ import { Testimonials } from '@/components/ui/Testimonials';
 export const metadata: Metadata = {
   title: 'Glory Regenerative Center - 50 Knee & Hip Pain Relief Vouchers!',
   description:
-    'Glory Regenerative Center is giving away 50 Knee & Hip Pain Relief Vouchers! Full Health History Consultation, Evaluation, and Personalized Treatment Plan for just $69.',
+    'Glory Regenerative Center is giving away 50 Knee & Hip Pain Relief Vouchers! Full Health History Consultation, Evaluation, and Personalized Treatment Plan for just $99.',
 };
 
 export default function HomePage() {
@@ -97,7 +97,7 @@ export default function HomePage() {
                 <strong>Personalized Treatment Plan</strong>, all for just
               </p>
               <div className="text-4xl sm:text-5xl font-black text-yellow-400 my-3">
-                $69 Dollars!
+                $99 Dollars!
               </div>
               <p className="text-xs sm:text-sm italic text-cyan-100 border-t border-white/20 pt-3">
                 *This is a cash pay offer. We do not accept insurance.
@@ -263,7 +263,7 @@ export default function HomePage() {
               <h3 className="text-2xl font-bold mb-3">Request Your Voucher</h3>
               <p className="text-gray-600 leading-relaxed">
                 Fill out our simple form to claim your new patient consultation
-                voucher worth $69.
+                voucher worth $99.
               </p>
             </div>
 
@@ -627,14 +627,14 @@ export default function HomePage() {
             Limited Time Offer
           </div>
           <h2 className="text-4xl lg:text-5xl font-extrabold mb-6">
-            Request Your $69 Voucher Now!
+            Request Your $99 Voucher Now!
           </h2>
           <p className="text-2xl mb-4 font-semibold">
             Don&apos;t Miss Out on This Exclusive Offer
           </p>
           <p className="text-xl mb-12 text-red-100 leading-relaxed max-w-2xl mx-auto">
             Take the first step toward pain-free living. Fill out the form below
-            to receive your new patient consultation voucher worth $69.
+            to receive your new patient consultation voucher worth $99.
           </p>
 
           <div className="bg-white/95 backdrop-blur-sm rounded-2xl p-10 shadow-2xl border-4 border-yellow-400">
