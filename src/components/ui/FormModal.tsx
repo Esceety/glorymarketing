@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { useRouter } from 'next/navigation';
 
 interface FormModalProps {
   isOpen: boolean;
@@ -9,6 +10,7 @@ interface FormModalProps {
 
 export function FormModal({ isOpen, onClose }: FormModalProps) {
   const [mounted, setMounted] = useState(false);
+  const router = useRouter();
 
   useEffect(() => {
     // Set mounted on the next tick to avoid SSR issues
@@ -26,6 +28,46 @@ export function FormModal({ isOpen, onClose }: FormModalProps) {
       document.body.style.overflow = 'unset';
     };
   }, [isOpen]);
+
+  useEffect(() => {
+    // Listen for messages from the iframe (form submission)
+    const handleMessage = (event: MessageEvent) => {
+      // Check if message is from GoHighLevel
+      if (event.origin === 'https://link.esceety-us.com') {
+        // Check if this is a form submission event
+        if (event.data && typeof event.data === 'object') {
+          const data = event.data;
+          
+          // Store form data in localStorage for pre-filling the calendar
+          if (data.contact || data.firstName || data.first_name) {
+            const formData = {
+              firstName: data.firstName || data.first_name || data.contact?.firstName || '',
+              lastName: data.lastName || data.last_name || data.contact?.lastName || '',
+              email: data.email || data.contact?.email || '',
+              phone: data.phone || data.phoneNumber || data.contact?.phone || '',
+              timestamp: new Date().toISOString(),
+            };
+            
+            // Only store if we have at least some data
+            if (formData.firstName || formData.email || formData.phone) {
+              localStorage.setItem('userFormData', JSON.stringify(formData));
+            }
+          }
+
+          // If the message indicates success or redirection, navigate to book page
+          if (data.eventName === 'form_submitted' || data.type === 'redirect' || data.success) {
+            setTimeout(() => {
+              onClose();
+              router.push('/book');
+            }, 500);
+          }
+        }
+      }
+    };
+
+    window.addEventListener('message', handleMessage);
+    return () => window.removeEventListener('message', handleMessage);
+  }, [onClose, router]);
 
   if (!mounted || !isOpen) return null;
 

@@ -15,28 +15,29 @@ const locations: Location[] = [
     id: 'tampa',
     name: 'Tampa',
     address: '8019 N. Himes Ave., Tampa, FL 33614',
-    iframeUrl: 'https://link.esceety-us.com/widget/booking/brSfSRHL2ffHost18ofn',
-    iframeId: 'brSfSRHL2ffHost18ofn_1765898208303',
+    iframeUrl: 'https://link.esceety-us.com/widget/booking/gCPl71CVES7GLObW5Dam',
+    iframeId: 'gCPl71CVES7GLObW5Dam_1765900295400',
   },
   {
     id: 'lakeland',
     name: 'Lakeland',
     address: '1818 Harden Blvd, Lakeland, FL 33803',
-    iframeUrl: 'https://link.esceety-us.com/widget/booking/zOK3E8D7HV6axfpz2WMx',
-    iframeId: 'zOK3E8D7HV6axfpz2WMx_1765898269748',
+    iframeUrl: 'https://link.esceety-us.com/widget/booking/5YhjHb59G10dCmhnZZko',
+    iframeId: '5YhjHb59G10dCmhnZZko_1765900315932',
   },
   {
     id: 'newportrichey',
     name: 'New Port Richey',
     address: '5622 Marine Parkway, New Port Richey, FL 34652',
-    iframeUrl: 'https://link.esceety-us.com/widget/booking/lj17rvRZW9Q5L49VC0MM',
-    iframeId: 'lj17rvRZW9Q5L49VC0MM_1765898238221',
+    iframeUrl: 'https://link.esceety-us.com/widget/booking/EuY0MqMtvTYQuVsxwqQv',
+    iframeId: 'EuY0MqMtvTYQuVsxwqQv_1765900305715',
   },
 ];
 
 export function MultiStepCalendar() {
   const [currentStep, setCurrentStep] = useState(1);
   const [selectedLocation, setSelectedLocation] = useState<Location | null>(null);
+  const [userFormData, setUserFormData] = useState<any>(null);
 
   useEffect(() => {
     // Load the calendar embed script
@@ -51,6 +52,66 @@ export function MultiStepCalendar() {
       }
     };
   }, []);
+
+  useEffect(() => {
+    // Check URL parameters first (in case redirected from form with data)
+    if (typeof window !== 'undefined') {
+      const urlParams = new URLSearchParams(window.location.search);
+      const firstName = urlParams.get('first_name') || urlParams.get('firstName');
+      const lastName = urlParams.get('last_name') || urlParams.get('lastName');
+      const email = urlParams.get('email');
+      const phone = urlParams.get('phone') || urlParams.get('phoneNumber');
+
+      if (firstName || email || phone) {
+        const urlData = {
+          firstName: firstName || '',
+          lastName: lastName || '',
+          email: email || '',
+          phone: phone || '',
+          timestamp: new Date().toISOString(),
+        };
+        localStorage.setItem('userFormData', JSON.stringify(urlData));
+        setUserFormData(urlData);
+        return;
+      }
+    }
+
+    // Read stored form data from localStorage
+    try {
+      const storedData = localStorage.getItem('userFormData');
+      if (storedData) {
+        const data = JSON.parse(storedData);
+        // Check if data is recent (within last 24 hours)
+        const timestamp = new Date(data.timestamp);
+        const now = new Date();
+        const hoursDiff = (now.getTime() - timestamp.getTime()) / (1000 * 60 * 60);
+        
+        if (hoursDiff < 24) {
+          setUserFormData(data);
+        } else {
+          // Clear old data
+          localStorage.removeItem('userFormData');
+        }
+      }
+    } catch (error) {
+      console.error('Error reading form data:', error);
+    }
+  }, []);
+
+  const getIframeUrlWithParams = (baseUrl: string) => {
+    if (!userFormData) return baseUrl;
+
+    const params = new URLSearchParams();
+    
+    // Add available data as URL parameters
+    if (userFormData.firstName) params.append('first_name', userFormData.firstName);
+    if (userFormData.lastName) params.append('last_name', userFormData.lastName);
+    if (userFormData.email) params.append('email', userFormData.email);
+    if (userFormData.phone) params.append('phone', userFormData.phone);
+
+    const queryString = params.toString();
+    return queryString ? `${baseUrl}?${queryString}` : baseUrl;
+  };
 
   const handleLocationSelect = (location: Location) => {
     setSelectedLocation(location);
@@ -209,7 +270,7 @@ export function MultiStepCalendar() {
             <div className="rounded-lg w-full" style={{ minHeight: '800px' }}>
               <iframe
                 key={selectedLocation.id}
-                src={selectedLocation.iframeUrl}
+                src={getIframeUrlWithParams(selectedLocation.iframeUrl)}
                 style={{ 
                   width: '100%', 
                   height: '800px',
@@ -220,6 +281,11 @@ export function MultiStepCalendar() {
                 scrolling="no"
                 id={selectedLocation.iframeId}
               />
+              {userFormData && (
+                <p className="text-xs text-gray-500 mt-2 text-center">
+                  ✓ Your information has been pre-filled
+                </p>
+              )}
             </div>
           </div>
         )}
