@@ -24,27 +24,27 @@ export default function MarketingResourcesPage() {
       <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-gray-50">
       {/* Header Section */}
       <header className="bg-white/95 backdrop-blur-sm border-b border-gray-200 sticky top-0 z-50 shadow-sm print:hidden">
-        <div className="max-w-7xl mx-auto px-6 py-6">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-6">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4 sm:py-6">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+            <div className="flex items-center gap-3 sm:gap-6 w-full sm:w-auto">
               <Image
                 src="https://ceety-asset-hub.s3.us-east-1.amazonaws.com/ceetyobjects/292b74c9-f117-4255-a087-85d0dca96591-ceety-primary-logo.png"
                 alt="Ceety Systems Logo"
-                width={120}
-                height={40}
-                className="h-10 w-auto"
+                width={100}
+                height={33}
+                className="h-8 sm:h-10 w-auto flex-shrink-0"
               />
-              <div className="h-8 w-px bg-teal-500/30"></div>
-              <div>
-                <h1 className="text-xl font-bold text-gray-900">
+              <div className="h-6 sm:h-8 w-px bg-teal-500/30 hidden xs:block"></div>
+              <div className="flex-1 min-w-0">
+                <h1 className="text-base sm:text-xl font-bold text-gray-900 leading-tight">
                   Glory Regenerative Center
                 </h1>
-                <p className="text-sm text-teal-600">Marketing Resource Hub</p>
+                <p className="text-xs sm:text-sm text-teal-600">Marketing Resource Hub</p>
               </div>
             </div>
             <button 
               onClick={handleDownloadPDF}
-              className="bg-teal-500 hover:bg-teal-600 text-white px-6 py-2.5 rounded-lg font-semibold transition-colors duration-200 shadow-sm"
+              className="bg-teal-500 hover:bg-teal-600 text-white px-4 sm:px-6 py-2 sm:py-2.5 rounded-lg font-semibold transition-colors duration-200 shadow-sm text-sm sm:text-base w-full sm:w-auto whitespace-nowrap"
             >
               Download PDF
             </button>
@@ -52,13 +52,13 @@ export default function MarketingResourcesPage() {
         </div>
       </header>
 
-      <div className="max-w-7xl mx-auto px-6 py-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
         {/* Company Information Card */}
-        <section className="bg-white rounded-2xl border border-gray-200 p-8 mb-8 shadow-sm">
-          <div className="flex items-start gap-6">
-            <div className="flex-shrink-0 w-16 h-16 bg-teal-50 rounded-xl flex items-center justify-center">
+        <section className="bg-white rounded-xl sm:rounded-2xl border border-gray-200 p-4 sm:p-8 mb-6 sm:mb-8 shadow-sm">
+          <div className="flex flex-col sm:flex-row items-start gap-4 sm:gap-6">
+            <div className="flex-shrink-0 w-12 h-12 sm:w-16 sm:h-16 bg-teal-50 rounded-xl flex items-center justify-center">
               <svg
-                className="w-8 h-8 text-teal-600"
+                className="w-6 h-6 sm:w-8 sm:h-8 text-teal-600"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -71,11 +71,11 @@ export default function MarketingResourcesPage() {
                 />
               </svg>
             </div>
-            <div className="flex-1">
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">
+            <div className="flex-1 w-full">
+              <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-3 sm:mb-4">
                 Ceety Systems
               </h2>
-              <div className="grid md:grid-cols-2 gap-4 text-gray-700">
+              <div className="grid sm:grid-cols-2 gap-3 sm:gap-4 text-gray-700">
                 <div>
                   <p className="text-sm text-teal-600 font-semibold mb-1">
                     Address
@@ -123,11 +123,11 @@ export default function MarketingResourcesPage() {
         </section>
 
         {/* Marketing Overview */}
-        <section className="bg-white rounded-2xl border border-gray-200 p-8 mb-8 shadow-sm">
-          <div className="flex items-center gap-3 mb-6">
-            <div className="w-10 h-10 bg-teal-50 rounded-lg flex items-center justify-center">
+        <section className="bg-white rounded-xl sm:rounded-2xl border border-gray-200 p-4 sm:p-8 mb-6 sm:mb-8 shadow-sm">
+          <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-6">
+            <div className="w-8 h-8 sm:w-10 sm:h-10 bg-teal-50 rounded-lg flex items-center justify-center flex-shrink-0">
               <svg
-                className="w-6 h-6 text-teal-600"
+                className="w-5 h-5 sm:w-6 sm:h-6 text-teal-600"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -140,26 +140,26 @@ export default function MarketingResourcesPage() {
                 />
               </svg>
             </div>
-            <h2 className="text-2xl font-bold text-gray-900">
+            <h2 className="text-lg sm:text-2xl font-bold text-gray-900">
               Marketing Overview
             </h2>
           </div>
 
-          <div className="bg-gradient-to-r from-teal-50 to-blue-50 border border-teal-200 rounded-xl p-6 mb-6">
-            <h3 className="text-xl font-bold text-teal-700 mb-3">
+          <div className="bg-gradient-to-r from-teal-50 to-blue-50 border border-teal-200 rounded-lg sm:rounded-xl p-4 sm:p-6 mb-4 sm:mb-6">
+            <h3 className="text-base sm:text-xl font-bold text-teal-700 mb-2 sm:mb-3">
               Glory Regenerative Center – Knee, Hip & Joint Pain Relief
             </h3>
-            <p className="text-sm text-gray-600 italic">
+            <p className="text-xs sm:text-sm text-gray-600 italic">
               In-Clinic · Tampa Bay Area
             </p>
           </div>
 
-          <div className="space-y-4">
+          <div className="space-y-3 sm:space-y-4">
             <div>
-              <h4 className="text-lg font-semibold text-teal-700 mb-3">
+              <h4 className="text-base sm:text-lg font-semibold text-teal-700 mb-2 sm:mb-3">
                 Purpose
               </h4>
-              <p className="text-gray-700 leading-relaxed">
+              <p className="text-sm sm:text-base text-gray-700 leading-relaxed">
                 Please review this document in full with your team to gain a
                 complete understanding of the marketing and patient acquisition
                 process for Glory Regenerative Center. This overview walks
@@ -177,11 +177,11 @@ export default function MarketingResourcesPage() {
         </section>
 
         {/* Campaign Links */}
-        <section className="bg-white rounded-2xl border border-gray-200 p-8 mb-8 shadow-sm">
-          <div className="flex items-center gap-3 mb-6">
-            <div className="w-10 h-10 bg-teal-50 rounded-lg flex items-center justify-center">
+        <section className="bg-white rounded-xl sm:rounded-2xl border border-gray-200 p-4 sm:p-8 mb-6 sm:mb-8 shadow-sm">
+          <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-6">
+            <div className="w-8 h-8 sm:w-10 sm:h-10 bg-teal-50 rounded-lg flex items-center justify-center flex-shrink-0">
               <svg
-                className="w-6 h-6 text-teal-600"
+                className="w-5 h-5 sm:w-6 sm:h-6 text-teal-600"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -194,10 +194,10 @@ export default function MarketingResourcesPage() {
                 />
               </svg>
             </div>
-            <h2 className="text-2xl font-bold text-gray-900">Campaign Links</h2>
+            <h2 className="text-lg sm:text-2xl font-bold text-gray-900">Campaign Links</h2>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-4">
+          <div className="grid sm:grid-cols-2 gap-3 sm:gap-4">
             {[
               {
                 title: 'Landing Page',
@@ -261,11 +261,11 @@ export default function MarketingResourcesPage() {
         </section>
 
         {/* Lead Tracking */}
-        <section className="bg-white rounded-2xl border border-gray-200 p-8 mb-8 shadow-sm">
-          <div className="flex items-center gap-3 mb-6">
-            <div className="w-10 h-10 bg-teal-50 rounded-lg flex items-center justify-center">
+        <section className="bg-white rounded-xl sm:rounded-2xl border border-gray-200 p-4 sm:p-8 mb-6 sm:mb-8 shadow-sm">
+          <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-6">
+            <div className="w-8 h-8 sm:w-10 sm:h-10 bg-teal-50 rounded-lg flex items-center justify-center flex-shrink-0">
               <svg
-                className="w-6 h-6 text-teal-600"
+                className="w-5 h-5 sm:w-6 sm:h-6 text-teal-600"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -278,7 +278,7 @@ export default function MarketingResourcesPage() {
                 />
               </svg>
             </div>
-            <h2 className="text-2xl font-bold text-gray-900">Lead Tracking</h2>
+            <h2 className="text-lg sm:text-2xl font-bold text-gray-900">Lead Tracking</h2>
           </div>
 
           <a
@@ -327,11 +327,11 @@ export default function MarketingResourcesPage() {
         </section>
 
         {/* Video Resources */}
-        <section className="bg-white rounded-2xl border border-gray-200 p-8 mb-8 shadow-sm">
-          <div className="flex items-center gap-3 mb-6">
-            <div className="w-10 h-10 bg-teal-50 rounded-lg flex items-center justify-center">
+        <section className="bg-white rounded-xl sm:rounded-2xl border border-gray-200 p-4 sm:p-8 mb-6 sm:mb-8 shadow-sm">
+          <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-6">
+            <div className="w-8 h-8 sm:w-10 sm:h-10 bg-teal-50 rounded-lg flex items-center justify-center flex-shrink-0">
               <svg
-                className="w-6 h-6 text-teal-600"
+                className="w-5 h-5 sm:w-6 sm:h-6 text-teal-600"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -355,7 +355,7 @@ export default function MarketingResourcesPage() {
             </h2>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-4">
+          <div className="grid sm:grid-cols-2 gap-3 sm:gap-4">
             {[
               {
                 title: 'Managing Facebook Advertising Comments and Messages',
@@ -416,11 +416,11 @@ export default function MarketingResourcesPage() {
         </section>
 
         {/* Google Spreadsheet */}
-        <section className="bg-white rounded-2xl border border-gray-200 p-8 mb-8 shadow-sm">
-          <div className="flex items-center gap-3 mb-6">
-            <div className="w-10 h-10 bg-teal-50 rounded-lg flex items-center justify-center">
+        <section className="bg-white rounded-xl sm:rounded-2xl border border-gray-200 p-4 sm:p-8 mb-6 sm:mb-8 shadow-sm">
+          <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-6">
+            <div className="w-8 h-8 sm:w-10 sm:h-10 bg-teal-50 rounded-lg flex items-center justify-center flex-shrink-0">
               <svg
-                className="w-6 h-6 text-teal-600"
+                className="w-5 h-5 sm:w-6 sm:h-6 text-teal-600"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -433,7 +433,7 @@ export default function MarketingResourcesPage() {
                 />
               </svg>
             </div>
-            <h2 className="text-2xl font-bold text-gray-900">Lead Tracking</h2>
+            <h2 className="text-lg sm:text-2xl font-bold text-gray-900">Lead Tracking</h2>
           </div>
 
           <a
@@ -482,11 +482,11 @@ export default function MarketingResourcesPage() {
         </section>
 
         {/* CRM Details */}
-        <section className="bg-white rounded-2xl border border-gray-200 p-8 mb-8 shadow-sm">
-          <div className="flex items-center gap-3 mb-6">
-            <div className="w-10 h-10 bg-teal-50 rounded-lg flex items-center justify-center">
+        <section className="bg-white rounded-xl sm:rounded-2xl border border-gray-200 p-4 sm:p-8 mb-6 sm:mb-8 shadow-sm">
+          <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-6">
+            <div className="w-8 h-8 sm:w-10 sm:h-10 bg-teal-50 rounded-lg flex items-center justify-center flex-shrink-0">
               <svg
-                className="w-6 h-6 text-teal-600"
+                className="w-5 h-5 sm:w-6 sm:h-6 text-teal-600"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -504,7 +504,7 @@ export default function MarketingResourcesPage() {
             </h2>
           </div>
 
-          <div className="bg-gradient-to-r from-purple-50 to-pink-50 border border-purple-200 rounded-xl p-6 space-y-4">
+          <div className="bg-gradient-to-r from-purple-50 to-pink-50 border border-purple-200 rounded-lg sm:rounded-xl p-4 sm:p-6 space-y-4">
             <div>
               <p className="text-sm text-purple-700 font-semibold mb-2">
                 CRM Access
@@ -596,11 +596,11 @@ export default function MarketingResourcesPage() {
         </section>
 
         {/* Next Steps */}
-        <section className="bg-gradient-to-r from-teal-50 to-blue-50 rounded-2xl border border-teal-200 p-8 shadow-sm">
+        <section className="bg-gradient-to-r from-teal-50 to-blue-50 rounded-xl sm:rounded-2xl border border-teal-200 p-4 sm:p-8 shadow-sm">
           <div className="flex items-center gap-3 mb-4">
             <div className="w-10 h-10 bg-teal-100 rounded-lg flex items-center justify-center">
               <svg
-                className="w-6 h-6 text-teal-600"
+                className="w-5 h-5 sm:w-6 sm:h-6 text-teal-600"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -613,7 +613,7 @@ export default function MarketingResourcesPage() {
                 />
               </svg>
             </div>
-            <h2 className="text-2xl font-bold text-gray-900">Next Steps</h2>
+            <h2 className="text-lg sm:text-2xl font-bold text-gray-900">Next Steps</h2>
           </div>
           <p className="text-gray-700 text-lg">
             Next, we will create ads in Facebook Ads Manager.
@@ -622,14 +622,14 @@ export default function MarketingResourcesPage() {
       </div>
 
       {/* Footer */}
-      <footer className="bg-gray-100 border-t border-gray-200 mt-16 print:bg-white">
-        <div className="max-w-7xl mx-auto px-6 py-8">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-sm text-gray-600">
+      <footer className="bg-gray-100 border-t border-gray-200 mt-12 sm:mt-16 print:bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-6 sm:py-8">
+          <div className="flex flex-col sm:flex-row justify-between items-center gap-3 sm:gap-4 text-center sm:text-left">
+            <p className="text-xs sm:text-sm text-gray-600">
               Ceety Systems is a DBA of Esceety Inc. (USA). In Nigeria, services
               are provided by Ceety Systems & Consulting Ltd.
             </p>
-            <p className="text-sm text-gray-500">
+            <p className="text-xs sm:text-sm text-gray-500 whitespace-nowrap">
               © 2025 Esceety Inc. All rights reserved.
             </p>
           </div>
