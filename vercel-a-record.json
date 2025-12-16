@@ -1,0 +1,18 @@
+{
+  "Comment": "Add A record for root domain to point to Vercel",
+  "Changes": [
+    {
+      "Action": "CREATE",
+      "ResourceRecordSet": {
+        "Name": "gloryregenerativemed.com",
+        "Type": "A",
+        "TTL": 300,
+        "ResourceRecords": [
+          {
+            "Value": "216.150.1.1"
+          }
+        ]
+      }
+    }
+  ]
+}

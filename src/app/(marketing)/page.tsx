@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { Section } from '@/components/ui/Section';
 import { BookingButton } from '@/components/ui/BookingButton';
 import { ScrollToTopButton } from '@/components/ui/ScrollToTopButton';
+import { Testimonials } from '@/components/ui/Testimonials';
 
 export const metadata: Metadata = {
   title: 'Glory Regenerative Center - 50 Knee & Hip Pain Relief Vouchers!',
@@ -607,65 +608,7 @@ export default function HomePage() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div className="bg-gradient-to-br from-white to-blue-50 rounded-2xl p-8 shadow-lg border border-blue-100">
-              <div className="flex mb-4 text-yellow-400 text-xl">★★★★★</div>
-              <p className="text-gray-700 italic text-lg mb-6 leading-relaxed">
-                &quot;Excellent staff. Excellent care. After the treatment we
-                feel so great. Thanks to Dr David Ikudayisi and his staff for
-                the treatment.&quot;
-              </p>
-              <p className="font-bold text-gray-900">— Adesayo Ilesanmi</p>
-            </div>
-
-            <div className="bg-gradient-to-br from-white to-blue-50 rounded-2xl p-8 shadow-lg border border-blue-100">
-              <div className="flex mb-4 text-yellow-400 text-xl">★★★★★</div>
-              <p className="text-gray-700 italic text-lg mb-6 leading-relaxed">
-                &quot;Impressive results and professional staff to assist in
-                this journey.&quot;
-              </p>
-              <p className="font-bold text-gray-900">— Kathleen Bowman</p>
-            </div>
-
-            <div className="bg-gradient-to-br from-white to-blue-50 rounded-2xl p-8 shadow-lg border border-blue-100">
-              <div className="flex mb-4 text-yellow-400 text-xl">★★★★★</div>
-              <p className="text-gray-700 italic text-lg mb-6 leading-relaxed">
-                &quot;Thank you Dr. Dave for insisting I get the supplement stem
-                regen, noticed positive results within four days, after three
-                weeks I feel like a new man. I am so glad I took your
-                advice.&quot;
-              </p>
-              <p className="font-bold text-gray-900">— Jon Rentillo</p>
-            </div>
-
-            <div className="bg-gradient-to-br from-white to-blue-50 rounded-2xl p-8 shadow-lg border border-blue-100">
-              <div className="flex mb-4 text-yellow-400 text-xl">★★★★★</div>
-              <p className="text-gray-700 italic text-lg mb-6 leading-relaxed">
-                &quot;Amazing customer service. The medical staff are caring,
-                courteous, supportive and knowledgeable. Would recommend to a
-                friend. I had an issue and the medical team worked to help me
-                resolve it.&quot;
-              </p>
-              <p className="font-bold text-gray-900">— Cboogie</p>
-            </div>
-
-            <div className="bg-gradient-to-br from-white to-blue-50 rounded-2xl p-8 shadow-lg border border-blue-100">
-              <div className="flex mb-4 text-yellow-400 text-xl">★★★★★</div>
-              <p className="text-gray-700 italic text-lg mb-6 leading-relaxed">
-                &quot;Dr. Ikudayisi is very thorough and listens to your
-                concerns.&quot;
-              </p>
-              <p className="font-bold text-gray-900">— Kristie Reynolds</p>
-            </div>
-
-            <div className="bg-gradient-to-br from-white to-blue-50 rounded-2xl p-8 shadow-lg border border-blue-100">
-              <div className="flex mb-4 text-yellow-400 text-xl">★★★★★</div>
-              <p className="text-gray-700 italic text-lg mb-6 leading-relaxed">
-                &quot;Very friendly staff. No wait. Very good experience.&quot;
-              </p>
-              <p className="font-bold text-gray-900">— Angelo Setta</p>
-            </div>
-          </div>
+          <Testimonials />
         </div>
       </Section>
 

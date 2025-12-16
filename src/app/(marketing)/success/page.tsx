@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { Testimonials } from '@/components/ui/Testimonials';
 
 export const metadata: Metadata = {
   title: 'Thank You — Your Request Has Been Received | Glory Regenerative',
@@ -122,51 +123,40 @@ export default function SuccessPage() {
         <div className="grid md:grid-cols-3 gap-6">
           <div className="text-center">
             <h3 className="font-bold mb-2">Tampa</h3>
-            <p className="text-blue-600 font-semibold">(813) 555-0100</p>
+            <p className="text-sm text-gray-600 mb-1">8019 N. Himes Ave., Suite 200</p>
+            <p className="text-sm text-gray-600 mb-2">Tampa, FL 33614</p>
+            <p className="text-blue-600 font-semibold">(813) 932-9798</p>
           </div>
           <div className="text-center">
             <h3 className="font-bold mb-2">Lakeland</h3>
-            <p className="text-blue-600 font-semibold">(863) 555-0100</p>
+            <p className="text-sm text-gray-600 mb-1">1818 Harden Blvd, Suite 110</p>
+            <p className="text-sm text-gray-600 mb-2">Lakeland, FL 33803</p>
+            <p className="text-blue-600 font-semibold">(863) 248-6881</p>
           </div>
           <div className="text-center">
             <h3 className="font-bold mb-2">New Port Richey</h3>
-            <p className="text-blue-600 font-semibold">(727) 555-0100</p>
+            <p className="text-sm text-gray-600 mb-1">5622 Marine Parkway, Suite 8</p>
+            <p className="text-sm text-gray-600 mb-2">New Port Richey, FL 34652</p>
+            <p className="text-blue-600 font-semibold">(727) 232-0826</p>
           </div>
         </div>
       </section>
 
-      {/* Why Patients Choose Glory Regenerative */}
-      <section className="max-w-4xl mx-auto">
-        <h2 className="text-3xl font-bold mb-6 text-center">
-          Why Patients Choose Glory Regenerative
-        </h2>
-        <p className="text-gray-700 mb-8 text-center leading-relaxed max-w-2xl mx-auto">
-          Our patients appreciate our commitment to providing compassionate,
-          personalized care with innovative regenerative medicine options that
-          help them avoid surgery and return to active living.
-        </p>
-
-        {/* Testimonials */}
-        <div className="grid md:grid-cols-2 gap-6">
-          <div className="bg-white border rounded-lg p-6">
-            <p className="text-gray-700 italic mb-4 leading-relaxed">
-              &quot;The entire team made me feel comfortable and hopeful. After
-              my treatment, I experienced significant pain reduction and can now
-              enjoy activities I thought were lost forever.&quot;
-            </p>
-            <p className="font-semibold text-gray-900">— Sandra R., Tampa</p>
-          </div>
-          <div className="bg-white border rounded-lg p-6">
-            <p className="text-gray-700 italic mb-4 leading-relaxed">
-              &quot;Dr. Ikudayisi took the time to explain every option and
-              answered all my questions. I felt empowered to make the best
-              decision for my health without feeling rushed.&quot;
-            </p>
-            <p className="font-semibold text-gray-900">
-              — Michael P., Lakeland
-            </p>
-          </div>
+      {/* Patient Testimonials */}
+      <section className="max-w-7xl mx-auto">
+        <div className="text-center mb-12">
+          <p className="text-blue-600 font-semibold uppercase tracking-wide text-sm mb-2">
+            Patient Success Stories
+          </p>
+          <h2 className="text-3xl font-bold mb-4">
+            What Our Patients Say
+          </h2>
+          <p className="text-gray-600 leading-relaxed max-w-2xl mx-auto">
+            Real results from real people who found relief at Glory Regenerative
+          </p>
         </div>
+
+        <Testimonials />
       </section>
     </div>
   );
