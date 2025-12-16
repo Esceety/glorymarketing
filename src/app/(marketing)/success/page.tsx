@@ -123,20 +123,28 @@ export default function SuccessPage() {
         <div className="grid md:grid-cols-3 gap-6">
           <div className="text-center">
             <h3 className="font-bold mb-2">Tampa</h3>
-            <p className="text-sm text-gray-600 mb-1">8019 N. Himes Ave., Suite 200</p>
+            <p className="text-sm text-gray-600 mb-1">
+              8019 N. Himes Ave., Suite 200
+            </p>
             <p className="text-sm text-gray-600 mb-2">Tampa, FL 33614</p>
             <p className="text-blue-600 font-semibold">(813) 932-9798</p>
           </div>
           <div className="text-center">
             <h3 className="font-bold mb-2">Lakeland</h3>
-            <p className="text-sm text-gray-600 mb-1">1818 Harden Blvd, Suite 110</p>
+            <p className="text-sm text-gray-600 mb-1">
+              1818 Harden Blvd, Suite 110
+            </p>
             <p className="text-sm text-gray-600 mb-2">Lakeland, FL 33803</p>
             <p className="text-blue-600 font-semibold">(863) 248-6881</p>
           </div>
           <div className="text-center">
             <h3 className="font-bold mb-2">New Port Richey</h3>
-            <p className="text-sm text-gray-600 mb-1">5622 Marine Parkway, Suite 8</p>
-            <p className="text-sm text-gray-600 mb-2">New Port Richey, FL 34652</p>
+            <p className="text-sm text-gray-600 mb-1">
+              5622 Marine Parkway, Suite 8
+            </p>
+            <p className="text-sm text-gray-600 mb-2">
+              New Port Richey, FL 34652
+            </p>
             <p className="text-blue-600 font-semibold">(727) 232-0826</p>
           </div>
         </div>
@@ -148,9 +156,7 @@ export default function SuccessPage() {
           <p className="text-blue-600 font-semibold uppercase tracking-wide text-sm mb-2">
             Patient Success Stories
           </p>
-          <h2 className="text-3xl font-bold mb-4">
-            What Our Patients Say
-          </h2>
+          <h2 className="text-3xl font-bold mb-4">What Our Patients Say</h2>
           <p className="text-gray-600 leading-relaxed max-w-2xl mx-auto">
             Real results from real people who found relief at Glory Regenerative
           </p>

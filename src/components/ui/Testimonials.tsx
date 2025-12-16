@@ -8,7 +8,8 @@ export function Testimonials() {
     },
     {
       rating: 5,
-      quote: 'Impressive results and professional staff to assist in this journey.',
+      quote:
+        'Impressive results and professional staff to assist in this journey.',
       author: 'Kathleen Bowman',
     },
     {
