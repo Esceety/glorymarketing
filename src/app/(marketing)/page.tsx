@@ -427,15 +427,18 @@ export default function HomePage() {
                 <span className="text-2xl">📍</span>
               </div>
               <h3 className="text-2xl font-bold mb-3">Tampa</h3>
-              <p className="text-gray-600 mb-4 leading-relaxed">
-                Serving the greater Tampa area with convenient access from I-275
-                and I-4.
+              <p className="text-gray-700 mb-2 text-sm">
+                8019 N. Himes Ave., Suite 200
+                <br />
+                Tampa, FL 33614
               </p>
-              <p className="text-lg font-semibold text-blue-600 mb-3">
-                (813) 555-0100
+              <p className="text-lg font-semibold text-blue-600 mb-4">
+                (813) 932-9798
               </p>
               <a
-                href="#"
+                href="https://www.google.com/maps/search/?api=1&query=8019+N.+Himes+Ave.+Suite+200+Tampa+FL+33614"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center location-link font-semibold"
               >
                 View on map
@@ -463,14 +466,18 @@ export default function HomePage() {
                 <span className="text-2xl">📍</span>
               </div>
               <h3 className="text-2xl font-bold mb-3">Lakeland</h3>
-              <p className="text-gray-600 mb-4 leading-relaxed">
-                Conveniently located between Tampa and Orlando on I-4 corridor.
+              <p className="text-gray-700 mb-2 text-sm">
+                1818 Harden Blvd, Suite 110
+                <br />
+                Lakeland, FL 33803
               </p>
-              <p className="text-lg font-semibold text-blue-600 mb-3">
-                (863) 555-0100
+              <p className="text-lg font-semibold text-blue-600 mb-4">
+                (863) 248-6881
               </p>
               <a
-                href="#"
+                href="https://www.google.com/maps/search/?api=1&query=1818+Harden+Blvd+Suite+110+Lakeland+FL+33803"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center location-link font-semibold"
               >
                 View on map
@@ -498,15 +505,17 @@ export default function HomePage() {
                 <span className="text-2xl">📍</span>
               </div>
               <h3 className="text-2xl font-bold mb-3">New Port Richey</h3>
-              <p className="text-gray-600 mb-4 leading-relaxed">
-                Easy access from US-19 serving Pasco County and surrounding
-                areas.
+              <p className="text-gray-700 mb-2 text-sm">
+                5622 Marine Parkway, Suite 8<br />
+                New Port Richey, FL 34652
               </p>
-              <p className="text-lg font-semibold text-blue-600 mb-3">
-                (727) 555-0100
+              <p className="text-lg font-semibold text-blue-600 mb-4">
+                (727) 232-0826
               </p>
               <a
-                href="#"
+                href="https://www.google.com/maps/search/?api=1&query=5622+Marine+Parkway+Suite+8+New+Port+Richey+FL+34652"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center location-link font-semibold"
               >
                 View on map

@@ -86,14 +86,14 @@ export default function BookPage() {
             </p>
             <div className="space-y-2 text-sm">
               <p>
-                <span className="font-semibold">Tampa:</span> (813) 555-0100
+                <span className="font-semibold">Tampa:</span> (813) 932-9798
               </p>
               <p>
-                <span className="font-semibold">Lakeland:</span> (863) 555-0100
+                <span className="font-semibold">Lakeland:</span> (863) 248-6881
               </p>
               <p>
                 <span className="font-semibold">New Port Richey:</span> (727)
-                555-0100
+                232-0826
               </p>
             </div>
           </div>

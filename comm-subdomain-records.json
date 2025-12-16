@@ -1,0 +1,60 @@
+{
+  "Comment": "Add DNS records for comm.gloryregenerativemed.com subdomain for CRM email",
+  "Changes": [
+    {
+      "Action": "CREATE",
+      "ResourceRecordSet": {
+        "Name": "mx._domainkey.comm.gloryregenerativemed.com",
+        "Type": "TXT",
+        "TTL": 300,
+        "ResourceRecords": [
+          {
+            "Value": "\"k=rsa; p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDp0/ZEXUUHdm0T2/lkOFW9fNoMlHZZCpjz4PKK96pORwrelWSt4JYUWPgVDEeThPinIioQHb+5gHrOfPYUDAOvx3jjcnQro84G22vbub2aXriYRPckJjUbEvyBXUMYZgCiGG4n9/Z2dkJg6unKNO/zKTkm7BLwPOURie9mSIbaQQIDAQAB\""
+          }
+        ]
+      }
+    },
+    {
+      "Action": "CREATE",
+      "ResourceRecordSet": {
+        "Name": "comm.gloryregenerativemed.com",
+        "Type": "TXT",
+        "TTL": 300,
+        "ResourceRecords": [
+          {
+            "Value": "\"v=spf1 include:spf.leadconnectorhq.com include:mailgun.org ~all\""
+          }
+        ]
+      }
+    },
+    {
+      "Action": "CREATE",
+      "ResourceRecordSet": {
+        "Name": "email.comm.gloryregenerativemed.com",
+        "Type": "CNAME",
+        "TTL": 300,
+        "ResourceRecords": [
+          {
+            "Value": "mailgun.org"
+          }
+        ]
+      }
+    },
+    {
+      "Action": "CREATE",
+      "ResourceRecordSet": {
+        "Name": "comm.gloryregenerativemed.com",
+        "Type": "MX",
+        "TTL": 300,
+        "ResourceRecords": [
+          {
+            "Value": "10 mxa.mailgun.org"
+          },
+          {
+            "Value": "10 mxb.mailgun.org"
+          }
+        ]
+      }
+    }
+  ]
+}
