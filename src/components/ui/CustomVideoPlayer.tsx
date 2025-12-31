@@ -6,12 +6,14 @@ interface CustomVideoPlayerProps {
   src: string;
   title?: string;
   className?: string;
+  captionsUrl?: string;
 }
 
 export function CustomVideoPlayer({
   src,
   title = 'Video',
   className = '',
+  captionsUrl,
 }: CustomVideoPlayerProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -22,6 +24,7 @@ export function CustomVideoPlayer({
   const [showControls, setShowControls] = useState(true);
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [playbackRate, setPlaybackRate] = useState(1);
+  const [captionsEnabled, setCaptionsEnabled] = useState(false);
   const controlsTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   // Format time in MM:SS format
@@ -108,6 +111,20 @@ export function CustomVideoPlayer({
     }
   };
 
+  // Toggle captions
+  const toggleCaptions = () => {
+    if (videoRef.current && videoRef.current.textTracks.length > 0) {
+      const track = videoRef.current.textTracks[0];
+      if (captionsEnabled) {
+        track.mode = 'hidden';
+        setCaptionsEnabled(false);
+      } else {
+        track.mode = 'showing';
+        setCaptionsEnabled(true);
+      }
+    }
+  };
+
   // Show controls on mouse move
   const handleMouseMove = () => {
     setShowControls(true);
@@ -170,7 +187,17 @@ export function CustomVideoPlayer({
         onLoadedMetadata={handleLoadedMetadata}
         onClick={togglePlay}
         playsInline
+        crossOrigin="anonymous"
       >
+        {captionsUrl && (
+          <track
+            kind="captions"
+            src={captionsUrl}
+            srcLang="en"
+            label="English"
+            default
+          />
+        )}
         Your browser does not support the video tag.
       </video>
 
@@ -285,6 +312,24 @@ export function CustomVideoPlayer({
 
           {/* Right Controls */}
           <div className="flex items-center gap-3">
+            {/* Captions Toggle */}
+            {captionsUrl && (
+              <button
+                onClick={toggleCaptions}
+                className={`transition-colors p-1 ${
+                  captionsEnabled
+                    ? 'text-blue-400'
+                    : 'text-white hover:text-blue-400'
+                }`}
+                title={captionsEnabled ? 'Hide Captions' : 'Show Captions'}
+              >
+                <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                  <rect x="2" y="5" width="20" height="14" rx="2" stroke="currentColor" strokeWidth="1.5" fill="none"/>
+                  <text x="12" y="15.5" fontSize="8" fontWeight="bold" textAnchor="middle" fill="currentColor">CC</text>
+                </svg>
+              </button>
+            )}
+
             {/* Playback Speed */}
             <div className="relative group/speed">
               <button className="text-white hover:text-blue-400 transition-colors text-sm font-semibold px-2 py-1 bg-white/10 rounded hidden sm:block">

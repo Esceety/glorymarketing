@@ -33,6 +33,7 @@ export default function BookPage() {
             src="https://ceety-asset-hub.s3.us-east-1.amazonaws.com/glory-medclinic/2befc198-785d-4902-bd4c-51ca0a78fd82-2026-campaign-vid1.mp4"
             title="Learn About Your Visit at Glory Regenerative Center"
             className="aspect-video"
+            captionsUrl="https://ceety-asset-hub.s3.us-east-1.amazonaws.com/glory-medclinic/f79e160e-559f-4242-ad3b-0f39cee634d0-2026-campaign-vid1-v2.vtt"
           />
         </div>
 
