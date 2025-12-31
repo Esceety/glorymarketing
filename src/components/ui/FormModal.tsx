@@ -37,17 +37,23 @@ export function FormModal({ isOpen, onClose }: FormModalProps) {
         // Check if this is a form submission event
         if (event.data && typeof event.data === 'object') {
           const data = event.data;
-          
+
           // Store form data in localStorage for pre-filling the calendar
           if (data.contact || data.firstName || data.first_name) {
             const formData = {
-              firstName: data.firstName || data.first_name || data.contact?.firstName || '',
-              lastName: data.lastName || data.last_name || data.contact?.lastName || '',
+              firstName:
+                data.firstName ||
+                data.first_name ||
+                data.contact?.firstName ||
+                '',
+              lastName:
+                data.lastName || data.last_name || data.contact?.lastName || '',
               email: data.email || data.contact?.email || '',
-              phone: data.phone || data.phoneNumber || data.contact?.phone || '',
+              phone:
+                data.phone || data.phoneNumber || data.contact?.phone || '',
               timestamp: new Date().toISOString(),
             };
-            
+
             // Only store if we have at least some data
             if (formData.firstName || formData.email || formData.phone) {
               localStorage.setItem('userFormData', JSON.stringify(formData));
@@ -55,7 +61,11 @@ export function FormModal({ isOpen, onClose }: FormModalProps) {
           }
 
           // If the message indicates success or redirection, navigate to book page
-          if (data.eventName === 'form_submitted' || data.type === 'redirect' || data.success) {
+          if (
+            data.eventName === 'form_submitted' ||
+            data.type === 'redirect' ||
+            data.success
+          ) {
             setTimeout(() => {
               onClose();
               router.push('/book');

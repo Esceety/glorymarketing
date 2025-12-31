@@ -15,28 +15,33 @@ const locations: Location[] = [
     id: 'tampa',
     name: 'Tampa',
     address: '8019 N. Himes Ave., Tampa, FL 33614',
-    iframeUrl: 'https://link.esceety-us.com/widget/booking/gCPl71CVES7GLObW5Dam',
+    iframeUrl:
+      'https://link.esceety-us.com/widget/booking/gCPl71CVES7GLObW5Dam',
     iframeId: 'gCPl71CVES7GLObW5Dam_1765900295400',
   },
   {
     id: 'lakeland',
     name: 'Lakeland',
     address: '1818 Harden Blvd, Lakeland, FL 33803',
-    iframeUrl: 'https://link.esceety-us.com/widget/booking/5YhjHb59G10dCmhnZZko',
+    iframeUrl:
+      'https://link.esceety-us.com/widget/booking/5YhjHb59G10dCmhnZZko',
     iframeId: '5YhjHb59G10dCmhnZZko_1765900315932',
   },
   {
     id: 'newportrichey',
     name: 'New Port Richey',
     address: '5622 Marine Parkway, New Port Richey, FL 34652',
-    iframeUrl: 'https://link.esceety-us.com/widget/booking/EuY0MqMtvTYQuVsxwqQv',
+    iframeUrl:
+      'https://link.esceety-us.com/widget/booking/EuY0MqMtvTYQuVsxwqQv',
     iframeId: 'EuY0MqMtvTYQuVsxwqQv_1765900305715',
   },
 ];
 
 export function MultiStepCalendar() {
   const [currentStep, setCurrentStep] = useState(1);
-  const [selectedLocation, setSelectedLocation] = useState<Location | null>(null);
+  const [selectedLocation, setSelectedLocation] = useState<Location | null>(
+    null
+  );
   const [userFormData, setUserFormData] = useState<any>(null);
 
   useEffect(() => {
@@ -57,7 +62,8 @@ export function MultiStepCalendar() {
     // Check URL parameters first (in case redirected from form with data)
     if (typeof window !== 'undefined') {
       const urlParams = new URLSearchParams(window.location.search);
-      const firstName = urlParams.get('first_name') || urlParams.get('firstName');
+      const firstName =
+        urlParams.get('first_name') || urlParams.get('firstName');
       const lastName = urlParams.get('last_name') || urlParams.get('lastName');
       const email = urlParams.get('email');
       const phone = urlParams.get('phone') || urlParams.get('phoneNumber');
@@ -84,8 +90,9 @@ export function MultiStepCalendar() {
         // Check if data is recent (within last 24 hours)
         const timestamp = new Date(data.timestamp);
         const now = new Date();
-        const hoursDiff = (now.getTime() - timestamp.getTime()) / (1000 * 60 * 60);
-        
+        const hoursDiff =
+          (now.getTime() - timestamp.getTime()) / (1000 * 60 * 60);
+
         if (hoursDiff < 24) {
           setUserFormData(data);
         } else {
@@ -102,10 +109,12 @@ export function MultiStepCalendar() {
     if (!userFormData) return baseUrl;
 
     const params = new URLSearchParams();
-    
+
     // Add available data as URL parameters
-    if (userFormData.firstName) params.append('first_name', userFormData.firstName);
-    if (userFormData.lastName) params.append('last_name', userFormData.lastName);
+    if (userFormData.firstName)
+      params.append('first_name', userFormData.firstName);
+    if (userFormData.lastName)
+      params.append('last_name', userFormData.lastName);
     if (userFormData.email) params.append('email', userFormData.email);
     if (userFormData.phone) params.append('phone', userFormData.phone);
 
@@ -200,7 +209,9 @@ export function MultiStepCalendar() {
                   />
                 </svg>
               </div>
-              <h2 className="text-xl sm:text-2xl font-bold text-gray-900">Location</h2>
+              <h2 className="text-xl sm:text-2xl font-bold text-gray-900">
+                Location
+              </h2>
             </div>
 
             <p className="text-sm sm:text-base text-gray-600 mb-4">
@@ -262,7 +273,8 @@ export function MultiStepCalendar() {
                   Book Your Appointment
                 </h2>
                 <p className="text-xs sm:text-sm text-gray-600 mt-1">
-                  Location: <span className="font-semibold">{selectedLocation.name}</span>
+                  Location:{' '}
+                  <span className="font-semibold">{selectedLocation.name}</span>
                 </p>
               </div>
             </div>
@@ -271,12 +283,12 @@ export function MultiStepCalendar() {
               <iframe
                 key={selectedLocation.id}
                 src={getIframeUrlWithParams(selectedLocation.iframeUrl)}
-                style={{ 
-                  width: '100%', 
+                style={{
+                  width: '100%',
                   height: '800px',
                   minHeight: '800px',
-                  border: 'none', 
-                  overflow: 'hidden' 
+                  border: 'none',
+                  overflow: 'hidden',
                 }}
                 scrolling="no"
                 id={selectedLocation.iframeId}

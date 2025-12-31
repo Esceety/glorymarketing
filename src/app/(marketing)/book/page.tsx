@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import { Badge } from '@/components/ui/Badge';
 import { MultiStepCalendar } from '@/components/ui/MultiStepCalendar';
+import { CustomVideoPlayer } from '@/components/ui/CustomVideoPlayer';
 
 export const metadata: Metadata = {
   title: 'Book Your Voucher Visit | Glory Regenerative',
@@ -28,17 +29,42 @@ export default function BookPage() {
         {/* Video Section */}
         <div>
           <h2 className="text-2xl font-bold mb-4">Learn About Your Visit</h2>
-          <div className="rounded-lg aspect-video overflow-hidden shadow-lg">
-            <iframe
-              width="100%"
-              height="100%"
-              src="https://www.youtube.com/embed/OLP_zLSOCRc"
-              title="YouTube video player"
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowFullScreen
-              className="w-full h-full"
-            />
+          <CustomVideoPlayer
+            src="https://ceety-asset-hub.s3.us-east-1.amazonaws.com/glory-medclinic/2befc198-785d-4902-bd4c-51ca0a78fd82-2026-campaign-vid1.mp4"
+            title="Learn About Your Visit at Glory Regenerative Center"
+            className="aspect-video"
+          />
+        </div>
+
+        {/* Call-to-Action Section */}
+        <div className="bg-gradient-to-r from-blue-50 to-cyan-50 border-2 border-blue-200 rounded-xl p-6 sm:p-8 shadow-sm">
+          <div className="flex items-start gap-4">
+            <div className="flex-shrink-0 w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center">
+              <svg
+                className="w-6 h-6 text-white"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                />
+              </svg>
+            </div>
+            <div className="flex-1">
+              <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-2">
+                Ready to Book Your New Patient Appointment?
+              </h3>
+              <p className="text-gray-700 text-base sm:text-lg leading-relaxed">
+                Great! Let&apos;s get you scheduled. Simply select your preferred 
+                location below, and you&apos;ll be able to choose a convenient 
+                date and time for your consultation. We look forward to helping 
+                you on your journey to pain-free living!
+              </p>
+            </div>
           </div>
         </div>
 
