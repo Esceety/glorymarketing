@@ -24,16 +24,16 @@ const locations: Location[] = [
     name: 'Lakeland',
     address: '1818 Harden Blvd, Lakeland, FL 33803',
     iframeUrl:
-      'https://link.esceety-us.com/widget/booking/5YhjHb59G10dCmhnZZko',
-    iframeId: '5YhjHb59G10dCmhnZZko_1765900315932',
+      'https://link.esceety-us.com/widget/booking/EuY0MqMtvTYQuVsxwqQv',
+    iframeId: 'EuY0MqMtvTYQuVsxwqQv_1765900305715',
   },
   {
     id: 'newportrichey',
     name: 'New Port Richey',
     address: '5622 Marine Parkway, New Port Richey, FL 34652',
     iframeUrl:
-      'https://link.esceety-us.com/widget/booking/EuY0MqMtvTYQuVsxwqQv',
-    iframeId: 'EuY0MqMtvTYQuVsxwqQv_1765900305715',
+      'https://link.esceety-us.com/widget/booking/5YhjHb59G10dCmhnZZko',
+    iframeId: '5YhjHb59G10dCmhnZZko_1765900315932',
   },
 ];
 
