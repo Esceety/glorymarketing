@@ -279,14 +279,14 @@ export function MultiStepCalendar() {
               </div>
             </div>
 
-            <div className="rounded-lg w-full" style={{ minHeight: '800px' }}>
+            <div className="rounded-lg w-full" style={{ minHeight: '1200px' }}>
               <iframe
                 key={selectedLocation.id}
                 src={getIframeUrlWithParams(selectedLocation.iframeUrl)}
                 style={{
                   width: '100%',
-                  height: '800px',
-                  minHeight: '800px',
+                  height: '1200px',
+                  minHeight: '1200px',
                   border: 'none',
                   overflow: 'hidden',
                 }}

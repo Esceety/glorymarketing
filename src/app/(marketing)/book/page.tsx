@@ -33,7 +33,7 @@ export default function BookPage() {
             src="https://ceety-asset-hub.s3.us-east-1.amazonaws.com/glory-medclinic/2befc198-785d-4902-bd4c-51ca0a78fd82-2026-campaign-vid1.mp4"
             title="Learn About Your Visit at Glory Regenerative Center"
             className="aspect-video"
-            captionsUrl="https://ceety-asset-hub.s3.us-east-1.amazonaws.com/glory-medclinic/f79e160e-559f-4242-ad3b-0f39cee634d0-2026-campaign-vid1-v2.vtt"
+            captionsUrl="https://ceety-asset-hub.s3.us-east-1.amazonaws.com/glory-medclinic/11fdde51-79f7-48b1-9c57-619befc77269-2026-campaign-vid1-v3.vtt.txt"
           />
         </div>
 
@@ -60,10 +60,10 @@ export default function BookPage() {
                 Ready to Book Your New Patient Appointment?
               </h3>
               <p className="text-gray-700 text-base sm:text-lg leading-relaxed">
-                Great! Let&apos;s get you scheduled. Simply select your preferred 
-                location below, and you&apos;ll be able to choose a convenient 
-                date and time for your consultation. We look forward to helping 
-                you on your journey to pain-free living!
+                Great! Let&apos;s get you scheduled. Simply select your
+                preferred location below, and you&apos;ll be able to choose a
+                convenient date and time for your consultation. We look forward
+                to helping you on your journey to pain-free living!
               </p>
             </div>
           </div>

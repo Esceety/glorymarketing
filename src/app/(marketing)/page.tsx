@@ -6,16 +6,16 @@ import { ScrollToTopButton } from '@/components/ui/ScrollToTopButton';
 import { Testimonials } from '@/components/ui/Testimonials';
 
 export const metadata: Metadata = {
-  title: 'Glory Regenerative Center - 50 Knee & Hip Pain Relief Vouchers!',
+  title: 'Glory Regenerative Center - 40 Knee & Hip Pain Relief Vouchers!',
   description:
-    'Glory Regenerative Center is giving away 50 Knee & Hip Pain Relief Vouchers! Full Health History Consultation, Evaluation, and Personalized Treatment Plan for just $99.',
+    'Glory Regenerative Center is giving away 40 Knee & Hip Pain Relief Vouchers! Full Health History Consultation, Evaluation, and Personalized Treatment Plan for just $100.',
 };
 
 export default function HomePage() {
   return (
     <div className="min-h-screen">
       {/* Hero Section - Inspired by Florida Regenerative */}
-      <section className="relative h-[85vh] min-h-[600px] max-h-[800px] w-full text-white overflow-hidden">
+      <section className="relative min-h-[600px] w-full text-white overflow-visible py-6">
         {/* Background Image with Overlay */}
         <div className="absolute inset-0 z-0">
           <Image
@@ -33,10 +33,10 @@ export default function HomePage() {
         </div>
 
         {/* Content - Centered */}
-        <div className="relative z-10 w-full h-full flex items-center justify-center">
-          <div className="w-full max-w-5xl px-6 sm:px-8 lg:px-12 py-12 text-center">
+        <div className="relative z-10 w-full h-full flex items-center justify-center py-6">
+          <div className="w-full max-w-5xl px-6 sm:px-8 lg:px-12 py-6 text-center">
             {/* Top Badge */}
-            <div className="mb-6">
+            <div className="mb-4">
               <div
                 className="inline-flex items-center backdrop-blur-sm rounded-full px-6 py-2.5 border shadow-lg"
                 style={{
@@ -54,7 +54,7 @@ export default function HomePage() {
             <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-extrabold leading-tight mb-6 max-w-4xl mx-auto">
               Glory Regenerative Center is Giving Away{' '}
               <span className="text-yellow-400">
-                50 Knee & Hip Pain Relief Vouchers!
+                40 Knee & Hip Pain Relief Vouchers!
               </span>
             </h1>
 
@@ -76,7 +76,7 @@ export default function HomePage() {
 
             {/* Value Prop Box */}
             <div
-              className="backdrop-blur-md rounded-2xl p-6 sm:p-8 border-2 shadow-2xl mb-8 max-w-2xl mx-auto"
+              className="backdrop-blur-md rounded-2xl p-6 sm:p-8 border-2 shadow-2xl mb-4 max-w-2xl mx-auto"
               style={{
                 background:
                   'linear-gradient(to bottom right, rgba(7, 138, 173, 0.15), rgba(7, 138, 173, 0.15))',
@@ -89,7 +89,7 @@ export default function HomePage() {
               <p className="text-base sm:text-lg leading-relaxed text-white mb-2">
                 We are Giving Away{' '}
                 <strong className="text-yellow-400 text-xl sm:text-2xl">
-                  50 Vouchers
+                  40 Vouchers
                 </strong>{' '}
                 for a <strong>Knee & Hip Pain Relief Assessment</strong>,
                 including a <strong>Full Health History Consultation</strong>,{' '}
@@ -97,7 +97,7 @@ export default function HomePage() {
                 <strong>Personalized Treatment Plan</strong>, all for just
               </p>
               <div className="text-4xl sm:text-5xl font-black text-yellow-400 my-3">
-                $99 Dollars!
+                $100 Dollars!
               </div>
               <p className="text-xs sm:text-sm italic text-cyan-100 border-t border-white/20 pt-3">
                 *This is a cash pay offer. We do not accept insurance.
@@ -105,7 +105,7 @@ export default function HomePage() {
             </div>
 
             {/* CTA Button */}
-            <div className="mt-8">
+            <div className="mt-4 relative z-20">
               <BookingButton className="group inline-flex items-center justify-center px-8 py-4 text-base sm:text-lg font-bold bg-red-600 hover:bg-red-700 text-white rounded-xl shadow-2xl transform hover:scale-105 transition-all duration-300 uppercase tracking-wide">
                 <span className="mr-2 text-xl">🎁</span>
                 Receive My Knee & Hip Pain Relief Voucher Now!
@@ -263,7 +263,7 @@ export default function HomePage() {
               <h3 className="text-2xl font-bold mb-3">Request Your Voucher</h3>
               <p className="text-gray-600 leading-relaxed">
                 Fill out our simple form to claim your new patient consultation
-                voucher worth $99.
+                voucher worth $100.
               </p>
             </div>
 
@@ -546,7 +546,7 @@ export default function HomePage() {
             <div className="relative order-2 lg:order-1">
               <div className="relative aspect-square rounded-3xl overflow-hidden shadow-xl">
                 <Image
-                  src="/images/drdavidikudayisi.jpeg"
+                  src="/images/drikudayisi.JPG"
                   alt="Dr. David Ikudayisi - Board-Certified Physician"
                   fill
                   className="object-cover"
@@ -574,18 +574,17 @@ export default function HomePage() {
                 Meet Dr. David Ikudayisi
               </h2>
               <p className="text-xl text-gray-700 mb-6 leading-relaxed">
-                Dr. Ikudayisi is a board-certified physician specializing in
-                regenerative medicine and aesthetic treatments.
-              </p>
-              <p className="text-lg text-gray-600 mb-6 leading-relaxed">
-                With years of experience helping patients find relief from
-                chronic pain, he combines cutting-edge techniques with
-                compassionate, patient-centered care.
+                Dr. Ikudayisi is a board-certified internist with specialized
+                expertise in regenerative medicine, pain management, and cosmetic
+                and aesthetic medicine. With years of experience helping patients
+                find lasting relief from chronic pain, he blends advanced,
+                evidence-based techniques with compassionate, patient-centered care.
               </p>
               <p className="text-lg text-gray-600 leading-relaxed">
                 His approach focuses on treating the root cause of pain rather
-                than just managing symptoms, helping patients achieve lasting
-                results without surgery.
+                than simply managing symptoms, empowering patients to achieve
+                long-term healing and improved quality of life—often without
+                surgery.
               </p>
             </div>
           </div>
@@ -627,14 +626,14 @@ export default function HomePage() {
             Limited Time Offer
           </div>
           <h2 className="text-4xl lg:text-5xl font-extrabold mb-6">
-            Request Your $99 Voucher Now!
+            Request Your $100 Voucher Now!
           </h2>
           <p className="text-2xl mb-4 font-semibold">
             Don&apos;t Miss Out on This Exclusive Offer
           </p>
           <p className="text-xl mb-12 text-red-100 leading-relaxed max-w-2xl mx-auto">
             Take the first step toward pain-free living. Fill out the form below
-            to receive your new patient consultation voucher worth $99.
+            to receive your new patient consultation voucher worth $100.
           </p>
 
           <div className="bg-white/95 backdrop-blur-sm rounded-2xl p-10 shadow-2xl border-4 border-yellow-400">
@@ -644,7 +643,7 @@ export default function HomePage() {
                   🎯 Reserve Your Spot Today
                 </p>
                 <p className="text-lg text-gray-600">
-                  Only 50 vouchers available this week!
+                  Only 40 vouchers available this week!
                 </p>
               </div>
               <ScrollToTopButton className="w-full bg-red-600 hover:bg-red-700 text-white font-bold text-xl py-6 px-8 rounded-xl shadow-lg transform hover:scale-105 transition-all duration-300 uppercase tracking-wide">
