@@ -8,7 +8,7 @@ import { Testimonials } from '@/components/ui/Testimonials';
 export const metadata: Metadata = {
   title: 'Glory Regenerative Center - 40 Knee & Hip Pain Relief Vouchers!',
   description:
-    'Glory Regenerative Center is giving away 40 Knee & Hip Pain Relief Vouchers! Full Health History Consultation, Evaluation, and Personalized Treatment Plan for just $100.',
+    'Glory Regenerative Center is giving away 40 Knee & Hip Pain Relief Vouchers! Full Health History Consultation, Evaluation, and Personalized Treatment Plan - $450 value for just $100.',
 };
 
 export default function HomePage() {
@@ -96,8 +96,18 @@ export default function HomePage() {
                 <strong>Evaluation</strong>, and a{' '}
                 <strong>Personalized Treatment Plan</strong>, all for just
               </p>
-              <div className="text-4xl sm:text-5xl font-black text-yellow-400 my-3">
-                $100 Dollars!
+              <div className="my-3">
+                <div className="flex items-center justify-center gap-3">
+                  <span className="text-2xl sm:text-3xl font-bold text-gray-400 line-through opacity-75">
+                    $450
+                  </span>
+                  <span className="text-4xl sm:text-5xl font-black text-yellow-400">
+                    $100 Dollars!
+                  </span>
+                </div>
+                <p className="text-sm sm:text-base text-green-400 font-semibold mt-2">
+                  Save $350 with this exclusive offer!
+                </p>
               </div>
               <p className="text-xs sm:text-sm italic text-cyan-100 border-t border-white/20 pt-3">
                 *This is a cash pay offer. We do not accept insurance.
@@ -263,7 +273,7 @@ export default function HomePage() {
               <h3 className="text-2xl font-bold mb-3">Request Your Voucher</h3>
               <p className="text-gray-600 leading-relaxed">
                 Fill out our simple form to claim your new patient consultation
-                voucher worth $100.
+                voucher - a <span className="line-through text-gray-400">$450</span> <span className="font-bold text-green-600">$100</span> value.
               </p>
             </div>
 
@@ -575,10 +585,11 @@ export default function HomePage() {
               </h2>
               <p className="text-xl text-gray-700 mb-6 leading-relaxed">
                 Dr. Ikudayisi is a board-certified internist with specialized
-                expertise in regenerative medicine, pain management, and cosmetic
-                and aesthetic medicine. With years of experience helping patients
-                find lasting relief from chronic pain, he blends advanced,
-                evidence-based techniques with compassionate, patient-centered care.
+                expertise in regenerative medicine, pain management, and
+                cosmetic and aesthetic medicine. With years of experience
+                helping patients find lasting relief from chronic pain, he
+                blends advanced, evidence-based techniques with compassionate,
+                patient-centered care.
               </p>
               <p className="text-lg text-gray-600 leading-relaxed">
                 His approach focuses on treating the root cause of pain rather
@@ -623,17 +634,17 @@ export default function HomePage() {
 
         <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="inline-block bg-yellow-400 text-red-900 rounded-lg px-6 py-2 mb-6 font-bold uppercase tracking-wide text-sm">
-            Limited Time Offer
+            Limited Time Offer - Save $350!
           </div>
           <h2 className="text-4xl lg:text-5xl font-extrabold mb-6">
-            Request Your $100 Voucher Now!
+            Request Your <span className="line-through text-red-300">$450</span> $100 Voucher Now!
           </h2>
           <p className="text-2xl mb-4 font-semibold">
             Don&apos;t Miss Out on This Exclusive Offer
           </p>
           <p className="text-xl mb-12 text-red-100 leading-relaxed max-w-2xl mx-auto">
             Take the first step toward pain-free living. Fill out the form below
-            to receive your new patient consultation voucher worth $100.
+            to receive your new patient consultation voucher - a <span className="line-through text-red-300">$450</span> value for just <span className="font-bold text-yellow-400">$100</span>.
           </p>
 
           <div className="bg-white/95 backdrop-blur-sm rounded-2xl p-10 shadow-2xl border-4 border-yellow-400">
