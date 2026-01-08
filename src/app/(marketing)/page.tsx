@@ -273,7 +273,9 @@ export default function HomePage() {
               <h3 className="text-2xl font-bold mb-3">Request Your Voucher</h3>
               <p className="text-gray-600 leading-relaxed">
                 Fill out our simple form to claim your new patient consultation
-                voucher - a <span className="line-through text-gray-400">$450</span> <span className="font-bold text-green-600">$100</span> value.
+                voucher - a{' '}
+                <span className="line-through text-gray-400">$450</span>{' '}
+                <span className="font-bold text-green-600">$100</span> value.
               </p>
             </div>
 
@@ -637,14 +639,17 @@ export default function HomePage() {
             Limited Time Offer - Save $350!
           </div>
           <h2 className="text-4xl lg:text-5xl font-extrabold mb-6">
-            Request Your <span className="line-through text-red-300">$450</span> $100 Voucher Now!
+            Request Your <span className="line-through text-red-300">$450</span>{' '}
+            $100 Voucher Now!
           </h2>
           <p className="text-2xl mb-4 font-semibold">
             Don&apos;t Miss Out on This Exclusive Offer
           </p>
           <p className="text-xl mb-12 text-red-100 leading-relaxed max-w-2xl mx-auto">
             Take the first step toward pain-free living. Fill out the form below
-            to receive your new patient consultation voucher - a <span className="line-through text-red-300">$450</span> value for just <span className="font-bold text-yellow-400">$100</span>.
+            to receive your new patient consultation voucher - a{' '}
+            <span className="line-through text-red-300">$450</span> value for
+            just <span className="font-bold text-yellow-400">$100</span>.
           </p>
 
           <div className="bg-white/95 backdrop-blur-sm rounded-2xl p-10 shadow-2xl border-4 border-yellow-400">
