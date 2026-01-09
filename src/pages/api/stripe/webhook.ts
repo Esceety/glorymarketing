@@ -73,7 +73,8 @@ export default async function handler(
         '⚠️ TEMPORARY: Skipping Stripe signature verification for debugging'
       );
       console.log(`🔐 Would verify with secret: ${webhookSecret?.substring(0, 20)}...`);
-      console.log(`🔐 Signature from header: ${signature?.substring(0, 50)}...`);
+      const sigStr = Array.isArray(signature) ? signature[0] : signature;
+      console.log(`🔐 Signature from header: ${sigStr?.substring(0, 50)}...`);
 
       // Parse the body directly without verification
       event = JSON.parse(rawBody.toString()) as Stripe.Event;
