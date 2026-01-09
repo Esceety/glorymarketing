@@ -15,7 +15,9 @@
     "format:write": "prettier --write ."
   },
   "dependencies": {
+    "micro": "^10.0.1",
     "next": "^16.0.10",
+    "raw-body": "^3.0.2",
     "react": "19.2.0",
     "react-dom": "19.2.0",
     "stripe": "^20.1.2"

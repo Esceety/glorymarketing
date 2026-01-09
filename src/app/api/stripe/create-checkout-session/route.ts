@@ -9,13 +9,21 @@ import { paymentConfig } from '@/config/payment';
 
 interface CreateCheckoutRequestBody {
   contact_id: string;
+  customer_email?: string;
+  customer_first_name?: string;
+  customer_last_name?: string;
 }
 
 export async function POST(request: NextRequest) {
   try {
     // Parse and validate request body
     const body: CreateCheckoutRequestBody = await request.json();
-    const { contact_id } = body;
+    const {
+      contact_id,
+      customer_email,
+      customer_first_name,
+      customer_last_name,
+    } = body;
 
     if (!contact_id || typeof contact_id !== 'string') {
       return NextResponse.json(
@@ -30,6 +38,9 @@ export async function POST(request: NextRequest) {
     // Build metadata to bind to CRM
     const metadata = {
       ghl_contact_id: contact_id,
+      customer_email: customer_email || '', // Store original GHL contact email
+      customer_first_name: customer_first_name || '', // Store original GHL contact first name
+      customer_last_name: customer_last_name || '', // Store original GHL contact last name
       campaign_id: paymentConfig.campaignId,
       campaign_name: paymentConfig.campaignName,
       voucher_type: paymentConfig.voucherType,
@@ -59,13 +70,21 @@ export async function POST(request: NextRequest) {
       });
     } else {
       // Fallback to inline price_data
+      // Include customer name in description for invoice clarity
+      const customerFullName =
+        customer_first_name && customer_last_name
+          ? `${customer_first_name} ${customer_last_name}`
+          : customer_first_name || '';
+      const descriptionText = customerFullName
+        ? `Patient: ${customerFullName} - Knee & Hip Pain Relief Assessment - Full consultation, evaluation, and personalized treatment plan`
+        : 'Knee & Hip Pain Relief Assessment - Full consultation, evaluation, and personalized treatment plan';
+
       lineItems.push({
         price_data: {
           currency: paymentConfig.currency,
           product_data: {
             name: 'Glory Regenerative – Voucher Payment',
-            description:
-              'Knee & Hip Pain Relief Assessment - Full consultation, evaluation, and personalized treatment plan',
+            description: descriptionText,
           },
           unit_amount: paymentConfig.amountCents,
         },

@@ -47,7 +47,7 @@ export const paymentConfig = {
   campaignName:
     process.env.PAYMENT_CAMPAIGN_NAME || 'Glory Regenerative Voucher',
   voucherType: process.env.PAYMENT_VOUCHER_TYPE || 'new_patient_consult',
-  amountCents: parseInt(process.env.PAYMENT_AMOUNT_CENTS || '10000', 10), // $100.00
+  amountCents: parseInt(process.env.PAYMENT_AMOUNT_CENTS || '10300', 10), // $103.00 (includes 3% processing fee)
   currency: (process.env.PAYMENT_CURRENCY || 'usd').toLowerCase(),
 
   // Determine environment based on secret key

@@ -6,7 +6,7 @@ import { Suspense } from 'react';
 
 function PaymentCancelledContent() {
   const searchParams = useSearchParams();
-  const contactId = searchParams.get('contact_id');
+  const contactId = searchParams?.get('contact_id') || null;
 
   const tryAgainUrl = contactId
     ? `/voucher-payment?contact_id=${contactId}`
@@ -129,7 +129,8 @@ function PaymentCancelledContent() {
                 Have Questions?
               </h3>
               <p className="text-gray-600 mb-3">
-                If you experienced an issue during checkout or have questions about the voucher, we&apos;re here to help.
+                If you experienced an issue during checkout or have questions
+                about the voucher, we&apos;re here to help.
               </p>
               <a
                 href="tel:+18135551234"

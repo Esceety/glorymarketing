@@ -56,20 +56,22 @@ This implementation includes a complete Stripe Checkout payment flow for the $10
 ### Testing Locally
 
 1. **Start the dev server**:
+
    ```bash
    npm run dev
    ```
 
 2. **Test checkout session creation**:
    Visit: `http://localhost:3000/voucher-payment?contact_id=test_123`
-   
+
    Click "Pay $100 Now" - should redirect to Stripe Checkout (sandbox).
 
 3. **Test Stripe webhook locally**:
+
    ```bash
    # In a separate terminal, forward Stripe events:
    stripe listen --forward-to localhost:3000/api/stripe/webhook
-   
+
    # Trigger a test event:
    stripe trigger checkout.session.completed
    ```

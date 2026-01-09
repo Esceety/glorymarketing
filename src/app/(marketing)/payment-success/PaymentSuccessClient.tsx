@@ -6,7 +6,7 @@ import { Suspense } from 'react';
 
 function PaymentSuccessContent() {
   const searchParams = useSearchParams();
-  const contactId = searchParams.get('contact_id');
+  const contactId = searchParams?.get('contact_id') || null;
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-white to-gray-50 py-12 px-4 sm:px-6 lg:px-8">
@@ -29,10 +29,14 @@ function PaymentSuccessContent() {
             </svg>
           </div>
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
-            Payment Successful!
+            Appointment Confirmed!
           </h1>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            We&apos;ve received your <span className="font-semibold text-green-600">voucher payment</span>.
+            Your payment has been received and your{' '}
+            <span className="font-semibold text-green-600">
+              appointment is now officially confirmed
+            </span>
+            .
           </p>
         </div>
 
@@ -45,10 +49,10 @@ function PaymentSuccessContent() {
             }}
           >
             <h2 className="text-2xl font-bold text-white mb-2">
-              ✓ Payment Confirmed
+              ✓ Appointment Confirmed
             </h2>
             <p className="text-green-50">
-              Your $100 voucher has been successfully processed
+              Your $100 voucher payment has secured your appointment time
             </p>
           </div>
 
@@ -75,10 +79,12 @@ function PaymentSuccessContent() {
                     </div>
                     <div>
                       <p className="font-medium text-gray-900">
-                        Email Confirmation
+                        Confirmation Email
                       </p>
                       <p className="text-gray-600 text-sm mt-1">
-                        You&apos;ll receive a payment receipt via email within a few minutes.
+                        You&apos;ll receive a separate confirmation email with
+                        your appointment details and visit instructions within a
+                        few minutes.
                       </p>
                     </div>
                   </div>
@@ -89,10 +95,11 @@ function PaymentSuccessContent() {
                     </div>
                     <div>
                       <p className="font-medium text-gray-900">
-                        Clinic Follow-Up
+                        Your Appointment is Reserved
                       </p>
                       <p className="text-gray-600 text-sm mt-1">
-                        Our team will contact you within 1-2 business days to confirm your appointment details.
+                        The appointment time that was on hold for you is now
+                        officially confirmed. No further action needed.
                       </p>
                     </div>
                   </div>
@@ -103,10 +110,14 @@ function PaymentSuccessContent() {
                     </div>
                     <div>
                       <p className="font-medium text-gray-900">
-                        Your Consultation
+                        Your Consultation Visit
                       </p>
                       <p className="text-gray-600 text-sm mt-1">
-                        Visit our clinic for your comprehensive pain relief assessment. Your voucher will be applied at checkout.
+                        Visit our clinic at your scheduled time for your
+                        comprehensive Knee & Hip Pain Relief Assessment. Your
+                        $100 voucher includes a Full Health History
+                        Consultation, Clinical Evaluation, and Personalized
+                        Treatment Plan.
                       </p>
                     </div>
                   </div>
@@ -131,12 +142,13 @@ function PaymentSuccessContent() {
                   </div>
                   <div className="ml-3">
                     <p className="text-sm text-blue-700">
-                      <strong>Important:</strong> If you need to reschedule or have any questions, please contact us at{' '}
+                      <strong>Important:</strong> If you need to reschedule or
+                      have any questions, please contact us at{' '}
                       <a
-                        href="tel:+18135551234"
+                        href="tel:+18139707371"
                         className="font-semibold underline hover:text-blue-800"
                       >
-                        (813) 555-1234
+                        (813) 970-7371
                       </a>
                       .
                     </p>
@@ -156,7 +168,7 @@ function PaymentSuccessContent() {
             ← Back to Home
           </Link>
           <a
-            href="tel:+18135551234"
+            href="tel:+18139707371"
             className="inline-flex items-center justify-center px-6 py-3 rounded-lg text-base font-medium text-white transition-colors"
             style={{
               background: 'linear-gradient(135deg, #078AAD 0%, #0A9FCA 100%)',

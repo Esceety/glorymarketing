@@ -6,14 +6,19 @@ import { Badge } from '@/components/ui/Badge';
 
 function VoucherPaymentContent() {
   const searchParams = useSearchParams();
-  const contactId = searchParams.get('contact_id');
+  const contactId = searchParams?.get('contact_id') || null;
+  const customerEmail = searchParams?.get('customer_email') || null;
+  const customerFirstName = searchParams?.get('customer_first_name') || null;
+  const customerLastName = searchParams?.get('last_name') || null;
 
   const [isProcessing, setIsProcessing] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
   const handlePayment = async () => {
     if (!contactId) {
-      setError('Missing contact information. Please use the link from your email.');
+      setError(
+        'Missing contact information. Please use the link from your email.'
+      );
       return;
     }
 
@@ -26,7 +31,12 @@ function VoucherPaymentContent() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ contact_id: contactId }),
+        body: JSON.stringify({
+          contact_id: contactId,
+          customer_email: customerEmail,
+          customer_first_name: customerFirstName,
+          customer_last_name: customerLastName,
+        }),
       });
 
       if (!response.ok) {
@@ -53,16 +63,32 @@ function VoucherPaymentContent() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-white to-gray-50 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-3xl mx-auto">
+        {/* Personalized Greeting */}
+        {customerFirstName && (
+          <div className="text-center mb-6">
+            <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-br from-cyan-100 to-cyan-200 mb-4">
+              <span className="text-2xl">👋</span>
+            </div>
+            <h2 className="text-2xl font-bold text-gray-900">
+              Welcome, {customerFirstName}!
+            </h2>
+            <p className="text-gray-600 mt-2">
+              We&apos;re excited to help you on your journey to pain-free living
+            </p>
+          </div>
+        )}
+
         {/* Header Section */}
         <div className="text-center mb-8">
-          <Badge className="mb-4 bg-cyan-600 text-white">
-            Secure Payment
-          </Badge>
+          <Badge className="mb-4 bg-cyan-600 text-white">Secure Payment</Badge>
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
             Complete Your Voucher Payment
           </h1>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Your <span className="font-semibold text-cyan-600">$100 voucher</span> reserves your consultation and will be applied toward your visit. Appointment confirmation will be handled by our clinic team.
+            Your{' '}
+            <span className="font-semibold text-cyan-600">$100 voucher</span>{' '}
+            reserves your consultation and will be applied toward your visit.
+            Appointment confirmation will be handled by our clinic team.
           </p>
         </div>
 
@@ -79,7 +105,8 @@ function VoucherPaymentContent() {
               Knee & Hip Pain Relief Assessment
             </h2>
             <p className="text-cyan-50">
-              Full Health History Consultation, Evaluation & Personalized Treatment Plan
+              Full Health History Consultation, Evaluation & Personalized
+              Treatment Plan
             </p>
           </div>
 
@@ -123,12 +150,28 @@ function VoucherPaymentContent() {
                 <span className="text-gray-600">Regular Value:</span>
                 <span className="text-gray-400 line-through text-lg">$450</span>
               </div>
-              <div className="flex justify-between items-center">
-                <span className="text-lg font-semibold text-gray-900">
-                  Voucher Price:
-                </span>
-                <span className="text-3xl font-bold text-cyan-600">$100</span>
+              <div className="border-t border-cyan-200 my-4 pt-4 space-y-2">
+                <div className="flex justify-between items-center">
+                  <span className="text-gray-700">Voucher Payment:</span>
+                  <span className="text-gray-900 font-medium">$100.00</span>
+                </div>
+                <div className="flex justify-between items-center">
+                  <span className="text-gray-700">Processing Fee (3%):</span>
+                  <span className="text-gray-900 font-medium">$3.00</span>
+                </div>
               </div>
+              <div className="flex justify-between items-center border-t border-cyan-200 pt-3">
+                <span className="text-lg font-semibold text-gray-900">
+                  Total Due:
+                </span>
+                <span className="text-3xl font-bold text-cyan-600">
+                  $103.00
+                </span>
+              </div>
+              <p className="text-xs text-gray-500 mt-3">
+                A standard processing fee covers secure payment handling and
+                transaction costs.
+              </p>
             </div>
 
             {/* Error State */}
@@ -153,7 +196,8 @@ function VoucherPaymentContent() {
                       Missing contact information
                     </p>
                     <p className="text-sm text-yellow-700 mt-1">
-                      Please use the payment link from your email, or contact us for assistance.
+                      Please use the payment link from your email, or contact us
+                      for assistance.
                     </p>
                   </div>
                 </div>
@@ -219,7 +263,7 @@ function VoucherPaymentContent() {
                   Processing...
                 </span>
               ) : (
-                '🔒 Pay $100 Now - Secure Checkout'
+                '🔒 Pay $103 Now - Secure Checkout'
               )}
             </button>
 
@@ -286,10 +330,11 @@ function VoucherPaymentContent() {
                 Need Help?
               </h3>
               <p className="text-gray-600 mb-3">
-                If you have questions about your voucher or payment, our team is here to assist you.
+                If you have questions about your voucher or payment, our team is
+                here to assist you.
               </p>
               <a
-                href="tel:+18135551234"
+                href="tel:+18139707371"
                 className="inline-flex items-center text-cyan-600 hover:text-cyan-700 font-medium"
               >
                 <svg
@@ -305,7 +350,7 @@ function VoucherPaymentContent() {
                     d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
                   />
                 </svg>
-                (813) 555-1234
+                +1 (813) 970-7371
               </a>
               <p className="text-sm text-gray-500 mt-2">
                 Monday - Friday, 9 AM - 5 PM EST
