@@ -20,11 +20,12 @@ async function getRawBody(req: NextApiRequest): Promise<Buffer> {
   return Buffer.concat(chunks);
 }
 
-// CRITICAL: Disable body parsing
+// CRITICAL: Disable body parsing and use Node.js runtime
 export const config = {
   api: {
     bodyParser: false,
   },
+  runtime: 'nodejs',
 };
 
 export default async function handler(
