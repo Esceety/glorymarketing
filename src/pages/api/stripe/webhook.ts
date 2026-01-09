@@ -36,13 +36,16 @@ export default async function handler(
     let event: Stripe.Event;
 
   try {
-    // Read the raw body as a buffer using raw-body
-    const rawBody = await getRawBody(req);
+    // Read the raw body as a buffer using raw-body with explicit encoding=null
+    const rawBody = await getRawBody(req, {
+      encoding: null, // Critical: no encoding to preserve raw bytes
+    });
 
     // Log webhook secret info for debugging (first 10 chars only)
     const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET;
     console.log(`🔑 Webhook secret present: ${!!webhookSecret}, starts with: ${webhookSecret?.substring(0, 15)}...`);
     console.log(`🌍 Environment: ${process.env.NODE_ENV}, Vercel Env: ${process.env.VERCEL_ENV}`);
+    console.log(`📦 Raw body type: ${typeof rawBody}, length: ${rawBody?.length}`);
 
     // WORKAROUND: Skip signature verification in local development with Stripe CLI
     // This is due to a Next.js 16 bug where the request body is consumed before we can read it
