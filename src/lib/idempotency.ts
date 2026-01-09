@@ -1,13 +1,16 @@
 /**
  * Simple Idempotency Helper for Stripe Webhook Events
- * Uses JSON file-based storage under .next/cache/stripe-events.json
+ * Uses JSON file-based storage in /tmp for Vercel compatibility
  * Dev-safe and simple - suitable for low-volume production
  */
 
 import fs from 'fs';
 import path from 'path';
 
-const CACHE_DIR = path.join(process.cwd(), '.next', 'cache');
+// Use /tmp in production (Vercel), .next/cache in dev
+const CACHE_DIR = process.env.VERCEL 
+  ? '/tmp/stripe-webhook-cache' 
+  : path.join(process.cwd(), '.next', 'cache');
 const EVENTS_FILE = path.join(CACHE_DIR, 'stripe-events.json');
 
 interface ProcessedEvents {
