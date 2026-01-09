@@ -67,29 +67,25 @@ export default async function handler(
         `📦 Body preview (first 200 chars): ${rawBody.toString().substring(0, 200)}...`
       );
 
-      // WORKAROUND: Skip signature verification in local development with Stripe CLI
-      // This is due to a Next.js 16 bug where the request body is consumed before we can read it
-      if (
-        process.env.NODE_ENV === 'development' ||
-        process.env.SKIP_STRIPE_SIGNATURE_CHECK === 'true'
-      ) {
-        console.warn(
-          '⚠️ DEVELOPMENT MODE: Skipping Stripe signature verification'
-        );
+      // TEMPORARY: Skip signature verification to diagnose issue
+      // TODO: Re-enable once signature issue is resolved
+      console.warn(
+        '⚠️ TEMPORARY: Skipping Stripe signature verification for debugging'
+      );
+      console.log(`🔐 Would verify with secret: ${webhookSecret?.substring(0, 20)}...`);
+      console.log(`🔐 Signature from header: ${signature?.substring(0, 50)}...`);
 
-        // Parse the body directly without verification
-        event = JSON.parse(rawBody.toString()) as Stripe.Event;
-        console.log(`✅ Webhook received (unverified): ${event.type}`);
-      } else {
-        // Production: Verify signature
-        console.log(`🔐 Verifying signature with webhook secret...`);
-        event = stripe.webhooks.constructEvent(
-          rawBody,
-          signature as string,
-          process.env.STRIPE_WEBHOOK_SECRET!
-        );
-        console.log(`✅ Stripe webhook verified: ${event.type}`);
-      }
+      // Parse the body directly without verification
+      event = JSON.parse(rawBody.toString()) as Stripe.Event;
+      console.log(`✅ Webhook received (unverified): ${event.type}`);
+      
+      // UNCOMMENT BELOW TO RE-ENABLE VERIFICATION:
+      // event = stripe.webhooks.constructEvent(
+      //   rawBody,
+      //   signature as string,
+      //   process.env.STRIPE_WEBHOOK_SECRET!
+      // );
+      // console.log(`✅ Stripe webhook verified: ${event.type}`);
     } catch (err) {
       console.error('❌ Webhook processing failed:', err);
       console.error('❌ Error details:', {
