@@ -8,8 +8,8 @@ import fs from 'fs';
 import path from 'path';
 
 // Use /tmp in production (Vercel), .next/cache in dev
-const CACHE_DIR = process.env.VERCEL 
-  ? '/tmp/stripe-webhook-cache' 
+const CACHE_DIR = process.env.VERCEL
+  ? '/tmp/stripe-webhook-cache'
   : path.join(process.cwd(), '.next', 'cache');
 const EVENTS_FILE = path.join(CACHE_DIR, 'stripe-events.json');
 

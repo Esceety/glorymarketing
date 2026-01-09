@@ -8,9 +8,10 @@ const requiredEnvVars = {
   STRIPE_SECRET_KEY: process.env.STRIPE_SECRET_KEY,
   NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY:
     process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY,
-  STRIPE_WEBHOOK_SECRET: process.env.SKIP_STRIPE_SIGNATURE_CHECK === 'true' 
-    ? 'skipped' 
-    : process.env.STRIPE_WEBHOOK_SECRET,
+  STRIPE_WEBHOOK_SECRET:
+    process.env.SKIP_STRIPE_SIGNATURE_CHECK === 'true'
+      ? 'skipped'
+      : process.env.STRIPE_WEBHOOK_SECRET,
   GHL_INBOUND_WEBHOOK_URL: process.env.GHL_INBOUND_WEBHOOK_URL,
   NEXT_PUBLIC_SITE_URL: process.env.NEXT_PUBLIC_SITE_URL,
 };

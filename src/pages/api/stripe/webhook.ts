@@ -48,7 +48,13 @@ export default async function handler(
         `🌍 Environment: ${process.env.NODE_ENV}, Vercel Env: ${process.env.VERCEL_ENV}`
       );
       console.log(
-        `📦 Raw body type: ${typeof buf}, length: ${buf?.length}`
+        `📦 Raw body type: ${typeof buf}, length: ${buf?.length}, is Buffer: ${Buffer.isBuffer(buf)}`
+      );
+
+      // Convert to Buffer if it's a string (Vercel edge runtime issue)
+      const rawBody = Buffer.isBuffer(buf) ? buf : Buffer.from(buf as string, 'utf8');
+      console.log(
+        `📦 After conversion - type: ${typeof rawBody}, is Buffer: ${Buffer.isBuffer(rawBody)}`
       );
 
       // WORKAROUND: Skip signature verification in local development with Stripe CLI
@@ -60,16 +66,16 @@ export default async function handler(
         console.warn(
           '⚠️ DEVELOPMENT MODE: Skipping Stripe signature verification'
         );
-        console.log('📨 Raw webhook payload:', buf.toString());
+        console.log('📨 Raw webhook payload:', rawBody.toString());
 
         // Parse the body directly without verification
-        event = JSON.parse(buf.toString()) as Stripe.Event;
+        event = JSON.parse(rawBody.toString()) as Stripe.Event;
         console.log(`✅ Webhook received (unverified): ${event.type}`);
       } else {
         // Production: Verify signature
         console.log(`🔐 Verifying signature with webhook secret...`);
         event = stripe.webhooks.constructEvent(
-          buf,
+          rawBody,
           signature as string,
           process.env.STRIPE_WEBHOOK_SECRET!
         );
