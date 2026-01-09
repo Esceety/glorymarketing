@@ -2,11 +2,23 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 import Stripe from 'stripe';
 import { paymentConfig } from '@/config/payment';
 import { hasProcessed, markProcessed } from '@/lib/idempotency';
-import { buffer } from 'micro';
+import { Readable } from 'stream';
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
   apiVersion: '2025-12-15.clover',
 });
+
+// Helper to read raw body from stream
+async function getRawBody(req: NextApiRequest): Promise<Buffer> {
+  const chunks: Buffer[] = [];
+  const stream = req as unknown as Readable;
+  
+  for await (const chunk of stream) {
+    chunks.push(typeof chunk === 'string' ? Buffer.from(chunk) : chunk);
+  }
+  
+  return Buffer.concat(chunks);
+}
 
 // CRITICAL: Disable body parsing
 export const config = {
@@ -36,8 +48,8 @@ export default async function handler(
     let event: Stripe.Event;
 
     try {
-      // Read the raw body as a buffer using micro/buffer
-      const buf = await buffer(req);
+      // Read the raw body directly from the request stream
+      const rawBody = await getRawBody(req);
 
       // Log webhook secret info for debugging (first 10 chars only)
       const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET;
@@ -48,13 +60,10 @@ export default async function handler(
         `🌍 Environment: ${process.env.NODE_ENV}, Vercel Env: ${process.env.VERCEL_ENV}`
       );
       console.log(
-        `📦 Raw body type: ${typeof buf}, length: ${buf?.length}, is Buffer: ${Buffer.isBuffer(buf)}`
+        `📦 Raw body type: ${typeof rawBody}, length: ${rawBody?.length}, is Buffer: ${Buffer.isBuffer(rawBody)}`
       );
-
-      // Convert to Buffer if it's a string (Vercel edge runtime issue)
-      const rawBody = Buffer.isBuffer(buf) ? buf : Buffer.from(buf as string, 'utf8');
       console.log(
-        `📦 After conversion - type: ${typeof rawBody}, is Buffer: ${Buffer.isBuffer(rawBody)}`
+        `📦 Body preview (first 200 chars): ${rawBody.toString().substring(0, 200)}...`
       );
 
       // WORKAROUND: Skip signature verification in local development with Stripe CLI
@@ -66,7 +75,6 @@ export default async function handler(
         console.warn(
           '⚠️ DEVELOPMENT MODE: Skipping Stripe signature verification'
         );
-        console.log('📨 Raw webhook payload:', rawBody.toString());
 
         // Parse the body directly without verification
         event = JSON.parse(rawBody.toString()) as Stripe.Event;
