@@ -19,18 +19,21 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  if (req.method !== 'POST') {
-    return res.status(405).json({ error: 'Method not allowed' });
-  }
+  try {
+    console.log('🚀 Webhook request received');
+    
+    if (req.method !== 'POST') {
+      return res.status(405).json({ error: 'Method not allowed' });
+    }
 
-  const signature = req.headers['stripe-signature'];
+    const signature = req.headers['stripe-signature'];
 
-  if (!signature) {
-    console.error('❌ Missing stripe-signature header');
-    return res.status(400).json({ error: 'Missing signature' });
-  }
+    if (!signature) {
+      console.error('❌ Missing stripe-signature header');
+      return res.status(400).json({ error: 'Missing signature' });
+    }
 
-  let event: Stripe.Event;
+    let event: Stripe.Event;
 
   try {
     // Read the raw body as a buffer using raw-body
@@ -170,4 +173,12 @@ export default async function handler(
 
   // ✅ Always return 200 for ALL Stripe events
   return res.status(200).json({ received: true });
+  } catch (error) {
+    console.error('❌ FATAL: Unhandled error in webhook handler:', error);
+    console.error('❌ Error stack:', error instanceof Error ? error.stack : 'No stack trace');
+    return res.status(500).json({ 
+      error: 'Internal server error',
+      message: error instanceof Error ? error.message : 'Unknown error'
+    });
+  }
 }
