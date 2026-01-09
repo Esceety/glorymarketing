@@ -36,6 +36,11 @@ export default async function handler(
     // Read the raw body as a buffer using raw-body
     const rawBody = await getRawBody(req);
 
+    // Log webhook secret info for debugging (first 10 chars only)
+    const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET;
+    console.log(`🔑 Webhook secret present: ${!!webhookSecret}, starts with: ${webhookSecret?.substring(0, 15)}...`);
+    console.log(`🌍 Environment: ${process.env.NODE_ENV}, Vercel Env: ${process.env.VERCEL_ENV}`);
+
     // WORKAROUND: Skip signature verification in local development with Stripe CLI
     // This is due to a Next.js 16 bug where the request body is consumed before we can read it
     if (
@@ -52,6 +57,7 @@ export default async function handler(
       console.log(`✅ Webhook received (unverified): ${event.type}`);
     } else {
       // Production: Verify signature
+      console.log(`🔐 Verifying signature with webhook secret...`);
       event = stripe.webhooks.constructEvent(
         rawBody,
         signature as string,
@@ -61,6 +67,10 @@ export default async function handler(
     }
   } catch (err) {
     console.error('❌ Webhook processing failed:', err);
+    console.error('❌ Error details:', {
+      message: err instanceof Error ? err.message : 'Unknown error',
+      name: err instanceof Error ? err.name : 'Unknown',
+    });
     return res.status(400).json({ error: 'Invalid signature or payload' });
   }
 
