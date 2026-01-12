@@ -117,7 +117,7 @@ If pain is interfering with daily activities, this may be an opportunity to expl
                 </div>
 
                 {/* Ad Image */}
-                <div className="relative w-full aspect-[1.91/1] bg-gray-100">
+                <div className="relative w-full aspect-[1.91/1.15] bg-gray-100">
                   <img
                     src={variant.image}
                     alt={`Ad variant ${variant.id}`}
