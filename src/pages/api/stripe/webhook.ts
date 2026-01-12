@@ -12,11 +12,11 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
 async function getRawBody(req: NextApiRequest): Promise<Buffer> {
   const chunks: Buffer[] = [];
   const stream = req as unknown as Readable;
-  
+
   for await (const chunk of stream) {
     chunks.push(typeof chunk === 'string' ? Buffer.from(chunk) : chunk);
   }
-  
+
   return Buffer.concat(chunks);
 }
 
@@ -72,14 +72,16 @@ export default async function handler(
       console.warn(
         '⚠️ TEMPORARY: Skipping Stripe signature verification for debugging'
       );
-      console.log(`🔐 Would verify with secret: ${webhookSecret?.substring(0, 20)}...`);
+      console.log(
+        `🔐 Would verify with secret: ${webhookSecret?.substring(0, 20)}...`
+      );
       const sigStr = Array.isArray(signature) ? signature[0] : signature;
       console.log(`🔐 Signature from header: ${sigStr?.substring(0, 50)}...`);
 
       // Parse the body directly without verification
       event = JSON.parse(rawBody.toString()) as Stripe.Event;
       console.log(`✅ Webhook received (unverified): ${event.type}`);
-      
+
       // UNCOMMENT BELOW TO RE-ENABLE VERIFICATION:
       // event = stripe.webhooks.constructEvent(
       //   rawBody,
