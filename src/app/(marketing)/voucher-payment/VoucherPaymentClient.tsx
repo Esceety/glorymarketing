@@ -102,7 +102,7 @@ function VoucherPaymentContent() {
             }}
           >
             <h2 className="text-2xl font-bold text-white mb-2">
-              Knee & Hip Pain Relief Assessment
+              Pain Relief Assessment (Knee, Hip, Neck, Lower Back & Joint Pain)
             </h2>
             <p className="text-cyan-50">
               Full Health History Consultation, Evaluation & Personalized

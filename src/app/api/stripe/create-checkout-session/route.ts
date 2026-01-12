@@ -76,8 +76,8 @@ export async function POST(request: NextRequest) {
           ? `${customer_first_name} ${customer_last_name}`
           : customer_first_name || '';
       const descriptionText = customerFullName
-        ? `Patient: ${customerFullName} - Knee & Hip Pain Relief Assessment - Full consultation, evaluation, and personalized treatment plan`
-        : 'Knee & Hip Pain Relief Assessment - Full consultation, evaluation, and personalized treatment plan';
+        ? `Patient: ${customerFullName} - Pain Relief Assessment (Knee, Hip, Neck, Lower Back & Joint Pain) - Comprehensive consultation, evaluation, and personalized treatment plan`
+        : 'Pain Relief Assessment (Knee, Hip, Neck, Lower Back & Joint Pain) - Comprehensive consultation, evaluation, and personalized treatment plan';
 
       lineItems.push({
         price_data: {

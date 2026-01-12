@@ -6,9 +6,9 @@ import { ScrollToTopButton } from '@/components/ui/ScrollToTopButton';
 import { Testimonials } from '@/components/ui/Testimonials';
 
 export const metadata: Metadata = {
-  title: 'Glory Regenerative Center - 40 Knee & Hip Pain Relief Vouchers!',
+  title: 'Glory Regenerative Center - 40 Pain Relief Vouchers for Knee, Hip, Neck, Lower Back & Joint Pain!',
   description:
-    'Glory Regenerative Center is giving away 40 Knee & Hip Pain Relief Vouchers! Full Health History Consultation, Evaluation, and Personalized Treatment Plan - $450 value for just $100.',
+    'Glory Regenerative Center is giving away 40 Pain Relief Vouchers for Knee, Hip, Neck, Lower Back & Joint Pain! Full Health History Consultation, Evaluation, and Personalized Treatment Plan - $450 value for just $100.',
 };
 
 export default function HomePage() {
@@ -52,26 +52,38 @@ export default function HomePage() {
 
             {/* Main Headline */}
             <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-extrabold leading-tight mb-6 max-w-4xl mx-auto">
-              Glory Regenerative Center is Giving Away{' '}
+              Glory Regenerative Center Is Giving Away{' '}
               <span className="text-yellow-400">
-                40 Knee & Hip Pain Relief Vouchers!
+                40 Pain Relief Vouchers for Knee, Hip, Neck, Lower Back & Joint
+                Pain
               </span>
             </h1>
 
-            {/* Subheading */}
-            <p className="text-xl sm:text-2xl font-bold mb-4 text-cyan-100">
-              Hey Tampa! 👋
+            {/* Validation Sub-Headline */}
+            <p className="text-xl sm:text-2xl font-semibold mb-6 text-cyan-100">
+              Suffering from Knee, Hip, Neck, Lower Back, or Joint Pain? You May
+              Qualify.
             </p>
 
-            {/* Body Copy */}
+            {/* Local Callout */}
+            <div className="mb-6">
+              <p className="text-xl sm:text-2xl font-bold mb-1 text-cyan-100">
+                Hey Tampa! 👋
+              </p>
+              <p className="text-base sm:text-lg text-gray-200">
+                Now serving patients in Tampa, Lakeland & New Port Richey
+              </p>
+            </div>
+
+            {/* Supporting Body Copy */}
             <p className="text-base sm:text-lg leading-relaxed mb-8 text-gray-100 max-w-3xl mx-auto">
-              If{' '}
+              If knee, hip, neck, lower back, or joint pain is limiting your
+              mobility and quality of life, it can feel like you have run out of
+              options—but if you are looking for a{' '}
               <strong className="text-yellow-400">
-                chronic knee or hip pain
-              </strong>{' '}
-              is limiting your mobility and quality of life, it may feel like
-              you&apos;ve run out of options. But for a{' '}
-              <strong>LONG-LASTING solution</strong>, look no further.
+                long-lasting, non-surgical solution
+              </strong>
+              , you are in the right place.
             </p>
 
             {/* Value Prop Box */}
@@ -83,34 +95,60 @@ export default function HomePage() {
                 borderColor: 'rgba(7, 138, 173, 0.3)',
               }}
             >
-              <p className="font-bold text-xl sm:text-2xl mb-3 text-yellow-400">
-                ⏰ For the Next Week Only:
+              <p className="font-bold text-xl sm:text-2xl mb-4 text-yellow-400">
+                ⏰ For the Next Week Only
               </p>
-              <p className="text-base sm:text-lg leading-relaxed text-white mb-2">
-                We are Giving Away{' '}
+              <p className="text-base sm:text-lg leading-relaxed text-white mb-3">
+                We are giving away{' '}
                 <strong className="text-yellow-400 text-xl sm:text-2xl">
-                  40 Vouchers
+                  40 Pain Relief Vouchers
                 </strong>{' '}
-                for a <strong>Knee & Hip Pain Relief Assessment</strong>,
-                including a <strong>Full Health History Consultation</strong>,{' '}
-                <strong>Evaluation</strong>, and a{' '}
-                <strong>Personalized Treatment Plan</strong>, all for just
+                for a{' '}
+                <strong>Comprehensive Pain Relief Assessment</strong>, which
+                includes:
               </p>
-              <div className="my-3">
+              <ul className="text-white space-y-2 mb-4 ml-4">
+                <li className="flex items-start">
+                  <span className="mr-2">•</span>
+                  <span>
+                    A <strong>Full Health History Consultation</strong>
+                  </span>
+                </li>
+                <li className="flex items-start">
+                  <span className="mr-2">•</span>
+                  <span>
+                    A thorough <strong>Clinical Evaluation</strong>
+                  </span>
+                </li>
+                <li className="flex items-start">
+                  <span className="mr-2">•</span>
+                  <span>
+                    A <strong>Personalized Treatment Plan</strong> tailored to
+                    your condition
+                  </span>
+                </li>
+              </ul>
+              <p className="text-base sm:text-lg text-white mb-2">
+                <strong>This assessment covers:</strong>
+              </p>
+              <p className="text-base sm:text-lg italic text-cyan-200 font-semibold mb-3">
+                Knee, Hip, Neck, Lower Back & Joint Pain
+              </p>
+              <div className="my-4">
                 <div className="flex items-center justify-center gap-3">
                   <span className="text-2xl sm:text-3xl font-bold text-gray-400 line-through opacity-75">
                     $450
                   </span>
                   <span className="text-4xl sm:text-5xl font-black text-yellow-400">
-                    $100 Dollars!
+                    $100
                   </span>
                 </div>
-                <p className="text-sm sm:text-base text-green-400 font-semibold mt-2">
-                  Save $350 with this exclusive offer!
+                <p className="text-sm sm:text-base text-green-400 font-semibold mt-2 text-center">
+                  Save $350 with this exclusive, limited-time offer
                 </p>
               </div>
               <p className="text-xs sm:text-sm italic text-cyan-100 border-t border-white/20 pt-3">
-                *This is a cash pay offer. We do not accept insurance.
+                This is a cash-pay offer. Insurance is not accepted.
               </p>
             </div>
 
@@ -118,7 +156,7 @@ export default function HomePage() {
             <div className="mt-4 relative z-20">
               <BookingButton className="group inline-flex items-center justify-center px-8 py-4 text-base sm:text-lg font-bold bg-red-600 hover:bg-red-700 text-white rounded-xl shadow-2xl transform hover:scale-105 transition-all duration-300 uppercase tracking-wide">
                 <span className="mr-2 text-xl">🎁</span>
-                Receive My Knee & Hip Pain Relief Voucher Now!
+                Receive My Pain Relief Voucher Now!
                 <svg
                   className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform"
                   fill="none"
@@ -157,12 +195,12 @@ export default function HomePage() {
           </div>
 
           <div className="grid md:grid-cols-3 gap-6 lg:gap-8">
-            {/* Chronic Knee & Hip Pain */}
+            {/* Chronic Pain Relief */}
             <div className="group relative overflow-hidden rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
               <div className="aspect-[4/3] relative overflow-hidden">
                 <Image
                   src="/images/regenerative-img1.png"
-                  alt="Chronic Knee & Hip Pain Treatment"
+                  alt="Chronic Pain Treatment - Knee, Hip, Neck, Lower Back & Joints"
                   fill
                   className="object-cover group-hover:scale-110 transition-transform duration-500"
                 />
@@ -176,10 +214,10 @@ export default function HomePage() {
                   SPECIALIZED CARE
                 </div>
                 <h3 className="text-2xl font-bold text-white mb-2">
-                  Chronic Knee & Hip Pain
+                  Chronic Pain Relief
                 </h3>
                 <p className="text-gray-200 text-sm">
-                  Advanced regenerative treatments for lasting pain relief
+                  (Knee, Hip, Neck, Lower Back & Joints)
                 </p>
               </div>
             </div>
@@ -337,38 +375,44 @@ export default function HomePage() {
                   <span className="text-2xl">⚠️</span>
                 </div>
                 <h3 className="text-3xl font-bold text-red-700">
-                  Common Knee & Hip Issues
+                  Common Pain Issues We Address
                 </h3>
               </div>
               <ul className="space-y-4">
                 <li className="flex items-start">
                   <span className="text-red-600 mr-3 text-xl mt-1">✗</span>
                   <span className="text-gray-700 text-lg">
-                    Chronic pain when walking or climbing stairs
+                    Chronic knee & hip pain when walking or climbing stairs
                   </span>
                 </li>
                 <li className="flex items-start">
                   <span className="text-red-600 mr-3 text-xl mt-1">✗</span>
                   <span className="text-gray-700 text-lg">
-                    Stiffness and reduced range of motion
+                    Persistent neck pain & stiffness
                   </span>
                 </li>
                 <li className="flex items-start">
                   <span className="text-red-600 mr-3 text-xl mt-1">✗</span>
                   <span className="text-gray-700 text-lg">
-                    Joint instability and weakness
+                    Lower back pain affecting daily movement
                   </span>
                 </li>
                 <li className="flex items-start">
                   <span className="text-red-600 mr-3 text-xl mt-1">✗</span>
                   <span className="text-gray-700 text-lg">
-                    Difficulty with daily activities
+                    Joint instability and reduced range of motion
                   </span>
                 </li>
                 <li className="flex items-start">
                   <span className="text-red-600 mr-3 text-xl mt-1">✗</span>
                   <span className="text-gray-700 text-lg">
-                    Arthritis-related discomfort
+                    Difficulty with daily activities due to pain
+                  </span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-red-600 mr-3 text-xl mt-1">✗</span>
+                  <span className="text-gray-700 text-lg">
+                    Arthritis-related discomfort in multiple joints
                   </span>
                 </li>
               </ul>

@@ -9,7 +9,7 @@ import { VoucherPaymentClient } from './VoucherPaymentClient';
 export const metadata: Metadata = {
   title: 'Complete Your Voucher Payment | Glory Regenerative',
   description:
-    'Secure your $100 voucher for knee & hip pain relief consultation at Glory Regenerative Center.',
+    'Secure your $100 voucher for pain relief consultation covering knee, hip, neck, lower back, and joint pain at Glory Regenerative Center.',
 };
 
 export default function VoucherPaymentPage() {

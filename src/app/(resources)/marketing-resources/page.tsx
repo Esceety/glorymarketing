@@ -149,7 +149,7 @@ export default function MarketingResourcesPage() {
 
             <div className="bg-gradient-to-r from-teal-50 to-blue-50 border border-teal-200 rounded-lg sm:rounded-xl p-4 sm:p-6 mb-4 sm:mb-6">
               <h3 className="text-base sm:text-xl font-bold text-teal-700 mb-2 sm:mb-3">
-                Glory Regenerative Center – Knee, Hip & Joint Pain Relief
+                Glory Regenerative Center – Knee, Hip, Neck, Lower Back & Joint Pain Relief
               </h3>
               <p className="text-xs sm:text-sm text-gray-600 italic">
                 In-Clinic · Tampa Bay Area

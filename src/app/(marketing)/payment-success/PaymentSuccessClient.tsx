@@ -114,7 +114,7 @@ function PaymentSuccessContent() {
                       </p>
                       <p className="text-gray-600 text-sm mt-1">
                         Visit our clinic at your scheduled time for your
-                        comprehensive Knee & Hip Pain Relief Assessment. Your
+                        comprehensive Pain Relief Assessment. Your
                         $100 voucher includes a Full Health History
                         Consultation, Clinical Evaluation, and Personalized
                         Treatment Plan.
