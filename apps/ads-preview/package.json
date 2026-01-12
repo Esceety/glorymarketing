@@ -1,12 +1,12 @@
 {
   "name": "glory-ads-preview",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "private": true,
-  "description": "Facebook ad preview system for Glory Regenerative campaigns",
+  "description": "Facebook and social media ad preview tool for Glory Regenerative campaigns",
   "scripts": {
     "dev": "next dev -p 3001",
     "build": "next build",
-    "start": "next start",
+    "start": "next start -p 3001",
     "lint": "next lint"
   },
   "dependencies": {
@@ -15,17 +15,13 @@
     "react-dom": "19.2.0"
   },
   "devDependencies": {
+    "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "autoprefixer": "^10",
     "eslint": "^9",
     "eslint-config-next": "^16.0.10",
-    "postcss": "^8",
-    "tailwindcss": "^3.4.17",
+    "tailwindcss": "^4",
     "typescript": "^5"
-  },
-  "engines": {
-    "node": ">=20.x"
   }
 }

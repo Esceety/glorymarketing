@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import Image from 'next/image';
 
 export const metadata: Metadata = {
   title: 'Facebook Ad Preview | Glory Regenerative',
@@ -116,10 +117,11 @@ If pain is interfering with your daily activities, this may be an opportunity to
 
                 {/* Ad Image */}
                 <div className="relative w-full aspect-[1.91/1] bg-gray-100">
-                  <img
+                  <Image
                     src={variant.image}
                     alt={`Ad variant ${variant.id}`}
-                    className="w-full h-full object-cover"
+                    fill
+                    className="object-cover"
                   />
                 </div>
 
