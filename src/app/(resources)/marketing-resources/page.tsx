@@ -226,7 +226,7 @@ export default function MarketingResourcesPage() {
                 },
                 {
                   title: 'Facebook Ad Preview',
-                  url: 'https://glorymarketing-adpreview-esceety-216a0bfa.vercel.app',
+                  url: 'https://glorymarketing-adpreiew-esceety-216a0bfa.vercel.app/',
                   description: 'A/B test comparison tool',
                 },
               ].map((link, index) => (
