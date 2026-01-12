@@ -21,6 +21,7 @@ This app is designed to be deployed as a separate Vercel project:
 ### Subdomain Configuration
 
 Once deployed, configure DNS:
+
 - Add CNAME record: `previewads.gloryregenerativemed.com` → your-vercel-app.vercel.app
 
 ## Features
