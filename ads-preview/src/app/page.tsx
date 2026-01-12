@@ -32,7 +32,7 @@ If pain is interfering with daily activities, this may be an opportunity to expl
     {
       id: 'B',
       name: 'Version B - General Pain',
-      image: '/images/Pain Relief.png',
+      image: '/images/General pain.jpg',
       headline: 'Pain Relief Assessment for Knee, Hip, Neck & Back Pain',
       description: 'Only 40 vouchers available for a limited time',
     },
