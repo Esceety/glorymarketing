@@ -47,11 +47,24 @@ This implementation includes a complete Stripe Checkout payment flow for the $10
    - `GHL_INBOUND_WEBHOOK_URL` - Your GoHighLevel webhook endpoint
    - `NEXT_PUBLIC_SITE_URL` - Your site URL (http://localhost:3000 for dev)
 
-2. **Stripe Webhook Setup**: Configure Stripe to send events to your webhook endpoint:
+2. **Stripe Webhook Setup**: 
+   
+   **For Production:**
+   - Create webhook endpoint in Stripe Dashboard
+   - URL: `https://gloryregenerativemed.com/api/stripe/webhook`
+   - Events: `checkout.session.completed`, `payment_intent.succeeded`
+   - API Version: `2025-12-15.clover`
+   - **CRITICAL**: Copy the webhook signing secret exactly as shown (starts with `whsec_`)
+   - Add to Vercel env vars using: `printf "whsec_YOUR_SECRET" | vercel env add STRIPE_WEBHOOK_SECRET production`
+   - ⚠️ **Never use `echo`** - it adds newline characters that break signature verification
+   
+   **For Local Testing:**
    ```bash
-   # For local testing, use Stripe CLI:
+   # Use Stripe CLI to forward events:
    stripe listen --forward-to localhost:3000/api/stripe/webhook
    ```
+   
+   **Troubleshooting**: See [STRIPE_WEBHOOK_TROUBLESHOOTING.md](./STRIPE_WEBHOOK_TROUBLESHOOTING.md) for detailed webhook signature debugging.
 
 ### Testing Locally
 
