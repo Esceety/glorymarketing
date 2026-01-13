@@ -75,6 +75,8 @@ export default async function handler(
 
       const sigStr = Array.isArray(signature) ? signature[0] : signature;
       console.log(`🔐 Verifying signature: ${sigStr?.substring(0, 50)}...`);
+      console.log(`🔐 Using webhook secret ending with: ...${webhookSecret.substring(webhookSecret.length - 10)}`);
+      console.log(`🔐 Raw body length: ${rawBody.length} bytes`);
 
       // Construct and verify the event
       event = stripe.webhooks.constructEvent(
