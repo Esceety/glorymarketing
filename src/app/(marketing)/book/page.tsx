@@ -81,7 +81,8 @@ export default function BookPage() {
             <li className="flex items-start">
               <span className="text-blue-600 mr-3 mt-1 text-xl">✓</span>
               <span className="text-gray-700 text-sm sm:text-base">
-                Comprehensive evaluation of your pain condition (knee, hip, neck, lower back, or joint)
+                Comprehensive evaluation of your pain condition (knee, hip,
+                neck, lower back, or joint)
               </span>
             </li>
             <li className="flex items-start">

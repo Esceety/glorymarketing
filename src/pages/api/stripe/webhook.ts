@@ -2,22 +2,28 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 import Stripe from 'stripe';
 import { paymentConfig } from '@/config/payment';
 import { hasProcessed, markProcessed } from '@/lib/idempotency';
-import { Readable } from 'stream';
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
   apiVersion: '2025-12-15.clover',
 });
 
-// Helper to read raw body from stream
+// Helper to read raw body from request - more reliable method
 async function getRawBody(req: NextApiRequest): Promise<Buffer> {
-  const chunks: Buffer[] = [];
-  const stream = req as unknown as Readable;
-
-  for await (const chunk of stream) {
-    chunks.push(typeof chunk === 'string' ? Buffer.from(chunk) : chunk);
-  }
-
-  return Buffer.concat(chunks);
+  return new Promise((resolve, reject) => {
+    const chunks: Buffer[] = [];
+    
+    req.on('data', (chunk: Buffer) => {
+      chunks.push(chunk);
+    });
+    
+    req.on('end', () => {
+      resolve(Buffer.concat(chunks));
+    });
+    
+    req.on('error', (err) => {
+      reject(err);
+    });
+  });
 }
 
 // CRITICAL: Disable body parsing and use Node.js runtime
@@ -49,22 +55,20 @@ export default async function handler(
     let event: Stripe.Event;
 
     try {
-      // Read the raw body directly from the request stream
+      // Read the raw body directly from the request
       const rawBody = await getRawBody(req);
 
-      // Log webhook secret info for debugging (first 10 chars only)
-      const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET;
+      // Get and clean the webhook secret (remove any whitespace/newlines)
+      const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET?.trim();
+      
       console.log(
-        `🔑 Webhook secret present: ${!!webhookSecret}, starts with: ${webhookSecret?.substring(0, 15)}...`
+        `🔑 Webhook secret present: ${!!webhookSecret}, length: ${webhookSecret?.length}`
       );
       console.log(
         `🌍 Environment: ${process.env.NODE_ENV}, Vercel Env: ${process.env.VERCEL_ENV}`
       );
       console.log(
         `📦 Raw body type: ${typeof rawBody}, length: ${rawBody?.length}, is Buffer: ${Buffer.isBuffer(rawBody)}`
-      );
-      console.log(
-        `📦 Body preview (first 200 chars): ${rawBody.toString().substring(0, 200)}...`
       );
 
       // Verify the webhook signature
@@ -74,9 +78,7 @@ export default async function handler(
       }
 
       const sigStr = Array.isArray(signature) ? signature[0] : signature;
-      console.log(`🔐 Verifying signature: ${sigStr?.substring(0, 50)}...`);
-      console.log(`🔐 Using webhook secret ending with: ...${webhookSecret.substring(webhookSecret.length - 10)}`);
-      console.log(`🔐 Raw body length: ${rawBody.length} bytes`);
+      console.log(`🔐 Verifying signature with ${rawBody.length} byte body`);
 
       // Construct and verify the event
       event = stripe.webhooks.constructEvent(

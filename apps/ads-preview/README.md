@@ -58,6 +58,7 @@ apps/ads-preview/
 ## Usage
 
 Edit `/src/app/page.tsx` to update:
+
 - Ad copy content
 - Image paths
 - Number of variants (A/B/C testing)

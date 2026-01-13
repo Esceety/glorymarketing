@@ -6,7 +6,8 @@ import { ScrollToTopButton } from '@/components/ui/ScrollToTopButton';
 import { Testimonials } from '@/components/ui/Testimonials';
 
 export const metadata: Metadata = {
-  title: 'Glory Regenerative Center - 40 Pain Relief Vouchers for Knee, Hip, Neck, Lower Back & Joint Pain!',
+  title:
+    'Glory Regenerative Center - 40 Pain Relief Vouchers for Knee, Hip, Neck, Lower Back & Joint Pain!',
   description:
     'Glory Regenerative Center is giving away 40 Pain Relief Vouchers for Knee, Hip, Neck, Lower Back & Joint Pain! Full Health History Consultation, Evaluation, and Personalized Treatment Plan - $450 value for just $100.',
 };
@@ -103,9 +104,8 @@ export default function HomePage() {
                 <strong className="text-yellow-400 text-xl sm:text-2xl">
                   40 Pain Relief Vouchers
                 </strong>{' '}
-                for a{' '}
-                <strong>Comprehensive Pain Relief Assessment</strong>, which
-                includes:
+                for a <strong>Comprehensive Pain Relief Assessment</strong>,
+                which includes:
               </p>
               <ul className="text-white space-y-2 mb-4 ml-4">
                 <li className="flex items-start">

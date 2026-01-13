@@ -27,7 +27,8 @@ If pain is interfering with daily activities, this may be an opportunity to expl
       name: 'Version A - Neck Focus',
       image: '/images/Pain Relief Neck.png',
       headline: '40 Pain Relief Vouchers Available – Limited Time',
-      description: 'Full health consultation and personalized treatment plan for just $100',
+      description:
+        'Full health consultation and personalized treatment plan for just $100',
     },
     {
       id: 'B',
