@@ -67,35 +67,35 @@ export default async function handler(
         `📦 Body preview (first 200 chars): ${rawBody.toString().substring(0, 200)}...`
       );
 
-      // TEMPORARY: Skip signature verification to diagnose issue
-      // TODO: Re-enable once signature issue is resolved
-      console.warn(
-        '⚠️ TEMPORARY: Skipping Stripe signature verification for debugging'
-      );
-      console.log(
-        `🔐 Would verify with secret: ${webhookSecret?.substring(0, 20)}...`
-      );
+      // Verify the webhook signature
+      if (!webhookSecret) {
+        console.error('❌ STRIPE_WEBHOOK_SECRET not configured');
+        return res.status(500).json({ error: 'Webhook secret not configured' });
+      }
+
       const sigStr = Array.isArray(signature) ? signature[0] : signature;
-      console.log(`🔐 Signature from header: ${sigStr?.substring(0, 50)}...`);
+      console.log(`🔐 Verifying signature: ${sigStr?.substring(0, 50)}...`);
 
-      // Parse the body directly without verification
-      event = JSON.parse(rawBody.toString()) as Stripe.Event;
-      console.log(`✅ Webhook received (unverified): ${event.type}`);
-
-      // UNCOMMENT BELOW TO RE-ENABLE VERIFICATION:
-      // event = stripe.webhooks.constructEvent(
-      //   rawBody,
-      //   signature as string,
-      //   process.env.STRIPE_WEBHOOK_SECRET!
-      // );
-      // console.log(`✅ Stripe webhook verified: ${event.type}`);
+      // Construct and verify the event
+      event = stripe.webhooks.constructEvent(
+        rawBody,
+        sigStr,
+        webhookSecret
+      );
+      console.log(`✅ Stripe webhook verified: ${event.type}`);
     } catch (err) {
-      console.error('❌ Webhook processing failed:', err);
+      console.error('❌ Webhook signature verification failed:', err);
       console.error('❌ Error details:', {
         message: err instanceof Error ? err.message : 'Unknown error',
         name: err instanceof Error ? err.name : 'Unknown',
+        type: err instanceof Error && 'type' in err ? (err as any).type : undefined,
       });
-      return res.status(400).json({ error: 'Invalid signature or payload' });
+      
+      // Return 400 for signature verification failures so Stripe knows the webhook is configured incorrectly
+      return res.status(400).json({ 
+        error: 'Webhook signature verification failed',
+        message: err instanceof Error ? err.message : 'Invalid signature'
+      });
     }
 
     // Check idempotency - prevent double-processing
