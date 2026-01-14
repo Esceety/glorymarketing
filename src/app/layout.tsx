@@ -18,6 +18,11 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: 'Glory Regenerative | Pain & Regenerative Medicine',
   description: siteConfig.description,
+  verification: {
+    other: {
+      'facebook-domain-verification': 'p5vv5vm9lodyev3xrycqzf5lw9jvcr',
+    },
+  },
 };
 
 export default function RootLayout({
@@ -28,7 +33,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <meta name="facebook-domain-verification" content="p5vv5vm9lodyev3xrycqzf5lw9jvcr" />
         <script
           src="https://link.esceety-us.com/js/form_embed.js"
           async
