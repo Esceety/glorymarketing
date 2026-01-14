@@ -3,12 +3,6 @@
 import { useEffect, useRef } from 'react';
 import { Testimonials } from '@/components/ui/Testimonials';
 
-declare global {
-  interface Window {
-    fbq?: (...args: any[]) => void;
-  }
-}
-
 export default function SuccessPage() {
   const hasTrackedRef = useRef(false);
 
