@@ -11,15 +11,15 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
 async function getRawBody(req: NextApiRequest): Promise<Buffer> {
   return new Promise((resolve, reject) => {
     const chunks: Buffer[] = [];
-    
+
     req.on('data', (chunk: Buffer) => {
       chunks.push(chunk);
     });
-    
+
     req.on('end', () => {
       resolve(Buffer.concat(chunks));
     });
-    
+
     req.on('error', (err) => {
       reject(err);
     });
@@ -60,7 +60,7 @@ export default async function handler(
 
       // Get and clean the webhook secret (remove any whitespace/newlines)
       const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET?.trim();
-      
+
       console.log(
         `🔑 Webhook secret present: ${!!webhookSecret}, length: ${webhookSecret?.length}`
       );
@@ -81,24 +81,21 @@ export default async function handler(
       console.log(`🔐 Verifying signature with ${rawBody.length} byte body`);
 
       // Construct and verify the event
-      event = stripe.webhooks.constructEvent(
-        rawBody,
-        sigStr,
-        webhookSecret
-      );
+      event = stripe.webhooks.constructEvent(rawBody, sigStr, webhookSecret);
       console.log(`✅ Stripe webhook verified: ${event.type}`);
     } catch (err) {
       console.error('❌ Webhook signature verification failed:', err);
       console.error('❌ Error details:', {
         message: err instanceof Error ? err.message : 'Unknown error',
         name: err instanceof Error ? err.name : 'Unknown',
-        type: err instanceof Error && 'type' in err ? (err as any).type : undefined,
+        type:
+          err instanceof Error && 'type' in err ? (err as any).type : undefined,
       });
-      
+
       // Return 400 for signature verification failures so Stripe knows the webhook is configured incorrectly
-      return res.status(400).json({ 
+      return res.status(400).json({
         error: 'Webhook signature verification failed',
-        message: err instanceof Error ? err.message : 'Invalid signature'
+        message: err instanceof Error ? err.message : 'Invalid signature',
       });
     }
 

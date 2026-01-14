@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import { Testimonials } from '@/components/ui/Testimonials';
+import { LeadEvent } from '@/components/analytics/LeadEvent';
 
 export const metadata: Metadata = {
   title: 'Thank You — Your Request Has Been Received | Glory Regenerative',
@@ -9,6 +10,7 @@ export const metadata: Metadata = {
 export default function SuccessPage() {
   return (
     <div className="space-y-16 py-12">
+      <LeadEvent />
       {/* Hero Success Message */}
       <section className="text-center max-w-3xl mx-auto">
         <div className="mb-6">
