@@ -1,16 +1,27 @@
-import { Metadata } from 'next';
-import { Testimonials } from '@/components/ui/Testimonials';
-import { LeadEvent } from '@/components/analytics/LeadEvent';
+'use client';
 
-export const metadata: Metadata = {
-  title: 'Thank You — Your Request Has Been Received | Glory Regenerative',
-  description: 'Your appointment request has been received by our team.',
-};
+import { useEffect, useRef } from 'react';
+import { Testimonials } from '@/components/ui/Testimonials';
+
+declare global {
+  interface Window {
+    fbq?: (...args: any[]) => void;
+  }
+}
 
 export default function SuccessPage() {
+  const hasTrackedRef = useRef(false);
+
+  useEffect(() => {
+    // Fire Lead event only once when page mounts
+    if (!hasTrackedRef.current && typeof window !== 'undefined' && window.fbq) {
+      window.fbq('track', 'Lead');
+      hasTrackedRef.current = true;
+    }
+  }, []);
+
   return (
     <div className="space-y-16 py-12">
-      <LeadEvent />
       {/* Hero Success Message */}
       <section className="text-center max-w-3xl mx-auto">
         <div className="mb-6">
