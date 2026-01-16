@@ -41,6 +41,24 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        {/* Google Ads Global Site Tag (gtag.js) */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=AW-1059047449"
+          strategy="afterInteractive"
+        />
+        <Script
+          id="google-ads-init"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'AW-1059047449');
+            `,
+          }}
+        />
+
         {/* Meta Pixel Base Code */}
         <Script
           id="meta-pixel-base"
@@ -69,7 +87,7 @@ export default function RootLayout({
             alt=""
           />
         </noscript>
-        
+
         <MetaPixel />
         {children}
       </body>
