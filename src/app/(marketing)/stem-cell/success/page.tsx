@@ -36,7 +36,7 @@ export default function StemCellSuccessPage() {
           </div>
         </div>
         <h1 className="text-4xl lg:text-5xl font-bold mb-6">
-          Your Stem Cell Therapy Consultation Is Booked!
+          Request Submitted! We&apos;ll Confirm Your Consultation Shortly
         </h1>
         <p className="text-xl text-gray-600 leading-relaxed">
           We&apos;ve received your appointment request for a stem cell therapy

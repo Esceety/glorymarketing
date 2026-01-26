@@ -14,7 +14,7 @@ const locations: Location[] = [
   {
     id: 'tampa',
     name: 'Tampa',
-    address: '8019 N. Himes Ave., Tampa, FL 33614',
+    address: '8019 N. Himes Ave., Suite 200, Tampa, FL 33614',
     iframeUrl:
       'https://link.esceety-us.com/widget/booking/gCPl71CVES7GLObW5Dam',
     iframeId: 'gCPl71CVES7GLObW5Dam_1765900295400',
@@ -22,7 +22,7 @@ const locations: Location[] = [
   {
     id: 'lakeland',
     name: 'Lakeland',
-    address: '1818 Harden Blvd, Lakeland, FL 33803',
+    address: '1818 Harden Blvd, Suite 110, Lakeland, FL 33803',
     iframeUrl:
       'https://link.esceety-us.com/widget/booking/EuY0MqMtvTYQuVsxwqQv',
     iframeId: 'EuY0MqMtvTYQuVsxwqQv_1765900305715',
@@ -30,7 +30,7 @@ const locations: Location[] = [
   {
     id: 'newportrichey',
     name: 'New Port Richey',
-    address: '5622 Marine Parkway, New Port Richey, FL 34652',
+    address: '5622 Marine Parkway, Suite 8, New Port Richey, 34652',
     iframeUrl:
       'https://link.esceety-us.com/widget/booking/5YhjHb59G10dCmhnZZko',
     iframeId: '5YhjHb59G10dCmhnZZko_1765900315932',
