@@ -240,27 +240,22 @@ export default function StemCellBookPage() {
           <div className="grid md:grid-cols-3 gap-6">
             <div className="text-center">
               <h4 className="font-bold mb-2">Tampa</h4>
-              <p className="text-sm text-gray-600 mb-1">
-                8019 N. Himes Ave., Suite 200
+              <p className="text-sm text-gray-600 mb-2">
+                8019 N. Himes Ave., Suite 200, Tampa, FL 33614
               </p>
-              <p className="text-sm text-gray-600 mb-2">Tampa, FL 33614</p>
               <p className="text-blue-600 font-semibold">(813) 932-9798</p>
             </div>
             <div className="text-center">
               <h4 className="font-bold mb-2">Lakeland</h4>
-              <p className="text-sm text-gray-600 mb-1">
-                1818 Harden Blvd, Suite 110
+              <p className="text-sm text-gray-600 mb-2">
+                1818 Harden Blvd, Suite 110, Lakeland, FL 33803
               </p>
-              <p className="text-sm text-gray-600 mb-2">Lakeland, FL 33803</p>
               <p className="text-blue-600 font-semibold">(863) 248-6881</p>
             </div>
             <div className="text-center">
               <h4 className="font-bold mb-2">New Port Richey</h4>
-              <p className="text-sm text-gray-600 mb-1">
-                5622 Marine Parkway, Suite 8
-              </p>
               <p className="text-sm text-gray-600 mb-2">
-                New Port Richey, FL 34652
+                5622 Marine Parkway, Suite 8, New Port Richey, 34652
               </p>
               <p className="text-blue-600 font-semibold">(727) 232-0826</p>
             </div>
