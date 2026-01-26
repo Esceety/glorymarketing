@@ -39,10 +39,10 @@ export default function StemCellSuccessPage() {
           Your Stem Cell Therapy Consultation Is Booked!
         </h1>
         <p className="text-xl text-gray-600 leading-relaxed">
-          We&apos;ve received your appointment request for a stem cell therapy consultation.
-          Please note that{' '}
-          <strong className="text-gray-900">this is not yet confirmed</strong> until our clinic
-          contacts you directly.
+          We&apos;ve received your appointment request for a stem cell therapy
+          consultation. Please note that{' '}
+          <strong className="text-gray-900">this is not yet confirmed</strong>{' '}
+          until our clinic contacts you directly.
         </p>
       </section>
 
@@ -56,7 +56,8 @@ export default function StemCellSuccessPage() {
             </span>
             <div>
               <p className="text-lg text-gray-700">
-                Our team will review your stem cell therapy consultation request within 24 hours
+                Our team will review your stem cell therapy consultation request
+                within 24 hours
               </p>
             </div>
           </li>
@@ -66,7 +67,8 @@ export default function StemCellSuccessPage() {
             </span>
             <div>
               <p className="text-lg text-gray-700">
-                You&apos;ll receive a confirmation call or text message from our staff
+                You&apos;ll receive a confirmation call or text message from our
+                staff
               </p>
             </div>
           </li>
@@ -76,7 +78,8 @@ export default function StemCellSuccessPage() {
             </span>
             <div>
               <p className="text-lg text-gray-700">
-                Your final appointment time will be confirmed with all the details you need
+                Your final appointment time will be confirmed with all the
+                details you need
               </p>
             </div>
           </li>
@@ -85,7 +88,9 @@ export default function StemCellSuccessPage() {
 
       {/* Important Information About Your Consultation */}
       <section className="max-w-3xl mx-auto">
-        <h2 className="text-3xl font-bold mb-6">About Your Stem Cell Therapy Consultation</h2>
+        <h2 className="text-3xl font-bold mb-6">
+          About Your Stem Cell Therapy Consultation
+        </h2>
         <div className="bg-white border rounded-lg p-6 space-y-4">
           <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
             <h3 className="font-bold text-lg mb-2 flex items-center">
@@ -106,24 +111,28 @@ export default function StemCellSuccessPage() {
               <li className="flex items-start">
                 <span className="text-blue-600 mr-2">•</span>
                 <span>
-                  How bone marrow, umbilical, and exosome stem cell therapies work for orthopedic
-                  conditions
+                  How bone marrow, umbilical, and exosome stem cell therapies
+                  work for orthopedic conditions
                 </span>
               </li>
               <li className="flex items-start">
                 <span className="text-blue-600 mr-2">•</span>
                 <span>
-                  Whether stem cell therapy is appropriate for your specific pain condition
+                  Whether stem cell therapy is appropriate for your specific
+                  pain condition
                 </span>
               </li>
               <li className="flex items-start">
                 <span className="text-blue-600 mr-2">•</span>
-                <span>Treatment options, expected outcomes, and recovery timeline</span>
+                <span>
+                  Treatment options, expected outcomes, and recovery timeline
+                </span>
               </li>
               <li className="flex items-start">
                 <span className="text-blue-600 mr-2">•</span>
                 <span>
-                  FDA compliance and Florida legal requirements (House Bill 1617)
+                  FDA compliance and Florida legal requirements (House Bill
+                  1617)
                 </span>
               </li>
             </ul>
@@ -145,10 +154,11 @@ export default function StemCellSuccessPage() {
               Important Reminder
             </h3>
             <p className="text-gray-700 text-sm leading-relaxed italic">
-              As required by Florida law: Stem cell therapies performed at Glory Regenerative
-              Center have not yet been approved by the United States Food and Drug Administration.
-              You are encouraged to consult with your primary care provider before undergoing any
-              stem cell therapy.
+              As required by Florida law: Stem cell therapies performed at Glory
+              Regenerative Center have not yet been approved by the United
+              States Food and Drug Administration. You are encouraged to consult
+              with your primary care provider before undergoing any stem cell
+              therapy.
             </p>
           </div>
         </div>
@@ -171,25 +181,29 @@ export default function StemCellSuccessPage() {
             <li className="flex items-start">
               <span className="text-blue-600 mr-3 mt-1">•</span>
               <span className="text-gray-700">
-                Bring a list of current medications, supplements, and any prior treatments
+                Bring a list of current medications, supplements, and any prior
+                treatments
               </span>
             </li>
             <li className="flex items-start">
               <span className="text-blue-600 mr-3 mt-1">•</span>
               <span className="text-gray-700">
-                If available, bring recent imaging or test results related to your condition
+                If available, bring recent imaging or test results related to
+                your condition
               </span>
             </li>
             <li className="flex items-start">
               <span className="text-blue-600 mr-3 mt-1">•</span>
               <span className="text-gray-700">
-                Prepare questions about stem cell therapy options, costs, and expected outcomes
+                Prepare questions about stem cell therapy options, costs, and
+                expected outcomes
               </span>
             </li>
             <li className="flex items-start">
               <span className="text-blue-600 mr-3 mt-1">•</span>
               <span className="text-gray-700">
-                Wear comfortable clothing that allows easy access to the area of pain
+                Wear comfortable clothing that allows easy access to the area of
+                pain
               </span>
             </li>
           </ul>
@@ -198,7 +212,9 @@ export default function StemCellSuccessPage() {
 
       {/* Your $100 Voucher Details */}
       <section className="max-w-3xl mx-auto bg-gradient-to-r from-blue-50 to-cyan-50 border-2 border-blue-200 rounded-lg p-8">
-        <h2 className="text-3xl font-bold mb-4">Your $100 Consultation Voucher</h2>
+        <h2 className="text-3xl font-bold mb-4">
+          Your $100 Consultation Voucher
+        </h2>
         <div className="space-y-3">
           <div className="flex items-start">
             <svg
@@ -215,7 +231,8 @@ export default function StemCellSuccessPage() {
               />
             </svg>
             <p className="text-gray-700">
-              <strong>Full health history consultation</strong> — normally valued at $450
+              <strong>Full health history consultation</strong> — normally
+              valued at $450
             </p>
           </div>
           <div className="flex items-start">
@@ -233,7 +250,8 @@ export default function StemCellSuccessPage() {
               />
             </svg>
             <p className="text-gray-700">
-              <strong>Comprehensive evaluation</strong> of your orthopedic condition
+              <strong>Comprehensive evaluation</strong> of your orthopedic
+              condition
             </p>
           </div>
           <div className="flex items-start">
@@ -251,12 +269,14 @@ export default function StemCellSuccessPage() {
               />
             </svg>
             <p className="text-gray-700">
-              <strong>Personalized treatment plan</strong> for stem cell therapy options
+              <strong>Personalized treatment plan</strong> for stem cell therapy
+              options
             </p>
           </div>
           <div className="bg-white rounded-lg p-4 mt-4">
             <p className="text-center text-sm text-gray-600">
-              You&apos;re one of only <strong className="text-blue-600">40 patients</strong> to receive
+              You&apos;re one of only{' '}
+              <strong className="text-blue-600">40 patients</strong> to receive
               this limited-time offer
             </p>
           </div>
@@ -267,26 +287,34 @@ export default function StemCellSuccessPage() {
       <section className="max-w-3xl mx-auto bg-gray-50 border rounded-lg p-8">
         <h2 className="text-3xl font-bold mb-6">Questions? Contact Us</h2>
         <p className="text-gray-600 mb-6">
-          If you have any questions before your consultation or need to reach us, feel free to
-          call any of our locations:
+          If you have any questions before your consultation or need to reach
+          us, feel free to call any of our locations:
         </p>
         <div className="grid md:grid-cols-3 gap-6">
           <div className="text-center">
             <h3 className="font-bold mb-2">Tampa</h3>
-            <p className="text-sm text-gray-600 mb-1">8019 N. Himes Ave., Suite 200</p>
+            <p className="text-sm text-gray-600 mb-1">
+              8019 N. Himes Ave., Suite 200
+            </p>
             <p className="text-sm text-gray-600 mb-2">Tampa, FL 33614</p>
             <p className="text-blue-600 font-semibold">(813) 932-9798</p>
           </div>
           <div className="text-center">
             <h3 className="font-bold mb-2">Lakeland</h3>
-            <p className="text-sm text-gray-600 mb-1">1818 Harden Blvd, Suite 110</p>
+            <p className="text-sm text-gray-600 mb-1">
+              1818 Harden Blvd, Suite 110
+            </p>
             <p className="text-sm text-gray-600 mb-2">Lakeland, FL 33803</p>
             <p className="text-blue-600 font-semibold">(863) 248-6881</p>
           </div>
           <div className="text-center">
             <h3 className="font-bold mb-2">New Port Richey</h3>
-            <p className="text-sm text-gray-600 mb-1">5622 Marine Parkway, Suite 8</p>
-            <p className="text-sm text-gray-600 mb-2">New Port Richey, FL 34652</p>
+            <p className="text-sm text-gray-600 mb-1">
+              5622 Marine Parkway, Suite 8
+            </p>
+            <p className="text-sm text-gray-600 mb-2">
+              New Port Richey, FL 34652
+            </p>
             <p className="text-blue-600 font-semibold">(727) 232-0826</p>
           </div>
         </div>

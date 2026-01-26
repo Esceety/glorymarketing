@@ -19,8 +19,9 @@ export default function StemCellBookPage() {
           Book Your Stem Cell Therapy Consultation
         </h1>
         <p className="text-lg sm:text-xl text-gray-600 leading-relaxed">
-          Congratulations on taking the next step! Schedule your consultation at a convenient
-          time and location below to learn if stem cell therapy is right for you.
+          Congratulations on taking the next step! Schedule your consultation at
+          a convenient time and location below to learn if stem cell therapy is
+          right for you.
         </p>
       </section>
 
@@ -48,10 +49,12 @@ export default function StemCellBookPage() {
                 Important Florida Law Notice
               </h3>
               <p className="text-sm font-medium text-gray-800 italic leading-relaxed">
-                &quot;THIS NOTICE MUST BE PROVIDED TO YOU UNDER FLORIDA LAW. This health care
-                practitioner performs one or more stem cell therapies that have not yet been
-                approved by the United States Food and Drug Administration. You are encouraged to
-                consult with your primary care provider before undergoing any stem cell therapy.&quot;
+                &quot;THIS NOTICE MUST BE PROVIDED TO YOU UNDER FLORIDA LAW.
+                This health care practitioner performs one or more stem cell
+                therapies that have not yet been approved by the United States
+                Food and Drug Administration. You are encouraged to consult with
+                your primary care provider before undergoing any stem cell
+                therapy.&quot;
               </p>
             </div>
           </div>
@@ -62,7 +65,9 @@ export default function StemCellBookPage() {
       <div className="max-w-4xl mx-auto space-y-8">
         {/* Image Section - Stem Cell Therapy Visual */}
         <div>
-          <h2 className="text-2xl font-bold mb-4">Understanding Stem Cell Therapy</h2>
+          <h2 className="text-2xl font-bold mb-4">
+            Understanding Stem Cell Therapy
+          </h2>
           <div className="relative w-full aspect-video rounded-xl overflow-hidden shadow-lg">
             <Image
               src="/images/stem-cell-therapy.png"
@@ -70,10 +75,15 @@ export default function StemCellBookPage() {
               fill
               className="object-cover"
               sizes="(max-width: 896px) 100vw, 896px"
+              quality={85}
+              priority
             />
           </div>
           <p className="text-gray-600 text-center mt-4 leading-relaxed">
-            Stem cell therapy uses your body&apos;s natural healing mechanisms to target pain at its source—whether in your knee, hip, shoulder, back, or neck—offering a non-surgical alternative for lasting relief.
+            Stem cell therapy uses your body&apos;s natural healing mechanisms
+            to target pain at its source—whether in your knee, hip, shoulder,
+            back, or neck—offering a non-surgical alternative for lasting
+            relief.
           </p>
         </div>
 
@@ -100,10 +110,11 @@ export default function StemCellBookPage() {
                 Ready to Book Your Stem Cell Consultation?
               </h3>
               <p className="text-gray-700 text-base sm:text-lg leading-relaxed">
-                Great! Let&apos;s get you scheduled. Simply select your preferred location below,
-                and you&apos;ll be able to choose a convenient date and time for your
-                consultation. We look forward to helping you explore if stem cell therapy is the
-                right solution for your pain!
+                Great! Let&apos;s get you scheduled. Simply select your
+                preferred location below, and you&apos;ll be able to choose a
+                convenient date and time for your consultation. We look forward
+                to helping you explore if stem cell therapy is the right
+                solution for your pain!
               </p>
             </div>
           </div>
@@ -116,13 +127,15 @@ export default function StemCellBookPage() {
 
         {/* What to Expect */}
         <div className="bg-white rounded-xl border border-gray-200 p-6 sm:p-8 shadow-sm">
-          <h2 className="text-2xl font-bold mb-4">What to Expect at Your Consultation</h2>
+          <h2 className="text-2xl font-bold mb-4">
+            What to Expect at Your Consultation
+          </h2>
           <ul className="space-y-3">
             <li className="flex items-start">
               <span className="text-blue-600 mr-3 mt-1 text-xl">✓</span>
               <span className="text-gray-700 text-sm sm:text-base">
-                Comprehensive evaluation of your orthopedic condition (knee, hip, shoulder, elbow,
-                back, neck, or joint pain)
+                Comprehensive evaluation of your orthopedic condition (knee,
+                hip, shoulder, elbow, back, neck, or joint pain)
               </span>
             </li>
             <li className="flex items-start">
@@ -134,27 +147,29 @@ export default function StemCellBookPage() {
             <li className="flex items-start">
               <span className="text-blue-600 mr-3 mt-1 text-xl">✓</span>
               <span className="text-gray-700 text-sm sm:text-base">
-                Detailed explanation of stem cell therapy types: bone marrow, umbilical, and
-                exosome
+                Detailed explanation of stem cell therapy types: bone marrow,
+                umbilical, and exosome
               </span>
             </li>
             <li className="flex items-start">
               <span className="text-blue-600 mr-3 mt-1 text-xl">✓</span>
               <span className="text-gray-700 text-sm sm:text-base">
-                Discussion of treatment options tailored to your specific condition
+                Discussion of treatment options tailored to your specific
+                condition
               </span>
             </li>
             <li className="flex items-start">
               <span className="text-blue-600 mr-3 mt-1 text-xl">✓</span>
               <span className="text-gray-700 text-sm sm:text-base">
-                Answers to all your questions about stem cell therapy, FDA compliance, and Florida
-                law requirements
+                Answers to all your questions about stem cell therapy, FDA
+                compliance, and Florida law requirements
               </span>
             </li>
             <li className="flex items-start">
               <span className="text-blue-600 mr-3 mt-1 text-xl">✓</span>
               <span className="text-gray-700 text-sm sm:text-base">
-                Personalized treatment plan and next steps if stem cell therapy is right for you
+                Personalized treatment plan and next steps if stem cell therapy
+                is right for you
               </span>
             </li>
           </ul>
@@ -180,35 +195,36 @@ export default function StemCellBookPage() {
             <li className="flex items-start">
               <span className="text-yellow-600 mr-2">•</span>
               <span>
-                <strong>Arrive 10-15 minutes early</strong> to complete any necessary paperwork
+                <strong>Arrive 10-15 minutes early</strong> to complete any
+                necessary paperwork
               </span>
             </li>
             <li className="flex items-start">
               <span className="text-yellow-600 mr-2">•</span>
               <span>
-                <strong>Bring your medical records</strong> if you have recent imaging or test
-                results related to your condition
+                <strong>Bring your medical records</strong> if you have recent
+                imaging or test results related to your condition
               </span>
             </li>
             <li className="flex items-start">
               <span className="text-yellow-600 mr-2">•</span>
               <span>
-                <strong>List your current medications</strong> and any previous treatments you&apos;ve
-                tried
+                <strong>List your current medications</strong> and any previous
+                treatments you&apos;ve tried
               </span>
             </li>
             <li className="flex items-start">
               <span className="text-yellow-600 mr-2">•</span>
               <span>
-                <strong>Prepare your questions</strong> about stem cell therapy, costs, recovery
-                time, and expected outcomes
+                <strong>Prepare your questions</strong> about stem cell therapy,
+                costs, recovery time, and expected outcomes
               </span>
             </li>
             <li className="flex items-start">
               <span className="text-yellow-600 mr-2">•</span>
               <span>
-                <strong>Wear comfortable clothing</strong> that allows easy access to the area of
-                pain
+                <strong>Wear comfortable clothing</strong> that allows easy
+                access to the area of pain
               </span>
             </li>
           </ul>
@@ -218,26 +234,34 @@ export default function StemCellBookPage() {
         <div className="bg-gray-50 border rounded-xl p-6 sm:p-8">
           <h3 className="text-xl font-bold mb-4">Have Questions? Contact Us</h3>
           <p className="text-gray-600 mb-6">
-            If you need to reschedule or have questions before your appointment, feel free to call
-            any of our locations:
+            If you need to reschedule or have questions before your appointment,
+            feel free to call any of our locations:
           </p>
           <div className="grid md:grid-cols-3 gap-6">
             <div className="text-center">
               <h4 className="font-bold mb-2">Tampa</h4>
-              <p className="text-sm text-gray-600 mb-1">8019 N. Himes Ave., Suite 200</p>
+              <p className="text-sm text-gray-600 mb-1">
+                8019 N. Himes Ave., Suite 200
+              </p>
               <p className="text-sm text-gray-600 mb-2">Tampa, FL 33614</p>
               <p className="text-blue-600 font-semibold">(813) 932-9798</p>
             </div>
             <div className="text-center">
               <h4 className="font-bold mb-2">Lakeland</h4>
-              <p className="text-sm text-gray-600 mb-1">1818 Harden Blvd, Suite 110</p>
+              <p className="text-sm text-gray-600 mb-1">
+                1818 Harden Blvd, Suite 110
+              </p>
               <p className="text-sm text-gray-600 mb-2">Lakeland, FL 33803</p>
               <p className="text-blue-600 font-semibold">(863) 248-6881</p>
             </div>
             <div className="text-center">
               <h4 className="font-bold mb-2">New Port Richey</h4>
-              <p className="text-sm text-gray-600 mb-1">5622 Marine Parkway, Suite 8</p>
-              <p className="text-sm text-gray-600 mb-2">New Port Richey, FL 34652</p>
+              <p className="text-sm text-gray-600 mb-1">
+                5622 Marine Parkway, Suite 8
+              </p>
+              <p className="text-sm text-gray-600 mb-2">
+                New Port Richey, FL 34652
+              </p>
               <p className="text-blue-600 font-semibold">(727) 232-0826</p>
             </div>
           </div>
