@@ -18,7 +18,7 @@ export default function StemCellPage() {
         {/* Background Image with Overlay */}
         <div className="absolute inset-0 z-0">
           <Image
-            src="/images/gloryregenerativeimage.png"
+            src="/images/stem-cell-therapy-hero.jpg"
             alt="Glory Regenerative Center - Stem Cell Therapy"
             fill
             className="object-cover"
@@ -34,27 +34,14 @@ export default function StemCellPage() {
         {/* Content - Centered */}
         <div className="relative z-10 w-full h-full flex items-center justify-center py-6">
           <div className="w-full max-w-5xl px-6 sm:px-8 lg:px-12 py-6 text-center">
-            {/* Top Badge */}
-            <div className="mb-4">
-              <div
-                className="inline-flex items-center backdrop-blur-sm rounded-full px-6 py-2.5 border shadow-lg"
-                style={{
-                  backgroundColor: '#078AAD',
-                  borderColor: 'rgba(7, 138, 173, 0.3)',
-                }}
-              >
-                <span className="text-sm font-bold uppercase tracking-wider">
-                  🏥 Glory Regenerative Center
-                </span>
-              </div>
-            </div>
-
             {/* Main Headline */}
             <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-extrabold leading-tight mb-6 max-w-4xl mx-auto">
-              Glory Regenerative Center Is Giving Away{' '}
-              <span className="text-yellow-400">
-                40 Stem Cell Therapy Consultation Vouchers
+              <span className="block">Glory Regenerative Center</span>
+              <span className="block text-yellow-400 my-3">Is Giving Away 40</span>
+              <span className="block text-5xl sm:text-6xl lg:text-7xl xl:text-8xl bg-gradient-to-r from-yellow-300 via-yellow-400 to-orange-400 bg-clip-text text-transparent drop-shadow-lg my-4">
+                Stem Cell Therapy
               </span>
+              <span className="block text-yellow-400">Consultation Vouchers</span>
             </h1>
 
             {/* Validation Sub-Headline */}
@@ -192,11 +179,11 @@ export default function StemCellPage() {
       </section>
 
       {/* Florida Legal Notice - Prominent Placement */}
-      <section className="py-16 bg-white border-t-4 border-blue-600">
+      <section className="py-16 bg-white border-t-4" style={{ borderColor: '#078AAD' }}>
         <div className="max-w-4xl mx-auto">
-          <div className="bg-blue-50 border-2 border-blue-600 rounded-xl p-6 sm:p-8 shadow-lg">
+          <div className="border-2 rounded-xl p-6 sm:p-8 shadow-lg" style={{ backgroundColor: 'rgba(7, 138, 173, 0.1)', borderColor: '#078AAD' }}>
             <div className="flex items-start gap-4 mb-4">
-              <div className="flex-shrink-0 w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center">
+              <div className="flex-shrink-0 w-12 h-12 rounded-full flex items-center justify-center" style={{ backgroundColor: '#078AAD' }}>
                 <svg
                   className="w-6 h-6 text-white"
                   fill="none"
@@ -223,7 +210,7 @@ export default function StemCellPage() {
                     to consult with your primary care provider before undergoing any stem cell
                     therapy.&quot;
                   </p>
-                  <div className="bg-white rounded-lg p-4 border border-blue-200">
+                  <div className="bg-white rounded-lg p-4 border" style={{ borderColor: 'rgba(7, 138, 173, 0.3)' }}>
                     <h3 className="text-lg font-bold text-gray-900 mb-2">
                       Stem Cell Therapy Now Legal in Florida
                     </h3>
@@ -234,15 +221,15 @@ export default function StemCellPage() {
                     </p>
                     <ul className="space-y-2 text-gray-700">
                       <li className="flex items-start">
-                        <span className="text-blue-600 mr-2">•</span>
+                        <span className="mr-2" style={{ color: '#078AAD' }}>•</span>
                         <span>Bone marrow stem cell therapy</span>
                       </li>
                       <li className="flex items-start">
-                        <span className="text-blue-600 mr-2">•</span>
+                        <span className="mr-2" style={{ color: '#078AAD' }}>•</span>
                         <span>Umbilical stem cell therapy</span>
                       </li>
                       <li className="flex items-start">
-                        <span className="text-blue-600 mr-2">•</span>
+                        <span className="mr-2" style={{ color: '#078AAD' }}>•</span>
                         <span>Exosome stem cell therapy</span>
                       </li>
                     </ul>
@@ -260,68 +247,98 @@ export default function StemCellPage() {
 
       {/* What is Stem Cell Therapy Section */}
       <section className="py-16 bg-gray-50">
-        <div className="text-center mb-12">
-          <p className="text-blue-600 font-semibold uppercase tracking-wide text-sm mb-2">
-            The Science
-          </p>
-          <h2 className="text-3xl sm:text-4xl font-bold mb-4">
-            What is Stem Cell Therapy?
-          </h2>
-          <p className="text-gray-600 text-lg leading-relaxed max-w-3xl mx-auto">
-            Stem cell therapy uses your body&apos;s natural healing mechanisms to repair damaged
-            tissue, reduce inflammation, and promote long-term pain relief.
-          </p>
-        </div>
-
-        <div className="grid md:grid-cols-3 gap-8 mb-12">
-          <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
-            <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
-              <span className="text-2xl">🧬</span>
-            </div>
-            <h3 className="text-xl font-bold mb-3">Natural Healing</h3>
-            <p className="text-gray-600 leading-relaxed">
-              Stem cells work with your body&apos;s natural processes to repair and regenerate damaged
-              tissues, offering a non-surgical alternative.
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <p className="font-semibold uppercase tracking-wide text-sm mb-2" style={{ color: '#078AAD' }}>
+              The Science
+            </p>
+            <h2 className="text-3xl sm:text-4xl font-bold mb-4">
+              What is Stem Cell Therapy?
+            </h2>
+            <p className="text-gray-600 text-lg leading-relaxed max-w-3xl mx-auto">
+              Stem cell therapy uses your body&apos;s natural healing mechanisms to repair damaged
+              tissue, reduce inflammation, and promote long-term pain relief.
             </p>
           </div>
 
-          <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
-            <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
-              <span className="text-2xl">🎯</span>
+          <div className="grid md:grid-cols-3 gap-8 mb-12">
+            <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
+              <div className="w-full h-48 bg-gray-100 rounded-lg mb-4 overflow-hidden relative">
+                <Image
+                  src="/images/regenerative-img1.png"
+                  alt="Natural Healing with Stem Cells"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                />
+              </div>
+              <div className="w-12 h-12 rounded-lg flex items-center justify-center mb-4" style={{ backgroundColor: 'rgba(7, 138, 173, 0.15)' }}>
+                <span className="text-2xl">🧬</span>
+              </div>
+              <h3 className="text-xl font-bold mb-3">Natural Healing</h3>
+              <p className="text-gray-600 leading-relaxed">
+                Stem cells work with your body&apos;s natural processes to repair and regenerate damaged
+                tissues, offering a non-surgical alternative.
+              </p>
             </div>
-            <h3 className="text-xl font-bold mb-3">Targeted Treatment</h3>
-            <p className="text-gray-600 leading-relaxed">
-              Precisely delivered to the source of pain—whether in your knee, hip, shoulder,
-              elbow, back, or neck.
-            </p>
+
+            <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
+              <div className="w-full h-48 bg-gray-100 rounded-lg mb-4 overflow-hidden relative">
+                <Image
+                  src="/images/regenerative-img2.png"
+                  alt="Targeted Stem Cell Treatment"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                />
+              </div>
+              <div className="w-12 h-12 rounded-lg flex items-center justify-center mb-4" style={{ backgroundColor: 'rgba(7, 138, 173, 0.15)' }}>
+                <span className="text-2xl">🎯</span>
+              </div>
+              <h3 className="text-xl font-bold mb-3">Targeted Treatment</h3>
+              <p className="text-gray-600 leading-relaxed">
+                Precisely delivered to the source of pain—whether in your knee, hip, shoulder,
+                elbow, back, or neck.
+              </p>
+            </div>
+
+            <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
+              <div className="w-full h-48 bg-gray-100 rounded-lg mb-4 overflow-hidden relative">
+                <Image
+                  src="/images/regenerative-img3.jpeg"
+                  alt="Long-Lasting Stem Cell Therapy Results"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                />
+              </div>
+              <div className="w-12 h-12 rounded-lg flex items-center justify-center mb-4" style={{ backgroundColor: 'rgba(7, 138, 173, 0.15)' }}>
+                <span className="text-2xl">⏱️</span>
+              </div>
+              <h3 className="text-xl font-bold mb-3">Long-Lasting Results</h3>
+              <p className="text-gray-600 leading-relaxed">
+                Many patients experience sustained pain relief and improved mobility for months or
+                even years.
+              </p>
+            </div>
           </div>
 
-          <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
-            <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
-              <span className="text-2xl">⏱️</span>
-            </div>
-            <h3 className="text-xl font-bold mb-3">Long-Lasting Results</h3>
-            <p className="text-gray-600 leading-relaxed">
-              Many patients experience sustained pain relief and improved mobility for months or
-              even years.
-            </p>
+          <div className="text-center">
+            <Link
+              href="/stem-cell/book"
+              className="group inline-flex items-center justify-center px-8 py-4 text-base sm:text-lg font-bold text-white rounded-xl shadow-lg transform hover:scale-105 transition-all duration-300"
+              style={{ backgroundColor: '#078AAD' }}
+            >
+              Learn If Stem Cell Therapy Is Right for You →
+            </Link>
           </div>
-        </div>
-
-        <div className="text-center">
-          <Link
-            href="/stem-cell/book"
-            className="group inline-flex items-center justify-center px-8 py-4 text-base sm:text-lg font-bold bg-blue-600 hover:bg-blue-700 text-white rounded-xl shadow-lg transform hover:scale-105 transition-all duration-300"
-          >
-            Learn If Stem Cell Therapy Is Right for You →
-          </Link>
         </div>
       </section>
 
       {/* Conditions Treated */}
       <section className="py-16 bg-white">
         <div className="text-center mb-12">
-          <p className="text-blue-600 font-semibold uppercase tracking-wide text-sm mb-2">
+          <p className="font-semibold uppercase tracking-wide text-sm mb-2" style={{ color: '#078AAD' }}>
             Orthopedic Applications
           </p>
           <h2 className="text-3xl sm:text-4xl font-bold mb-4">
@@ -344,7 +361,11 @@ export default function StemCellPage() {
           ].map((condition, idx) => (
             <div
               key={idx}
-              className="bg-gradient-to-br from-blue-50 to-white border border-blue-100 rounded-lg p-6 hover:shadow-md transition-shadow"
+              className="bg-gradient-to-br rounded-lg p-6 hover:shadow-md transition-shadow border"
+              style={{ 
+                backgroundImage: 'linear-gradient(to bottom right, rgba(7, 138, 173, 0.08), white)',
+                borderColor: 'rgba(7, 138, 173, 0.2)'
+              }}
             >
               <div className="text-4xl mb-3">{condition.icon}</div>
               <h3 className="text-lg font-bold mb-2">{condition.title}</h3>
@@ -357,7 +378,7 @@ export default function StemCellPage() {
       {/* Why Choose Glory Section */}
       <section className="py-16 bg-gray-50">
         <div className="text-center mb-12">
-          <p className="text-blue-600 font-semibold uppercase tracking-wide text-sm mb-2">
+          <p className="font-semibold uppercase tracking-wide text-sm mb-2" style={{ color: '#078AAD' }}>
             Why Glory Regenerative
           </p>
           <h2 className="text-3xl sm:text-4xl font-bold mb-4">
@@ -482,26 +503,28 @@ export default function StemCellPage() {
 
       {/* Patient Testimonials */}
       <section className="py-16 bg-white">
-        <div className="text-center mb-12">
-          <p className="text-blue-600 font-semibold uppercase tracking-wide text-sm mb-2">
-            Patient Success Stories
-          </p>
-          <h2 className="text-3xl sm:text-4xl font-bold mb-4">Real Results from Real People</h2>
-          <p className="text-gray-600 text-lg leading-relaxed max-w-3xl mx-auto">
-            Hear from patients who found relief at Glory Regenerative Center
-          </p>
-        </div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <p className="font-semibold uppercase tracking-wide text-sm mb-2" style={{ color: '#078AAD' }}>
+              Patient Success Stories
+            </p>
+            <h2 className="text-3xl sm:text-4xl font-bold mb-4">Real Results from Real People</h2>
+            <p className="text-gray-600 text-lg leading-relaxed max-w-3xl mx-auto">
+              Hear from patients who found relief at Glory Regenerative Center
+            </p>
+          </div>
 
-        <Testimonials />
+          <Testimonials />
+        </div>
       </section>
 
       {/* Final CTA */}
-      <section className="py-16 bg-blue-600 text-center text-white">
+      <section className="py-16 text-center text-white" style={{ backgroundColor: '#078AAD' }}>
         <div className="max-w-3xl mx-auto">
           <h2 className="text-3xl sm:text-4xl font-bold mb-4">
             Ready to Explore Stem Cell Therapy?
           </h2>
-          <p className="text-xl mb-8 text-blue-100 leading-relaxed">
+          <p className="text-xl mb-8 leading-relaxed" style={{ color: 'rgba(255, 255, 255, 0.9)' }}>
             Claim one of our 40 limited-time consultation vouchers and discover if stem cell
             therapy is the right solution for your pain.
           </p>
