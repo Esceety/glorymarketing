@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import Image from 'next/image';
-import Link from 'next/link';
+import { BookingButton } from '@/components/ui/BookingButton';
 import { Testimonials } from '@/components/ui/Testimonials';
 
 export const metadata: Metadata = {
@@ -125,12 +125,12 @@ export default function StemCellPage() {
                 </li>
               </ul>
               <div className="space-y-3">
-                <Link
-                  href="/stem-cell/book"
+                <BookingButton 
                   className="group inline-flex items-center justify-center w-full px-8 py-4 text-base sm:text-lg font-bold bg-red-600 hover:bg-red-700 text-white rounded-xl shadow-2xl transform hover:scale-105 transition-all duration-300 uppercase tracking-wide"
+                  formId="unuDEJBs8DPU2COLwKLT"
                 >
                   🎁 Claim Your $100 Stem Cell Consultation Voucher →
-                </Link>
+                </BookingButton>
                 <p className="text-xs text-gray-300">
                   ⚡ Only 40 vouchers available — First come, first served
                 </p>
@@ -374,13 +374,12 @@ export default function StemCellPage() {
           </div>
 
           <div className="text-center">
-            <Link
-              href="/stem-cell/book"
-              className="group inline-flex items-center justify-center px-8 py-4 text-base sm:text-lg font-bold text-white rounded-xl shadow-lg transform hover:scale-105 transition-all duration-300"
-              style={{ backgroundColor: '#078AAD' }}
+            <BookingButton 
+              className="group inline-flex items-center justify-center px-8 py-4 text-base sm:text-lg font-bold text-white rounded-xl shadow-lg transform hover:scale-105 transition-all duration-300 bg-[#078AAD] hover:bg-[#067a9a]"
+              formId="unuDEJBs8DPU2COLwKLT"
             >
               Learn If Stem Cell Therapy Is Right for You →
-            </Link>
+            </BookingButton>
           </div>
         </div>
       </section>
@@ -492,7 +491,6 @@ export default function StemCellPage() {
             </div>
           </div>
 
-
           <div className="bg-white rounded-xl p-6 shadow-sm">
             <div className="flex items-start gap-4">
               <div className="flex-shrink-0 w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
@@ -587,12 +585,12 @@ export default function StemCellPage() {
             Claim one of our 40 limited-time consultation vouchers and discover
             if stem cell therapy is the right solution for your pain.
           </p>
-          <Link
-            href="/stem-cell/book"
+          <BookingButton 
             className="group inline-flex items-center justify-center px-8 py-4 text-base sm:text-lg font-bold bg-white hover:bg-gray-100 text-blue-600 rounded-xl shadow-lg transform hover:scale-105 transition-all duration-300"
+            formId="unuDEJBs8DPU2COLwKLT"
           >
             🎁 Claim Your $100 Consultation Voucher Now →
-          </Link>
+          </BookingButton>
           <p className="text-sm text-blue-200 mt-4">
             ⚡ Only 40 vouchers available — Act now before they&apos;re gone
           </p>

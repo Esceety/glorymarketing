@@ -6,11 +6,30 @@ import { useRouter } from 'next/navigation';
 interface FormModalProps {
   isOpen: boolean;
   onClose: () => void;
+  formId?: string; // Optional form ID for different forms
 }
 
-export function FormModal({ isOpen, onClose }: FormModalProps) {
+export function FormModal({ isOpen, onClose, formId = 'ouANN3PSeW0qb7AAdVpr' }: FormModalProps) {
   const [mounted, setMounted] = useState(false);
   const router = useRouter();
+
+  // Determine form configuration based on formId
+  const formConfig = {
+    'ouANN3PSeW0qb7AAdVpr': {
+      src: 'https://link.esceety-us.com/widget/form/ouANN3PSeW0qb7AAdVpr',
+      title: 'A) New "Preferred" Lead Optin Form',
+      height: '650px',
+      dataHeight: '638',
+    },
+    'unuDEJBs8DPU2COLwKLT': {
+      src: 'https://link.esceety-us.com/widget/form/unuDEJBs8DPU2COLwKLT',
+      title: 'B) New "Preferred" Lead Optin Form',
+      height: '663px',
+      dataHeight: '663',
+    },
+  };
+
+  const config = formConfig[formId as keyof typeof formConfig] || formConfig['ouANN3PSeW0qb7AAdVpr'];
 
   useEffect(() => {
     // Set mounted on the next tick to avoid SSR issues
@@ -115,13 +134,13 @@ export function FormModal({ isOpen, onClose }: FormModalProps) {
           {/* Form Content */}
           <div className="w-full rounded-2xl overflow-hidden">
             <iframe
-              src="https://link.esceety-us.com/widget/form/ouANN3PSeW0qb7AAdVpr"
+              src={config.src}
               style={{
                 width: '100%',
-                height: '650px',
+                height: config.height,
                 border: 'none',
               }}
-              id="inline-ouANN3PSeW0qb7AAdVpr"
+              id={`inline-${formId}`}
               data-layout="{'id':'INLINE'}"
               data-trigger-type="alwaysShow"
               data-trigger-value=""
@@ -129,11 +148,11 @@ export function FormModal({ isOpen, onClose }: FormModalProps) {
               data-activation-value=""
               data-deactivation-type="neverDeactivate"
               data-deactivation-value=""
-              data-form-name='A) New "Preferred" Lead Optin Form'
-              data-height="638"
-              data-layout-iframe-id="inline-ouANN3PSeW0qb7AAdVpr"
-              data-form-id="ouANN3PSeW0qb7AAdVpr"
-              title='A) New "Preferred" Lead Optin Form'
+              data-form-name={config.title}
+              data-height={config.dataHeight}
+              data-layout-iframe-id={`inline-${formId}`}
+              data-form-id={formId}
+              title={config.title}
             />
           </div>
         </div>

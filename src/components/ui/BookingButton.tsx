@@ -6,9 +6,10 @@ import { FormModal } from './FormModal';
 interface BookingButtonProps {
   className?: string;
   children: React.ReactNode;
+  formId?: string; // Optional form ID for different forms
 }
 
-export function BookingButton({ className, children }: BookingButtonProps) {
+export function BookingButton({ className, children, formId }: BookingButtonProps) {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
@@ -16,7 +17,11 @@ export function BookingButton({ className, children }: BookingButtonProps) {
       <button onClick={() => setIsModalOpen(true)} className={className}>
         {children}
       </button>
-      <FormModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+      <FormModal 
+        isOpen={isModalOpen} 
+        onClose={() => setIsModalOpen(false)} 
+        formId={formId}
+      />
     </>
   );
 }

@@ -18,6 +18,17 @@ export function SiteHeader() {
     pathname?.includes('/payment-success') ||
     pathname?.includes('/payment-cancelled');
 
+  // Hide "Book Now" button on booking and success pages
+  const isBookingPage = 
+    pathname === '/book' || 
+    pathname === '/stem-cell/book' ||
+    pathname === '/success' ||
+    pathname === '/stem-cell/success';
+
+  // Determine which form to use based on the current page
+  const isStemCellPage = pathname?.includes('/stem-cell');
+  const formId = isStemCellPage ? 'unuDEJBs8DPU2COLwKLT' : 'ouANN3PSeW0qb7AAdVpr';
+
   return (
     <>
       <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-200 shadow-sm">
@@ -61,13 +72,15 @@ export function SiteHeader() {
                   </button>
                 </nav>
 
-                {/* CTA Button */}
-                <button
-                  onClick={() => setIsModalOpen(true)}
-                  className="book-now-button text-white px-6 py-2.5 rounded-lg font-bold shadow-lg hover:shadow-xl transition-all transform hover:scale-105"
-                >
-                  Book Now
-                </button>
+                {/* CTA Button - Hidden on booking pages */}
+                {!isBookingPage && (
+                  <button
+                    onClick={() => setIsModalOpen(true)}
+                    className="book-now-button text-white px-6 py-2.5 rounded-lg font-bold shadow-lg hover:shadow-xl transition-all transform hover:scale-105"
+                  >
+                    Book Now
+                  </button>
+                )}
               </>
             )}
           </div>
@@ -107,7 +120,11 @@ export function SiteHeader() {
         `}</style>
       </header>
 
-      <FormModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+      <FormModal 
+        isOpen={isModalOpen} 
+        onClose={() => setIsModalOpen(false)} 
+        formId={formId}
+      />
     </>
   );
 }
