@@ -1,7 +1,19 @@
+'use client';
+
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 export function SiteFooter() {
   const currentYear = new Date().getFullYear();
+  const pathname = usePathname();
+  
+  // Detect if we're in the weight-loss funnel
+  const isWeightLossPage = pathname?.startsWith('/weight-loss') ?? false;
+  
+  // Use weight-loss specific privacy page if in that funnel
+  const privacyHref = isWeightLossPage
+    ? '/weight-loss/privacy-policy-terms-conditions'
+    : '/privacy-policy-terms-conditions';
 
   return (
     <footer className="border-t mt-16">
@@ -14,7 +26,7 @@ export function SiteFooter() {
           </div>
           <div>
             <Link
-              href="/privacy-policy-terms-conditions"
+              href={privacyHref}
               className="text-gray-600 hover:text-blue-600 transition-colors"
             >
               Privacy Policy & Terms

@@ -27,6 +27,12 @@ export function FormModal({ isOpen, onClose, formId = 'ouANN3PSeW0qb7AAdVpr' }: 
       height: '663px',
       dataHeight: '663',
     },
+    'wz9f6DHcnCdzO5C7vX0x': {
+      src: 'https://link.esceety-us.com/widget/form/wz9f6DHcnCdzO5C7vX0x',
+      title: 'Weight Loss Lead Optin Form',
+      height: '663px',
+      dataHeight: '663',
+    },
   };
 
   const config = formConfig[formId as keyof typeof formConfig] || formConfig['ouANN3PSeW0qb7AAdVpr'];
@@ -79,7 +85,7 @@ export function FormModal({ isOpen, onClose, formId = 'ouANN3PSeW0qb7AAdVpr' }: 
             }
           }
 
-          // If the message indicates success or redirection, navigate to book page
+          // If the message indicates success or redirection, navigate to appropriate success page
           if (
             data.eventName === 'form_submitted' ||
             data.type === 'redirect' ||
@@ -87,7 +93,12 @@ export function FormModal({ isOpen, onClose, formId = 'ouANN3PSeW0qb7AAdVpr' }: 
           ) {
             setTimeout(() => {
               onClose();
-              router.push('/book');
+              // Redirect to weight loss success page for weight loss form
+              if (formId === 'wz9f6DHcnCdzO5C7vX0x') {
+                router.push('/weight-loss/success');
+              } else {
+                router.push('/book');
+              }
             }, 500);
           }
         }

@@ -6,11 +6,18 @@ import { useState } from 'react';
 import { usePathname } from 'next/navigation';
 import { FormModal } from '@/components/ui/FormModal';
 
-const navItems = [{ label: 'Home', href: '/' }];
-
 export function SiteHeader() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const pathname = usePathname();
+
+  // Determine which funnel the user is in
+  const isWeightLossPage = pathname?.includes('/weight-loss');
+  
+  // Dynamic navigation based on funnel
+  const navItems = [{ 
+    label: 'Home', 
+    href: isWeightLossPage ? '/weight-loss' : '/' 
+  }];
 
   // Hide navigation on payment-related pages
   const isPaymentPage =
@@ -22,12 +29,21 @@ export function SiteHeader() {
   const isBookingPage = 
     pathname === '/book' || 
     pathname === '/stem-cell/book' ||
+    pathname === '/weight-loss/book' ||
     pathname === '/success' ||
-    pathname === '/stem-cell/success';
+    pathname === '/stem-cell/success' ||
+    pathname === '/weight-loss/success';
 
   // Determine which form to use based on the current page
   const isStemCellPage = pathname?.includes('/stem-cell');
-  const formId = isStemCellPage ? 'unuDEJBs8DPU2COLwKLT' : 'ouANN3PSeW0qb7AAdVpr';
+  const formId = isStemCellPage 
+    ? 'unuDEJBs8DPU2COLwKLT' 
+    : isWeightLossPage 
+    ? 'wz9f6DHcnCdzO5C7vX0x'
+    : 'ouANN3PSeW0qb7AAdVpr';
+
+  // Determine logo link based on current page
+  const logoHref = isWeightLossPage ? '/weight-loss' : '/';
 
   return (
     <>
@@ -38,7 +54,7 @@ export function SiteHeader() {
           >
             {/* Logo */}
             <Link
-              href="/"
+              href={logoHref}
               className="flex items-center hover:opacity-80 transition-opacity"
             >
               <Image
