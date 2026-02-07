@@ -12,12 +12,14 @@ export function SiteHeader() {
 
   // Determine which funnel the user is in
   const isWeightLossPage = pathname?.includes('/weight-loss');
-  
+
   // Dynamic navigation based on funnel
-  const navItems = [{ 
-    label: 'Home', 
-    href: isWeightLossPage ? '/weight-loss' : '/' 
-  }];
+  const navItems = [
+    {
+      label: 'Home',
+      href: isWeightLossPage ? '/weight-loss' : '/',
+    },
+  ];
 
   // Hide navigation on payment-related pages
   const isPaymentPage =
@@ -26,8 +28,8 @@ export function SiteHeader() {
     pathname?.includes('/payment-cancelled');
 
   // Hide "Book Now" button on booking and success pages
-  const isBookingPage = 
-    pathname === '/book' || 
+  const isBookingPage =
+    pathname === '/book' ||
     pathname === '/stem-cell/book' ||
     pathname === '/weight-loss/book' ||
     pathname === '/success' ||
@@ -36,11 +38,11 @@ export function SiteHeader() {
 
   // Determine which form to use based on the current page
   const isStemCellPage = pathname?.includes('/stem-cell');
-  const formId = isStemCellPage 
-    ? 'unuDEJBs8DPU2COLwKLT' 
-    : isWeightLossPage 
-    ? 'wz9f6DHcnCdzO5C7vX0x'
-    : 'ouANN3PSeW0qb7AAdVpr';
+  const formId = isStemCellPage
+    ? 'unuDEJBs8DPU2COLwKLT'
+    : isWeightLossPage
+      ? 'wz9f6DHcnCdzO5C7vX0x'
+      : 'ouANN3PSeW0qb7AAdVpr';
 
   // Determine logo link based on current page
   const logoHref = isWeightLossPage ? '/weight-loss' : '/';
@@ -136,9 +138,9 @@ export function SiteHeader() {
         `}</style>
       </header>
 
-      <FormModal 
-        isOpen={isModalOpen} 
-        onClose={() => setIsModalOpen(false)} 
+      <FormModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
         formId={formId}
       />
     </>

@@ -6,10 +6,10 @@ import { usePathname } from 'next/navigation';
 export function SiteFooter() {
   const currentYear = new Date().getFullYear();
   const pathname = usePathname();
-  
+
   // Detect if we're in the weight-loss funnel
   const isWeightLossPage = pathname?.startsWith('/weight-loss') ?? false;
-  
+
   // Use weight-loss specific privacy page if in that funnel
   const privacyHref = isWeightLossPage
     ? '/weight-loss/privacy-policy-terms-conditions'

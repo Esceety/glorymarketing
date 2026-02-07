@@ -21,7 +21,7 @@ export default function WeightLossSuccessPage() {
     try {
       const stored = localStorage.getItem('weightLossBooking');
       const userFormStored = localStorage.getItem('userFormData');
-      
+
       if (stored) {
         const data = JSON.parse(stored);
         setBookingData(data);
@@ -67,8 +67,8 @@ export default function WeightLossSuccessPage() {
         <p className="text-xl text-gray-600 leading-relaxed">
           We&apos;ve received your consultation request for our medical weight
           loss program
-          {bookingData?.location && ` at our ${bookingData.location} location`}
-          . Please note that{' '}
+          {bookingData?.location && ` at our ${bookingData.location} location`}.
+          Please note that{' '}
           <strong className="text-gray-900">
             this is not yet a confirmed appointment
           </strong>{' '}
@@ -246,8 +246,8 @@ export default function WeightLossSuccessPage() {
             <li className="flex items-start">
               <span className="text-blue-600 mr-2">✓</span>
               <span>
-                Note any previous weight loss attempts and what worked/didn&apos;t
-                work
+                Note any previous weight loss attempts and what
+                worked/didn&apos;t work
               </span>
             </li>
             <li className="flex items-start">

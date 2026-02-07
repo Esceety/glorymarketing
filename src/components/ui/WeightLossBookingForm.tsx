@@ -276,9 +276,7 @@ export function WeightLossBookingForm() {
             <p className="text-sm font-medium text-gray-800">
               <strong>Selected Location:</strong> {selectedLocation?.name}
             </p>
-            <p className="text-sm text-gray-600">
-              {selectedLocation?.address}
-            </p>
+            <p className="text-sm text-gray-600">{selectedLocation?.address}</p>
           </div>
 
           <h2 className="text-2xl sm:text-3xl font-bold mb-6 text-center">

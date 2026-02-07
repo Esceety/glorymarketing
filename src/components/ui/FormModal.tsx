@@ -9,25 +9,29 @@ interface FormModalProps {
   formId?: string; // Optional form ID for different forms
 }
 
-export function FormModal({ isOpen, onClose, formId = 'ouANN3PSeW0qb7AAdVpr' }: FormModalProps) {
+export function FormModal({
+  isOpen,
+  onClose,
+  formId = 'ouANN3PSeW0qb7AAdVpr',
+}: FormModalProps) {
   const [mounted, setMounted] = useState(false);
   const router = useRouter();
 
   // Determine form configuration based on formId
   const formConfig = {
-    'ouANN3PSeW0qb7AAdVpr': {
+    ouANN3PSeW0qb7AAdVpr: {
       src: 'https://link.esceety-us.com/widget/form/ouANN3PSeW0qb7AAdVpr',
       title: 'A) New "Preferred" Lead Optin Form',
       height: '650px',
       dataHeight: '638',
     },
-    'unuDEJBs8DPU2COLwKLT': {
+    unuDEJBs8DPU2COLwKLT: {
       src: 'https://link.esceety-us.com/widget/form/unuDEJBs8DPU2COLwKLT',
       title: 'B) New "Preferred" Lead Optin Form',
       height: '663px',
       dataHeight: '663',
     },
-    'wz9f6DHcnCdzO5C7vX0x': {
+    wz9f6DHcnCdzO5C7vX0x: {
       src: 'https://link.esceety-us.com/widget/form/wz9f6DHcnCdzO5C7vX0x',
       title: 'Weight Loss Lead Optin Form',
       height: '663px',
@@ -35,7 +39,9 @@ export function FormModal({ isOpen, onClose, formId = 'ouANN3PSeW0qb7AAdVpr' }: 
     },
   };
 
-  const config = formConfig[formId as keyof typeof formConfig] || formConfig['ouANN3PSeW0qb7AAdVpr'];
+  const config =
+    formConfig[formId as keyof typeof formConfig] ||
+    formConfig['ouANN3PSeW0qb7AAdVpr'];
 
   useEffect(() => {
     // Set mounted on the next tick to avoid SSR issues
