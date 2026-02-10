@@ -1,18 +1,36 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
+import { useSearchParams } from 'next/navigation';
 import { Testimonials } from '@/components/ui/Testimonials';
 
 export default function SuccessPage() {
   const hasTrackedRef = useRef(false);
+  const searchParams = useSearchParams();
 
   useEffect(() => {
-    // Fire Lead event only once when page mounts
+    // Fire Lead event only once when page mounts with test_event_code support
     if (!hasTrackedRef.current && typeof window !== 'undefined' && window.fbq) {
-      window.fbq('track', 'Lead');
+      const testEventCode = searchParams?.get('test_event_code');
+      
+      if (testEventCode) {
+        // Include test_event_code for Meta Test Events tool
+        window.fbq('track', 'Lead', {
+          content_name: 'General Consultation',
+          content_category: 'Consultation',
+        }, { 
+          eventID: `lead_general_${Date.now()}`,
+          test_event_code: testEventCode 
+        });
+      } else {
+        window.fbq('track', 'Lead', {
+          content_name: 'General Consultation',
+          content_category: 'Consultation',
+        });
+      }
       hasTrackedRef.current = true;
     }
-  }, []);
+  }, [searchParams]);
 
   return (
     <div className="space-y-16 py-12">

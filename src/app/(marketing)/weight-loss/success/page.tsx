@@ -1,19 +1,37 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
+import { useSearchParams } from 'next/navigation';
 import { Testimonials } from '@/components/ui/Testimonials';
 
 export default function WeightLossSuccessPage() {
   const hasTrackedRef = useRef(false);
+  const searchParams = useSearchParams();
   const [bookingData, setBookingData] = useState<{
     firstName: string;
     location: string;
   } | null>(null);
 
   useEffect(() => {
-    // Fire Lead event only once when page mounts
+    // Fire Lead event only once when page mounts with test_event_code support
     if (!hasTrackedRef.current && typeof window !== 'undefined' && window.fbq) {
-      window.fbq('track', 'Lead');
+      const testEventCode = searchParams?.get('test_event_code');
+      
+      if (testEventCode) {
+        // Include test_event_code for Meta Test Events tool
+        window.fbq('track', 'Lead', {
+          content_name: 'Weight Loss Program',
+          content_category: 'Weight Loss',
+        }, { 
+          eventID: `lead_weightloss_${Date.now()}`,
+          test_event_code: testEventCode 
+        });
+      } else {
+        window.fbq('track', 'Lead', {
+          content_name: 'Weight Loss Program',
+          content_category: 'Weight Loss',
+        });
+      }
       hasTrackedRef.current = true;
     }
 
@@ -36,7 +54,7 @@ export default function WeightLossSuccessPage() {
     } catch (error) {
       console.error('Error reading booking data:', error);
     }
-  }, []);
+  }, [searchParams]);
 
   return (
     <div className="space-y-16 py-12">

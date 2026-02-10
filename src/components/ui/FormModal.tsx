@@ -99,11 +99,17 @@ export function FormModal({
           ) {
             setTimeout(() => {
               onClose();
+              
+              // Preserve UTM parameters and test_event_code across navigation
+              const currentParams = new URLSearchParams(window.location.search);
+              const queryString = currentParams.toString();
+              const pathSuffix = queryString ? `?${queryString}` : '';
+              
               // Redirect to weight loss success page for weight loss form
               if (formId === 'wz9f6DHcnCdzO5C7vX0x') {
-                router.push('/weight-loss/success');
+                router.push(`/weight-loss/success${pathSuffix}`);
               } else {
-                router.push('/book');
+                router.push(`/book${pathSuffix}`);
               }
             }, 500);
           }
@@ -113,7 +119,7 @@ export function FormModal({
 
     window.addEventListener('message', handleMessage);
     return () => window.removeEventListener('message', handleMessage);
-  }, [onClose, router]);
+  }, [onClose, router, formId]);
 
   if (!mounted || !isOpen) return null;
 

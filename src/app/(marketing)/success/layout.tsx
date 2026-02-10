@@ -5,6 +5,9 @@ export const metadata: Metadata = {
   description: 'Your appointment request has been received by our team.',
 };
 
+// Force dynamic rendering to support useSearchParams in page
+export const dynamic = 'force-dynamic';
+
 export default function SuccessLayout({
   children,
 }: {

@@ -6,6 +6,9 @@ export const metadata: Metadata = {
     'Your stem cell therapy consultation has been booked at Glory Regenerative Center.',
 };
 
+// Force dynamic rendering to support useSearchParams in page
+export const dynamic = 'force-dynamic';
+
 export default function StemCellSuccessLayout({
   children,
 }: {

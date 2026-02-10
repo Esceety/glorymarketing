@@ -6,6 +6,9 @@ export const metadata: Metadata = {
     'Your weight loss consultation has been requested at Glory Regenerative Center.',
 };
 
+// Force dynamic rendering to support useSearchParams in page
+export const dynamic = 'force-dynamic';
+
 export default function WeightLossSuccessLayout({
   children,
 }: {

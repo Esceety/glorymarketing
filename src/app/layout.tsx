@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
 import { siteConfig } from '@/config/site';
 import Script from 'next/script';
+import { Suspense } from 'react';
 import { MetaPixel } from '@/components/analytics/MetaPixel';
 
 const geistSans = Geist({
@@ -88,7 +89,9 @@ export default function RootLayout({
           />
         </noscript>
 
-        <MetaPixel />
+        <Suspense fallback={null}>
+          <MetaPixel />
+        </Suspense>
         {children}
       </body>
     </html>
