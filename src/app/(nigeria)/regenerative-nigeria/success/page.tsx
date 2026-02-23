@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
+import { trackNigeriaSuccessLead } from '@/lib/nigeriaTracking';
 
 export default function RegenerativeNigeriaSuccessPage() {
   const hasTrackedRef = useRef(false);
@@ -18,34 +19,14 @@ export default function RegenerativeNigeriaSuccessPage() {
 
   useEffect(() => {
     // Fire Lead event only once when page mounts
-    if (!hasTrackedRef.current && typeof window !== 'undefined' && window.fbq) {
+    if (!hasTrackedRef.current) {
       const testEventCode = searchParams?.get('test_event_code');
-
-      if (testEventCode) {
-        // Include test_event_code for Meta Test Events tool
-        window.fbq(
-          'track',
-          'Lead',
-          {
-            content_name: 'Nigeria Regenerative',
-            content_category: 'Nigeria',
-            lead_source: 'whatsapp_or_form',
-          },
-          {
-            eventID: `lead_nigeria_success_${Date.now()}`,
-            test_event_code: testEventCode,
-          }
-        );
-      } else {
-        window.fbq('track', 'Lead', {
-          content_name: 'Nigeria Regenerative',
-          content_category: 'Nigeria',
-          lead_source: 'whatsapp_or_form',
-        });
-      }
+      trackNigeriaSuccessLead(testEventCode);
       hasTrackedRef.current = true;
     }
+  }, [searchParams]);
 
+  useEffect(() => {
     // Load lead data from localStorage if available
     try {
       const storedData = localStorage.getItem('nigeriaLeadDraft');
@@ -58,7 +39,7 @@ export default function RegenerativeNigeriaSuccessPage() {
     } catch (error) {
       console.error('Error reading lead data:', error);
     }
-  }, [searchParams]);
+  }, []);
 
   return (
     <div className="min-h-screen bg-gray-50 py-16">
@@ -220,7 +201,7 @@ export default function RegenerativeNigeriaSuccessPage() {
             href="/regenerative-nigeria"
             className="inline-flex items-center justify-center rounded-lg border-2 border-gray-300 bg-white px-6 py-3 text-base font-medium text-gray-700 transition-all hover:border-gray-400 hover:bg-gray-50"
           >
-            ← Back to Home
+            ← Back to Nigeria Landing
           </Link>
         </div>
 

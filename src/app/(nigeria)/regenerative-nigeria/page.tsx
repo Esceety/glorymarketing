@@ -3,43 +3,14 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
-import { useEffect, useState } from 'react';
-
-// Helper function to track Nigeria lead events
-function trackNigeriaLead(
-  location: 'Abuja' | 'Lagos',
-  testEventCode?: string | null
-) {
-  if (typeof window !== 'undefined' && window.fbq) {
-    const eventData = {
-      content_name: 'Nigeria Regenerative',
-      content_category: 'Nigeria',
-      location,
-      lead_source: 'whatsapp_click',
-    };
-
-    if (testEventCode) {
-      window.fbq(
-        'track',
-        'Lead',
-        eventData,
-        {
-          eventID: `lead_nigeria_wa_${location.toLowerCase()}_${Date.now()}`,
-          test_event_code: testEventCode,
-        }
-      );
-    } else {
-      window.fbq('track', 'Lead', eventData);
-    }
-  }
-}
+import { trackNigeriaWhatsAppLead } from '@/lib/nigeriaTracking';
 
 export default function RegenerativeNigeriaPage() {
   const searchParams = useSearchParams();
   const testEventCode = searchParams?.get('test_event_code') || null;
 
   const handleWhatsAppClick = (location: 'Abuja' | 'Lagos') => {
-    trackNigeriaLead(location, testEventCode);
+    trackNigeriaWhatsAppLead(location, testEventCode);
   };
 
   return (
@@ -82,13 +53,13 @@ export default function RegenerativeNigeriaPage() {
             </p>
 
             {/* Primary CTAs - WhatsApp */}
-            <div className="mb-6 flex flex-col items-center justify-center gap-4 sm:flex-row">
+            <div className="mb-6 flex flex-col items-center justify-center gap-3 px-4 sm:flex-row sm:gap-4 sm:px-0">
               <a
                 href="https://wa.me/2349135300003?text=Hello%2C%20I%27m%20interested%20in%20regenerative%20treatment%20in%20Abuja.%20Please%20share%20the%20next%20steps."
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => handleWhatsAppClick('Abuja')}
-                className="group inline-flex w-full items-center justify-center gap-2 rounded-lg bg-green-600 px-8 py-4 text-base font-semibold text-white shadow-lg transition-all hover:bg-green-700 sm:w-auto"
+                className="group inline-flex w-full items-center justify-center gap-2 rounded-lg bg-green-600 px-6 py-4 text-base font-semibold text-white shadow-lg transition-all hover:bg-green-700 sm:w-auto sm:px-8"
               >
                 <svg
                   className="h-5 w-5"
@@ -105,7 +76,7 @@ export default function RegenerativeNigeriaPage() {
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => handleWhatsAppClick('Lagos')}
-                className="group inline-flex w-full items-center justify-center gap-2 rounded-lg bg-green-600 px-8 py-4 text-base font-semibold text-white shadow-lg transition-all hover:bg-green-700 sm:w-auto"
+                className="group inline-flex w-full items-center justify-center gap-2 rounded-lg bg-green-600 px-6 py-4 text-base font-semibold text-white shadow-lg transition-all hover:bg-green-700 sm:w-auto sm:px-8"
               >
                 <svg
                   className="h-5 w-5"
@@ -606,7 +577,7 @@ export default function RegenerativeNigeriaPage() {
       </section>
 
       {/* Locations */}
-      <section className="bg-white py-16">
+      <section className="bg-white py-16" id="locations">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mb-12 text-center">
             <h2 className="mb-4 text-3xl font-bold text-gray-900 sm:text-4xl">
@@ -619,7 +590,7 @@ export default function RegenerativeNigeriaPage() {
 
           <div className="mx-auto grid max-w-5xl gap-8 md:grid-cols-2">
             {/* Abuja Card */}
-            <div className="rounded-lg border border-gray-200 bg-gray-50 p-8">
+            <div id="abuja" className="rounded-lg border border-gray-200 bg-gray-50 p-8 scroll-mt-20">
               <h3 className="mb-4 text-2xl font-bold text-gray-900">
                 Abuja Location
               </h3>
@@ -657,7 +628,7 @@ export default function RegenerativeNigeriaPage() {
             </div>
 
             {/* Lagos Card */}
-            <div className="rounded-lg border border-gray-200 bg-gray-50 p-8">
+            <div id="lagos" className="rounded-lg border border-gray-200 bg-gray-50 p-8 scroll-mt-20">
               <h3 className="mb-4 text-2xl font-bold text-gray-900">
                 Lagos Location
               </h3>

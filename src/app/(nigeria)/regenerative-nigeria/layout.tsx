@@ -1,4 +1,9 @@
 import { ReactNode } from 'react';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  robots: { index: false, follow: false },
+};
 
 // Force dynamic rendering to support useSearchParams in child pages
 export const dynamic = 'force-dynamic';
@@ -17,14 +22,20 @@ export default function NigeriaLayout({ children }: { children: ReactNode }) {
               </h1>
             </div>
 
-            {/* Location Chips */}
+            {/* Location Chips - Link to landing page sections */}
             <div className="flex items-center gap-2 ml-4">
-              <span className="inline-flex items-center rounded-full bg-blue-50 px-3 py-1 text-xs font-medium text-blue-700 border border-blue-200">
+              <a
+                href="/regenerative-nigeria#abuja"
+                className="inline-flex items-center rounded-full bg-blue-50 px-3 py-1 text-xs font-medium text-blue-700 border border-blue-200 hover:bg-blue-100 transition-colors"
+              >
                 Abuja
-              </span>
-              <span className="inline-flex items-center rounded-full bg-blue-50 px-3 py-1 text-xs font-medium text-blue-700 border border-blue-200">
+              </a>
+              <a
+                href="/regenerative-nigeria#lagos"
+                className="inline-flex items-center rounded-full bg-blue-50 px-3 py-1 text-xs font-medium text-blue-700 border border-blue-200 hover:bg-blue-100 transition-colors"
+              >
                 Lagos
-              </span>
+              </a>
             </div>
           </div>
         </div>
