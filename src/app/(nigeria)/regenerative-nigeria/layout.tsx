@@ -1,5 +1,6 @@
 import { ReactNode } from 'react';
 import { Metadata } from 'next';
+import Image from 'next/image';
 
 export const metadata: Metadata = {
   robots: { index: false, follow: false },
@@ -15,11 +16,18 @@ export default function NigeriaLayout({ children }: { children: ReactNode }) {
       <header className="border-b border-gray-200 bg-white">
         <div className="mx-auto max-w-7xl px-4 py-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between">
-            {/* Text Logo */}
+            {/* Logo */}
             <div className="flex-1">
-              <h1 className="text-lg sm:text-xl font-bold text-gray-900">
-                Glory Wellness & Regenerative Centre – Nigeria
-              </h1>
+              <a href="/regenerative-nigeria" className="inline-block">
+                <Image
+                  src="/images/Glory-logo-ng.png"
+                  alt="Glory Wellness & Regenerative Centre – Nigeria"
+                  width={200}
+                  height={60}
+                  className="h-10 w-auto sm:h-12"
+                  priority
+                />
+              </a>
             </div>
 
             {/* Location Chips - Link to landing page sections */}
