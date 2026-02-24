@@ -336,8 +336,63 @@ export default function RegenerativeNigeriaPage() {
         </div>
       </section>
 
-      {/* What Is Regenerative Medicine */}
+      {/* Additional Conditions Evaluated During Consultation */}
       <section className="bg-gray-50 py-16">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-4xl">
+            <h2 className="mb-6 text-center text-3xl font-bold text-gray-900 sm:text-4xl">
+              Additional Conditions Evaluated During Consultation
+            </h2>
+
+            <div className="space-y-6 text-gray-700">
+              <p className="text-lg leading-relaxed">
+                While our primary focus includes the conditions listed above,
+                regenerative medicine evaluation may also be considered for
+                certain complex medical conditions on a case-by-case basis.
+              </p>
+
+              <p className="leading-relaxed">
+                Because every patient&apos;s medical history, diagnostic
+                findings, and overall health profile are unique, eligibility for
+                regenerative treatment options is determined only after a
+                comprehensive clinical consultation.
+              </p>
+
+              <p className="leading-relaxed">
+                Depending on individual assessment, evaluation may be considered
+                for:
+              </p>
+
+              <ul className="ml-6 space-y-2 text-base">
+                <li className="leading-relaxed">
+                  Selected autoimmune and inflammatory conditions
+                </li>
+                <li className="leading-relaxed">
+                  Certain neurological and degenerative disorders
+                </li>
+                <li className="leading-relaxed">
+                  Complex musculoskeletal conditions
+                </li>
+                <li className="leading-relaxed">
+                  Metabolic and inflammatory diseases
+                </li>
+                <li className="leading-relaxed">
+                  Early-stage degenerative conditions
+                </li>
+              </ul>
+
+              <p className="mt-6 leading-relaxed font-medium">
+                Not all patients are candidates for regenerative therapies. A
+                detailed consultation is required to determine suitability and
+                appropriate options.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* What Is Regenerative Medicine */}
+      <section className="bg-white py-16">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-4xl">
             <h2 className="mb-6 text-center text-3xl font-bold text-gray-900 sm:text-4xl">
@@ -590,7 +645,10 @@ export default function RegenerativeNigeriaPage() {
 
           <div className="mx-auto grid max-w-5xl gap-8 md:grid-cols-2">
             {/* Abuja Card */}
-            <div id="abuja" className="rounded-lg border border-gray-200 bg-gray-50 p-8 scroll-mt-20">
+            <div
+              id="abuja"
+              className="rounded-lg border border-gray-200 bg-gray-50 p-8 scroll-mt-20"
+            >
               <h3 className="mb-4 text-2xl font-bold text-gray-900">
                 Abuja Location
               </h3>
@@ -628,7 +686,10 @@ export default function RegenerativeNigeriaPage() {
             </div>
 
             {/* Lagos Card */}
-            <div id="lagos" className="rounded-lg border border-gray-200 bg-gray-50 p-8 scroll-mt-20">
+            <div
+              id="lagos"
+              className="rounded-lg border border-gray-200 bg-gray-50 p-8 scroll-mt-20"
+            >
               <h3 className="mb-4 text-2xl font-bold text-gray-900">
                 Lagos Location
               </h3>
