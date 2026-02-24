@@ -501,6 +501,137 @@ export default function RegenerativeNigeriaPage() {
         </div>
       </section>
 
+      {/* Supporting Therapies */}
+      <section className="bg-gray-50 py-16">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-4xl">
+            <h2 className="mb-4 text-center text-3xl font-bold text-gray-900 sm:text-4xl">
+              Supporting Therapies
+            </h2>
+            <p className="mb-10 text-center text-lg text-gray-600">
+              These therapies may be used alongside regenerative care as part of
+              an individualized plan—especially for orthopedic patients.
+            </p>
+
+            <div className="space-y-6 text-gray-700">
+              <p className="text-base leading-relaxed">
+                We also offer supporting therapies that may complement
+                regenerative medicine as part of a personalized care plan.
+                Recommendations are based on individual assessment and clinical
+                suitability.
+              </p>
+
+              <div className="space-y-4">
+                <div className="flex items-start gap-3 rounded-lg bg-white p-4 shadow-sm">
+                  <svg
+                    className="mt-0.5 h-5 w-5 flex-shrink-0 text-blue-600"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                    />
+                  </svg>
+                  <div>
+                    <p className="font-semibold text-gray-900">
+                      Ozone Therapy (MAH, Prolozone, etc.)
+                    </p>
+                    <p className="mt-1 text-sm text-gray-600">
+                      may be considered as a supportive option in certain
+                      orthopedic care plans.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-3 rounded-lg bg-white p-4 shadow-sm">
+                  <svg
+                    className="mt-0.5 h-5 w-5 flex-shrink-0 text-blue-600"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                    />
+                  </svg>
+                  <div>
+                    <p className="font-semibold text-gray-900">
+                      Photobiomodulation / Polychromatic (6-light) Therapy
+                    </p>
+                    <p className="mt-1 text-sm text-gray-600">
+                      a supportive light-based modality that may be incorporated
+                      into select care plans; availability may be limited.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-3 rounded-lg bg-white p-4 shadow-sm">
+                  <svg
+                    className="mt-0.5 h-5 w-5 flex-shrink-0 text-blue-600"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                    />
+                  </svg>
+                  <div>
+                    <p className="font-semibold text-gray-900">
+                      Shockwave Therapy
+                    </p>
+                    <p className="mt-1 text-sm text-gray-600">
+                      may be used as a supportive option for certain
+                      musculoskeletal concerns as determined during
+                      consultation.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Clinic Note Callout */}
+              <div className="mt-6 rounded-lg border-l-4 border-blue-500 bg-blue-50 p-4">
+                <div className="flex items-start gap-3">
+                  <svg
+                    className="mt-0.5 h-5 w-5 flex-shrink-0 text-blue-600"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                    />
+                  </svg>
+                  <div>
+                    <p className="text-sm font-semibold text-gray-900">
+                      Clinic Note:
+                    </p>
+                    <p className="mt-1 text-sm text-gray-700">
+                      Our Photobiomodulation / Polychromatic (6-light) Therapy
+                      system is a specialized capability currently uncommon in
+                      Nigeria.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Your Consultation Process */}
       <section className="bg-white py-16">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
