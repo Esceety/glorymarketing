@@ -7,6 +7,9 @@ export const metadata: Metadata = {
     'Advanced PRP and Adult Stem Cell Therapy in Abuja and Lagos, Nigeria. Platelet Rich Plasma for healing, recovery, anti-aging, and regenerative medicine.',
   keywords:
     'PRP therapy Nigeria, stem cell therapy Nigeria, regenerative medicine Abuja, regenerative medicine Lagos, platelet rich plasma, adult stem cells, Glory Wellness Nigeria',
+  icons: {
+    icon: '/favicon.svg',
+  },
 };
 
 export default function RootLayout({
