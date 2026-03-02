@@ -89,14 +89,71 @@ export default function BrochurePage() {
         )}
       </button>
 
-      {/* Floating Controls - Show/Hide based on state */}
+      {/* Mobile: Top Control Bar - Fullscreen & Page Indicators */}
       {controlsVisible && (
-        <div
-          className={`no-print fixed top-16 right-4 z-50 flex flex-col gap-3 transition-all duration-300 animate-in fade-in slide-in-from-top-2 ${
-            isFullscreen ? 'opacity-20 hover:opacity-100' : 'opacity-100'
-          }`}
-        >
-          {/* Fullscreen Toggle */}
+        <div className="no-print fixed top-0 left-0 right-0 z-50 md:hidden bg-white/95 backdrop-blur-sm shadow-lg border-b border-gray-200">
+          <div className="flex items-center justify-between px-4 py-3">
+            <button
+              onClick={isFullscreen ? exitFullscreen : enterFullscreen}
+              className="flex items-center gap-2 rounded-lg bg-white px-3 py-2 text-sm font-medium text-gray-700 shadow-md transition-all hover:bg-gray-50"
+              title={isFullscreen ? 'Exit Fullscreen (ESC)' : 'Enter Fullscreen'}
+            >
+              {isFullscreen ? (
+                <>
+                  <svg
+                    className="h-4 w-4"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M6 18L18 6M6 6l12 12"
+                    />
+                  </svg>
+                  <span className="text-xs">Exit</span>
+                </>
+              ) : (
+                <>
+                  <svg
+                    className="h-4 w-4"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"
+                    />
+                  </svg>
+                  <span className="text-xs">Fullscreen</span>
+                </>
+              )}
+            </button>
+            
+            <div className="flex items-center gap-2">
+              <div
+                className={`w-2.5 h-2.5 rounded-full transition-all ${
+                  currentPage === 1 ? 'bg-[#4D6F91] scale-125' : 'bg-gray-300'
+                }`}
+              ></div>
+              <div
+                className={`w-2.5 h-2.5 rounded-full transition-all ${
+                  currentPage === 2 ? 'bg-[#4D6F91] scale-125' : 'bg-gray-300'
+                }`}
+              ></div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Desktop: Top-Right Fullscreen Button */}
+      {controlsVisible && (
+        <div className="no-print hidden md:block fixed top-4 right-4 z-50">
           <button
             onClick={isFullscreen ? exitFullscreen : enterFullscreen}
             className="flex items-center gap-2 rounded-lg bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-lg transition-all hover:bg-gray-50 hover:shadow-xl"
@@ -141,9 +198,65 @@ export default function BrochurePage() {
         </div>
       )}
 
-      {/* Page Navigation - Left/Right Arrows */}
-      {/* Mobile & Desktop: Horizontal navigation */}
-      <div className="no-print fixed bottom-8 right-8 z-50 flex items-center gap-3 bg-white/95 backdrop-blur-sm px-4 py-3 rounded-full shadow-2xl border border-gray-200">
+      {/* Mobile: Bottom Navigation Bar - Previous/Next Buttons */}
+      <div className="no-print fixed bottom-0 left-0 right-0 z-50 md:hidden bg-white/95 backdrop-blur-sm shadow-lg border-t border-gray-200">
+        <div className="flex items-center justify-between px-4 py-3">
+          <button
+            onClick={() => goToPage(1)}
+            disabled={currentPage === 1}
+            className={`flex items-center gap-2 px-4 py-2 rounded-full transition-all ${
+              currentPage === 1
+                ? 'bg-gray-200 text-gray-400 cursor-not-allowed'
+                : 'bg-[#4D6F91] text-white hover:bg-[#3D5F81] shadow-lg'
+            }`}
+            title="Previous Page"
+          >
+            <svg
+              className="w-5 h-5"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M15 19l-7-7 7-7"
+              />
+            </svg>
+            <span className="font-semibold text-sm">Previous</span>
+          </button>
+
+          <button
+            onClick={() => goToPage(2)}
+            disabled={currentPage === 2}
+            className={`flex items-center gap-2 px-4 py-2 rounded-full transition-all ${
+              currentPage === 2
+                ? 'bg-gray-200 text-gray-400 cursor-not-allowed'
+                : 'bg-[#4D6F91] text-white hover:bg-[#3D5F81] shadow-lg'
+            }`}
+            title="Next Page"
+          >
+            <span className="font-semibold text-sm">Next</span>
+            <svg
+              className="w-5 h-5"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M9 5l7 7-7 7"
+              />
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      {/* Desktop: Bottom-Right Compact Navigation */}
+      <div className="no-print hidden md:flex fixed bottom-8 right-8 z-50 items-center gap-3 bg-white/95 backdrop-blur-sm px-4 py-3 rounded-full shadow-2xl border border-gray-200">
         <button
           onClick={() => goToPage(1)}
           disabled={currentPage === 1}
