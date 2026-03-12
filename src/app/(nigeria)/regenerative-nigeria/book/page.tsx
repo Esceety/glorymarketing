@@ -275,9 +275,7 @@ export default function RegenerativeNigeriaBookPage() {
                 disabled={isSubmitting}
                 className="w-full rounded-lg bg-blue-600 px-8 py-4 text-base font-semibold text-white transition-all hover:bg-blue-700 disabled:bg-gray-400"
               >
-                {isSubmitting
-                  ? 'Submitting...'
-                  : 'Submit & Open WhatsApp'}
+                {isSubmitting ? 'Submitting...' : 'Submit & Open WhatsApp'}
               </button>
             </div>
 

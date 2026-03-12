@@ -35,9 +35,7 @@ export function trackNigeriaWhatsAppLead(
  * Track success page load (form submission complete)
  * Should be called once per page load using useRef guard
  */
-export function trackNigeriaSuccessLead(
-  testEventCode?: string | null
-): void {
+export function trackNigeriaSuccessLead(testEventCode?: string | null): void {
   if (typeof window === 'undefined' || !window.fbq) {
     return;
   }

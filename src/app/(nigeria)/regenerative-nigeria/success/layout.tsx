@@ -1,9 +1,9 @@
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title:
-    'Request Received | Glory Wellness & Regenerative Centre – Nigeria',
-  description: 'Your consultation request has been received. We will contact you shortly.',
+  title: 'Request Received | Glory Wellness & Regenerative Centre – Nigeria',
+  description:
+    'Your consultation request has been received. We will contact you shortly.',
   robots: { index: false, follow: false },
 };
 
