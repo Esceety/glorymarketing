@@ -41,6 +41,24 @@ export default function NigeriaLayout({ children }: { children: ReactNode }) {
         />
       </noscript>
 
+      {/* Google Analytics Tag */}
+      <Script
+        src="https://www.googletagmanager.com/gtag/js?id=G-XNJH08H8XZ"
+        strategy="afterInteractive"
+      />
+      <Script
+        id="google-analytics-nigeria"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-XNJH08H8XZ');
+          `,
+        }}
+      />
+
       <div className="flex min-h-screen flex-col bg-white">
       {/* Simple Institutional Header */}
       <header className="border-b border-gray-200 bg-white">
