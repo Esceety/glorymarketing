@@ -21,8 +21,8 @@ export function SiteFooter() {
         <div className="flex flex-col md:flex-row justify-between items-center gap-4">
           <div className="text-center md:text-left">
             <p className="text-gray-600">
-              © {currentYear} Glory MedClinic, LLC (Glory Regenerative Center). All
-              rights reserved.
+              © {currentYear} Glory MedClinic, LLC (Glory Regenerative Center).
+              All rights reserved.
             </p>
           </div>
           <div>

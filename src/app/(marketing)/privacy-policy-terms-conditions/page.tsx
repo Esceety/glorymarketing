@@ -188,25 +188,25 @@ export default function PrivacyPolicyTermsPage() {
           <p className="text-gray-700 leading-relaxed mb-4">
             Text messages are sent by Glory MedClinic, LLC, a Florida limited
             liability company operating as Glory Regenerative Center, only to
-            people who opt in by checking the
-            optional SMS box on our forms. Messages cover consultation and
-            voucher requests, appointment scheduling, confirmations and
-            reminders, follow-ups, and occasional offers and promotions.
-            Opting in is not a condition of purchase or treatment. Message
-            frequency varies. Message and data rates may apply.
+            people who opt in by checking the optional SMS box on our forms.
+            Messages cover consultation and voucher requests, appointment
+            scheduling, confirmations and reminders, follow-ups, and occasional
+            offers and promotions. Opting in is not a condition of purchase or
+            treatment. Message frequency varies. Message and data rates may
+            apply.
           </p>
           <p className="text-gray-700 leading-relaxed mb-4">
             Reply STOP to any message to stop receiving texts (reply START to
             opt in again). Reply HELP for help, or contact us at
-            info@gloryregenerative.com or any of our clinic locations.
-            Carriers are not liable for delayed or undelivered messages.
+            info@gloryregenerative.com or any of our clinic locations. Carriers
+            are not liable for delayed or undelivered messages.
           </p>
           <p className="text-gray-700 leading-relaxed mb-4">
             We do not sell, rent, or share your mobile number or SMS opt-in
             consent with third parties or affiliates for their marketing or
             promotional purposes. Text messaging originator opt-in data and
-            consent will not be shared with any third parties, except with
-            the service providers that deliver the messages on our behalf.
+            consent will not be shared with any third parties, except with the
+            service providers that deliver the messages on our behalf.
           </p>
 
           <h3 className="text-xl font-semibold mb-3 mt-6">
