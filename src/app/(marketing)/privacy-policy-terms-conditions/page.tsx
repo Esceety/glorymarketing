@@ -76,6 +76,13 @@ export default function PrivacyPolicyTermsPage() {
             authorized to use your personal information as necessary to provide
             the requested services.
           </p>
+          <p className="text-gray-700 leading-relaxed mb-4 font-medium">
+            The categories above exclude text messaging originator opt-in data
+            and consent; this information is not shared with any third party.
+            Mobile phone numbers, SMS opt-in status and consent records will not
+            be shared with, sold to, or obtained by any third party or affiliate
+            for any purpose.
+          </p>
           <p className="text-gray-700 leading-relaxed mb-4">
             We may also disclose your personal information if required by law or
             to protect our rights, property, or safety, as well as the rights,
@@ -205,8 +212,8 @@ export default function PrivacyPolicyTermsPage() {
             We do not sell, rent, or share your mobile number or SMS opt-in
             consent with third parties or affiliates for their marketing or
             promotional purposes. Text messaging originator opt-in data and
-            consent will not be shared with any third parties, except with the
-            service providers that deliver the messages on our behalf.
+            consent will not be shared with, sold to, or obtained by any third
+            party or affiliate for any purpose.
           </p>
 
           <h3 className="text-xl font-semibold mb-3 mt-6">
