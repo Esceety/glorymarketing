@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { SMS_CONSENT_TEXT } from '@/lib/sms-consent';
 import { useRouter } from 'next/navigation';
 
 interface Location {
@@ -38,6 +39,7 @@ interface FormData {
   currentWeight: string;
   goalWeight: string;
   notes: string;
+  smsConsent: boolean;
 }
 
 export function WeightLossBookingForm() {
@@ -58,6 +60,7 @@ export function WeightLossBookingForm() {
     currentWeight: '',
     goalWeight: '',
     notes: '',
+    smsConsent: false,
   });
 
   const handleLocationSelect = (location: Location) => {
@@ -102,6 +105,8 @@ export function WeightLossBookingForm() {
         goalWeight: formData.goalWeight,
         notes: formData.notes,
         program: 'Weight Loss',
+        smsConsent: formData.smsConsent,
+        smsConsentText: formData.smsConsent ? SMS_CONSENT_TEXT : '',
         timestamp: new Date().toISOString(),
       };
 
@@ -411,6 +416,35 @@ export function WeightLossBookingForm() {
                 </select>
               </div>
             </div>
+
+            {/* SMS opt-in (A2P 10DLC): optional, never pre-checked. */}
+            <label className="flex items-start gap-3 rounded-lg border border-gray-200 p-4 cursor-pointer">
+              <input
+                type="checkbox"
+                name="smsConsent"
+                checked={formData.smsConsent}
+                onChange={(e) =>
+                  setFormData((prev) => ({
+                    ...prev,
+                    smsConsent: e.target.checked,
+                  }))
+                }
+                className="mt-1 h-4 w-4 flex-shrink-0"
+              />
+              <span className="text-xs leading-relaxed text-gray-600">
+                <span className="font-semibold text-gray-800">
+                  Text me (optional).
+                </span>{' '}
+                {SMS_CONSENT_TEXT} See our{' '}
+                <a
+                  href="/weight-loss/privacy-policy-terms-conditions"
+                  className="underline"
+                >
+                  Privacy Policy &amp; Terms
+                </a>
+                .
+              </span>
+            </label>
 
             {/* Weight Information */}
             <div className="grid sm:grid-cols-2 gap-4">

@@ -178,19 +178,34 @@ export default function PrivacyPolicyTermsPage() {
           <p className="text-gray-700 leading-relaxed mb-4">
             Glory Regenerative Center reserves the right to correct grammatical
             and typing errors, to shorten testimonials prior to publication or
-            use, and to review all testimonials submitted. In the event that you
-            voluntarily provide your mobile phone number through a website owned
-            by Glory Regenerative Center, you are consenting to receive
-            automated text messages from Glory Regenerative Center. Glory
-            Regenerative Center shall be free to publish your testimonials
-            submitted. In the event that you voluntarily provide your mobile
-            phone number through a website owned by Glory Regenerative Center,
-            you are consenting to receive automated text messages from Glory
-            Regenerative Center. You can revoke your consent by responding to a
-            Glory Regenerative Center text message with "STOP" at any time. This
-            is the sole method of withdrawing consent to receiving text messages
-            from Glory Regenerative Center as expressly agreed to attract
-            parties. Standard message and data rates may apply.
+            use, and to review all testimonials submitted. Glory Regenerative
+            Center shall be free to publish your testimonials submitted.
+          </p>
+
+          <h3 className="text-xl font-semibold mb-3 mt-6">
+            SMS/Text Messaging Privacy and Terms
+          </h3>
+          <p className="text-gray-700 leading-relaxed mb-4">
+            Glory Regenerative Center is operated by Glory MedClinic, LLC. We
+            send text messages only to people who opt in by checking the
+            optional SMS box on our forms. Messages cover consultation and
+            voucher requests, appointment scheduling, confirmations and
+            reminders, follow-ups, and occasional offers and promotions.
+            Opting in is not a condition of purchase or treatment. Message
+            frequency varies. Message and data rates may apply.
+          </p>
+          <p className="text-gray-700 leading-relaxed mb-4">
+            Reply STOP to any message to stop receiving texts (reply START to
+            opt in again). Reply HELP for help, or contact us at
+            info@gloryregenerative.com or any of our clinic locations.
+            Carriers are not liable for delayed or undelivered messages.
+          </p>
+          <p className="text-gray-700 leading-relaxed mb-4">
+            We do not sell, rent, or share your mobile number or SMS opt-in
+            consent with third parties or affiliates for their marketing or
+            promotional purposes. Text messaging originator opt-in data and
+            consent will not be shared with any third parties, except with
+            the service providers that deliver the messages on our behalf.
           </p>
 
           <h3 className="text-xl font-semibold mb-3 mt-6">
