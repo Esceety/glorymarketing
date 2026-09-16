@@ -3,7 +3,7 @@
 // the optional, unchecked SMS opt-in and sent with the submission
 // (`smsConsentText`) so the Operations Platform keeps what was agreed.
 
-export const SMS_BRAND = 'Glory Regenerative Center (Glory MedClinic, LLC)';
+export const SMS_BRAND = 'Glory MedClinic, LLC (Glory Regenerative Center)';
 
 export const SMS_CONSENT_TEXT =
   `I agree to receive text messages from ${SMS_BRAND} at the phone number ` +

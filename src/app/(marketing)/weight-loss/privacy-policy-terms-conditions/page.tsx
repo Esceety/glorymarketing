@@ -186,8 +186,9 @@ export default function PrivacyPolicyTermsPage() {
             SMS/Text Messaging Privacy and Terms
           </h3>
           <p className="text-gray-700 leading-relaxed mb-4">
-            Glory Regenerative Center is operated by Glory MedClinic, LLC. We
-            send text messages only to people who opt in by checking the
+            Text messages are sent by Glory MedClinic, LLC, a Florida limited
+            liability company operating as Glory Regenerative Center, only to
+            people who opt in by checking the
             optional SMS box on our forms. Messages cover consultation and
             voucher requests, appointment scheduling, confirmations and
             reminders, follow-ups, and occasional offers and promotions.
