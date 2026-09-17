@@ -2,9 +2,12 @@
 
 import { useState, useEffect } from 'react';
 import {
-  SMS_CONSENT_FULL_TEXT,
-  SMS_CONSENT_LEAD_IN,
-  SMS_CONSENT_TEXT,
+  SMS_CONSENT_MARKETING_FULL_TEXT,
+  SMS_CONSENT_MARKETING_LEAD_IN,
+  SMS_CONSENT_MARKETING_TEXT,
+  SMS_CONSENT_SERVICE_FULL_TEXT,
+  SMS_CONSENT_SERVICE_LEAD_IN,
+  SMS_CONSENT_SERVICE_TEXT,
   SMS_CONSENT_VERSION,
 } from '@/lib/sms-consent';
 import { useRouter } from 'next/navigation';
@@ -45,6 +48,7 @@ interface FormData {
   goalWeight: string;
   notes: string;
   smsConsent: boolean;
+  smsMarketingConsent: boolean;
 }
 
 export function WeightLossBookingForm() {
@@ -66,6 +70,7 @@ export function WeightLossBookingForm() {
     goalWeight: '',
     notes: '',
     smsConsent: false,
+    smsMarketingConsent: false,
   });
 
   const handleLocationSelect = (location: Location) => {
@@ -111,8 +116,15 @@ export function WeightLossBookingForm() {
         notes: formData.notes,
         program: 'Weight Loss',
         smsConsent: formData.smsConsent,
-        smsConsentText: formData.smsConsent ? SMS_CONSENT_FULL_TEXT : '',
-        smsConsentVersion: formData.smsConsent ? SMS_CONSENT_VERSION : '',
+        smsConsentText: formData.smsConsent ? SMS_CONSENT_SERVICE_FULL_TEXT : '',
+        smsMarketingConsent: formData.smsMarketingConsent,
+        smsMarketingConsentText: formData.smsMarketingConsent
+          ? SMS_CONSENT_MARKETING_FULL_TEXT
+          : '',
+        smsConsentVersion:
+          formData.smsConsent || formData.smsMarketingConsent
+            ? SMS_CONSENT_VERSION
+            : '',
         sourceUrl:
           typeof window === 'undefined' ? '' : window.location.href,
         timestamp: new Date().toISOString(),
@@ -423,34 +435,66 @@ export function WeightLossBookingForm() {
               </div>
             </div>
 
-            {/* SMS opt-in (A2P 10DLC): optional, never pre-checked. */}
-            <label className="flex items-start gap-3 rounded-lg border border-gray-200 p-4 cursor-pointer">
-              <input
-                type="checkbox"
-                name="smsConsent"
-                checked={formData.smsConsent}
-                onChange={(e) =>
-                  setFormData((prev) => ({
-                    ...prev,
-                    smsConsent: e.target.checked,
-                  }))
-                }
-                className="mt-1 h-4 w-4 flex-shrink-0"
-              />
-              <span className="text-xs leading-relaxed text-gray-600">
-                <span className="font-semibold text-gray-800">
-                  {SMS_CONSENT_LEAD_IN}
-                </span>{' '}
-                {SMS_CONSENT_TEXT} See our{' '}
-                <a
-                  href="/weight-loss/privacy-policy-terms-conditions"
-                  className="underline"
-                >
-                  Privacy Policy &amp; Terms
-                </a>
-                .
-              </span>
-            </label>
+            {/* SMS opt-ins (A2P 10DLC). TWO separate boxes: carriers refuse a
+                single box that bundles promotional consent with service
+                messages. Both optional, both unchecked, either one alone. */}
+            <div className="space-y-3">
+              <label className="flex items-start gap-3 rounded-lg border border-gray-200 p-4 cursor-pointer">
+                <input
+                  type="checkbox"
+                  name="smsConsent"
+                  checked={formData.smsConsent}
+                  onChange={(e) =>
+                    setFormData((prev) => ({
+                      ...prev,
+                      smsConsent: e.target.checked,
+                    }))
+                  }
+                  className="mt-1 h-4 w-4 flex-shrink-0"
+                />
+                <span className="text-xs leading-relaxed text-gray-600">
+                  <span className="font-semibold text-gray-800">
+                    {SMS_CONSENT_SERVICE_LEAD_IN}
+                  </span>{' '}
+                  {SMS_CONSENT_SERVICE_TEXT} See our{' '}
+                  <a
+                    href="/weight-loss/privacy-policy-terms-conditions"
+                    className="underline"
+                  >
+                    Privacy Policy &amp; Terms
+                  </a>
+                  .
+                </span>
+              </label>
+
+              <label className="flex items-start gap-3 rounded-lg border border-gray-200 p-4 cursor-pointer">
+                <input
+                  type="checkbox"
+                  name="smsMarketingConsent"
+                  checked={formData.smsMarketingConsent}
+                  onChange={(e) =>
+                    setFormData((prev) => ({
+                      ...prev,
+                      smsMarketingConsent: e.target.checked,
+                    }))
+                  }
+                  className="mt-1 h-4 w-4 flex-shrink-0"
+                />
+                <span className="text-xs leading-relaxed text-gray-600">
+                  <span className="font-semibold text-gray-800">
+                    {SMS_CONSENT_MARKETING_LEAD_IN}
+                  </span>{' '}
+                  {SMS_CONSENT_MARKETING_TEXT} See our{' '}
+                  <a
+                    href="/weight-loss/privacy-policy-terms-conditions"
+                    className="underline"
+                  >
+                    Privacy Policy &amp; Terms
+                  </a>
+                  .
+                </span>
+              </label>
+            </div>
 
             {/* Weight Information */}
             <div className="grid sm:grid-cols-2 gap-4">

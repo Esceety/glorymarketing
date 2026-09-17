@@ -41,38 +41,59 @@ export async function POST(req: NextRequest) {
   const str = (key: string): string | null =>
     typeof payload[key] === 'string' ? (payload[key] as string) : null;
 
-  // 1. Proof of consent, before anything can go wrong downstream.
+  // 1. Proof of consent, before anything can go wrong downstream. The service
+  // and marketing boxes are separate controls, so each ticked box is recorded
+  // as its own row — a marketing audit must never be answered with a service
+  // opt-in.
   const ingestKey = process.env.SMS_CONSENT_INGEST_KEY;
-  if (payload.smsConsent === true && str('phone')) {
+  const consents: { type: 'service' | 'marketing'; text: string | null }[] = [];
+  if (payload.smsConsent === true) {
+    consents.push({ type: 'service', text: str('smsConsentText') });
+  }
+  if (payload.smsMarketingConsent === true) {
+    consents.push({ type: 'marketing', text: str('smsMarketingConsentText') });
+  }
+
+  if (consents.length > 0 && str('phone')) {
     if (!ingestKey) {
       console.error('[weight-loss-booking] SMS_CONSENT_INGEST_KEY not set');
     } else {
-      try {
-        const res = await fetch(CONSENT_ENDPOINT, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'x-consent-key': ingestKey,
-          },
-          body: JSON.stringify({
-            phone: str('phone'),
-            email: str('email'),
-            name: [str('firstName'), str('lastName')].filter(Boolean).join(' '),
-            sourceUrl:
-              str('sourceUrl') ??
-              'https://gloryregenerativemed.com/weight-loss/book',
-            sourceForm: 'weight-loss-booking',
-            consentText: str('smsConsentText'),
-            consentVersion: str('smsConsentVersion'),
-            ipAddress: clientIp(req),
-            userAgent: req.headers.get('user-agent'),
-          }),
-        });
-        if (!res.ok) {
-          console.error('[weight-loss-booking] consent record HTTP', res.status);
+      for (const consent of consents) {
+        try {
+          const res = await fetch(CONSENT_ENDPOINT, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'x-consent-key': ingestKey,
+            },
+            body: JSON.stringify({
+              phone: str('phone'),
+              email: str('email'),
+              name: [str('firstName'), str('lastName')]
+                .filter(Boolean)
+                .join(' '),
+              sourceUrl:
+                str('sourceUrl') ??
+                'https://gloryregenerativemed.com/weight-loss/book',
+              sourceForm: 'weight-loss-booking',
+              consentType: consent.type,
+              consentText: consent.text,
+              consentVersion: str('smsConsentVersion'),
+              ipAddress: clientIp(req),
+              userAgent: req.headers.get('user-agent'),
+            }),
+          });
+          if (!res.ok) {
+            console.error(
+              `[weight-loss-booking] ${consent.type} consent record HTTP`,
+              res.status,
+            );
+          }
+        } catch {
+          console.error(
+            `[weight-loss-booking] ${consent.type} consent record failed`,
+          );
         }
-      } catch {
-        console.error('[weight-loss-booking] consent record request failed');
       }
     }
   }
