@@ -1,7 +1,12 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { SMS_CONSENT_TEXT } from '@/lib/sms-consent';
+import {
+  SMS_CONSENT_FULL_TEXT,
+  SMS_CONSENT_LEAD_IN,
+  SMS_CONSENT_TEXT,
+  SMS_CONSENT_VERSION,
+} from '@/lib/sms-consent';
 import { useRouter } from 'next/navigation';
 
 interface Location {
@@ -106,21 +111,22 @@ export function WeightLossBookingForm() {
         notes: formData.notes,
         program: 'Weight Loss',
         smsConsent: formData.smsConsent,
-        smsConsentText: formData.smsConsent ? SMS_CONSENT_TEXT : '',
+        smsConsentText: formData.smsConsent ? SMS_CONSENT_FULL_TEXT : '',
+        smsConsentVersion: formData.smsConsent ? SMS_CONSENT_VERSION : '',
+        sourceUrl:
+          typeof window === 'undefined' ? '' : window.location.href,
         timestamp: new Date().toISOString(),
       };
 
-      // Send to webhook
-      const response = await fetch(
-        'https://services.leadconnectorhq.com/hooks/frOF5AUZh2Y3wYJ8wlQw/webhook-trigger/a71bc017-5d5a-4e54-b07c-35e7887106bd',
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(webhookData),
-        }
-      );
+      // Our route records the SMS opt-in (proof of consent) and forwards
+      // the lead to GoHighLevel.
+      const response = await fetch('/api/weight-loss-booking', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(webhookData),
+      });
 
       if (response.ok) {
         // Store minimal data in localStorage for success page
@@ -433,7 +439,7 @@ export function WeightLossBookingForm() {
               />
               <span className="text-xs leading-relaxed text-gray-600">
                 <span className="font-semibold text-gray-800">
-                  Text me (optional).
+                  {SMS_CONSENT_LEAD_IN}
                 </span>{' '}
                 {SMS_CONSENT_TEXT} See our{' '}
                 <a

@@ -25,13 +25,28 @@ export function SiteFooter() {
               All rights reserved.
             </p>
           </div>
-          <div>
+          <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2">
             <Link
               href={privacyHref}
               className="text-gray-600 hover:text-blue-600 transition-colors"
             >
-              Privacy Policy & Terms
+              Privacy Policy &amp; Terms
             </Link>
+            {/* A2P 10DLC: the SMS programme details live on the registered
+                brand's site, and this link ties the two domains together
+                for a carrier reviewer. */}
+            <a
+              href="https://gloryregenerative.com/sms-consent"
+              className="text-gray-600 hover:text-blue-600 transition-colors"
+            >
+              SMS Terms
+            </a>
+            <a
+              href="https://gloryregenerative.com"
+              className="text-gray-600 hover:text-blue-600 transition-colors"
+            >
+              Part of Glory Regenerative Center
+            </a>
           </div>
         </div>
       </div>

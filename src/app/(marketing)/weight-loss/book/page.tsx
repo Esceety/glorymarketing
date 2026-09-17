@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import Image from 'next/image';
 import { Badge } from '@/components/ui/Badge';
 import { WeightLossBookingForm } from '@/components/ui/WeightLossBookingForm';
+import { SmsConsentDisclosure } from '@/components/ui/SmsConsentDisclosure';
 
 export const metadata: Metadata = {
   title: 'Book Your Weight Loss Consultation | Glory Regenerative',
@@ -85,6 +86,12 @@ export default function WeightLossBookPage() {
       {/* Booking Form */}
       <div className="max-w-4xl mx-auto">
         <WeightLossBookingForm />
+      </div>
+
+      {/* Always in the initial HTML: carriers read the opt-in wording
+          here without stepping through the form (A2P error 30896). */}
+      <div className="max-w-4xl mx-auto">
+        <SmsConsentDisclosure />
       </div>
 
       {/* What to Expect */}
