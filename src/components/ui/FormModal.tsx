@@ -1,185 +1,226 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { createPortal } from 'react-dom';
 import { useRouter } from 'next/navigation';
+import {
+  SMS_CONSENT_MARKETING_FULL_TEXT,
+  SMS_CONSENT_MARKETING_LEAD_IN,
+  SMS_CONSENT_MARKETING_TEXT,
+  SMS_CONSENT_SERVICE_FULL_TEXT,
+  SMS_CONSENT_SERVICE_LEAD_IN,
+  SMS_CONSENT_SERVICE_TEXT,
+  SMS_CONSENT_VERSION,
+} from '@/lib/sms-consent';
 
 interface FormModalProps {
   isOpen: boolean;
   onClose: () => void;
-  formId?: string; // Optional form ID for different forms
+  formId?: string; // which offer; the ids are the old GoHighLevel form ids
 }
 
-export function FormModal({
-  isOpen,
-  onClose,
-  formId = 'ouANN3PSeW0qb7AAdVpr',
-}: FormModalProps) {
+/**
+ * The "Claim your voucher" pop-up. Until 2026-09-23 it framed a GoHighLevel
+ * form from link.esceety-us.com; that host has served another site's 404
+ * since 2026-09-06, so the pop-up showed an error and no voucher lead arrived.
+ * It is a native form now, posting to /api/voucher-optin, which hands the
+ * lead to the Glory Operations Platform. Callers still pass the old GHL form
+ * id, which picks the offer below.
+ */
+const OFFERS: Record<
+  string,
+  { offer: string; heading: string; sub: string; successPath: string; privacyHref: string }
+> = {
+  ouANN3PSeW0qb7AAdVpr: {
+    offer: 'pain-relief',
+    heading: 'Claim your $100 Pain Relief Voucher',
+    sub: 'Knee, hip, neck, lower back and joint pain assessment. We will be in touch to schedule your visit.',
+    successPath: '/book',
+    privacyHref: '/privacy-policy-terms-conditions',
+  },
+  unuDEJBs8DPU2COLwKLT: {
+    offer: 'stem-cell',
+    heading: 'Claim your $100 Stem Cell Consultation Voucher',
+    sub: 'Full health history, comprehensive evaluation and a personalized treatment plan.',
+    successPath: '/book',
+    privacyHref: '/privacy-policy-terms-conditions',
+  },
+  wz9f6DHcnCdzO5C7vX0x: {
+    offer: 'weight-loss',
+    heading: 'Claim 50% off your first month',
+    sub: 'Physician-supervised medical weight loss for new patients.',
+    successPath: '/weight-loss/success',
+    privacyHref: '/weight-loss/privacy-policy-terms-conditions',
+  },
+};
+
+const EMPTY = {
+  firstName: '',
+  lastName: '',
+  email: '',
+  phone: '',
+  smsConsent: false,
+  smsMarketingConsent: false,
+  website: '', // honeypot: people never see it
+};
+
+export function FormModal({ isOpen, onClose, formId = 'ouANN3PSeW0qb7AAdVpr' }: FormModalProps) {
   const [mounted, setMounted] = useState(false);
+  const [form, setForm] = useState(EMPTY);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState('');
   const router = useRouter();
-
-  // Determine form configuration based on formId
-  const formConfig = {
-    ouANN3PSeW0qb7AAdVpr: {
-      src: 'https://link.esceety-us.com/widget/form/ouANN3PSeW0qb7AAdVpr',
-      title: 'A) New "Preferred" Lead Optin Form',
-      height: '650px',
-      dataHeight: '638',
-    },
-    unuDEJBs8DPU2COLwKLT: {
-      src: 'https://link.esceety-us.com/widget/form/unuDEJBs8DPU2COLwKLT',
-      title: 'B) New "Preferred" Lead Optin Form',
-      height: '663px',
-      dataHeight: '663',
-    },
-    wz9f6DHcnCdzO5C7vX0x: {
-      src: 'https://link.esceety-us.com/widget/form/wz9f6DHcnCdzO5C7vX0x',
-      title: 'Weight Loss Lead Optin Form',
-      height: '663px',
-      dataHeight: '663',
-    },
-  };
-
-  const config =
-    formConfig[formId as keyof typeof formConfig] ||
-    formConfig['ouANN3PSeW0qb7AAdVpr'];
+  const config = OFFERS[formId] ?? OFFERS['ouANN3PSeW0qb7AAdVpr'];
 
   useEffect(() => {
-    // Set mounted on the next tick to avoid SSR issues
     const timer = setTimeout(() => setMounted(true), 0);
     return () => clearTimeout(timer);
   }, []);
 
   useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'unset';
-    }
+    document.body.style.overflow = isOpen ? 'hidden' : 'unset';
     return () => {
       document.body.style.overflow = 'unset';
     };
   }, [isOpen]);
 
-  useEffect(() => {
-    // Listen for messages from the iframe (form submission)
-    const handleMessage = (event: MessageEvent) => {
-      // Check if message is from GoHighLevel
-      if (event.origin === 'https://link.esceety-us.com') {
-        // Check if this is a form submission event
-        if (event.data && typeof event.data === 'object') {
-          const data = event.data;
+  const set = (key: keyof typeof EMPTY, value: string | boolean) =>
+    setForm((prev) => ({ ...prev, [key]: value }));
 
-          // Store form data in localStorage for pre-filling the calendar
-          if (data.contact || data.firstName || data.first_name) {
-            const formData = {
-              firstName:
-                data.firstName ||
-                data.first_name ||
-                data.contact?.firstName ||
-                '',
-              lastName:
-                data.lastName || data.last_name || data.contact?.lastName || '',
-              email: data.email || data.contact?.email || '',
-              phone:
-                data.phone || data.phoneNumber || data.contact?.phone || '',
-              timestamp: new Date().toISOString(),
-            };
-
-            // Only store if we have at least some data
-            if (formData.firstName || formData.email || formData.phone) {
-              localStorage.setItem('userFormData', JSON.stringify(formData));
-            }
-          }
-
-          // If the message indicates success or redirection, navigate to appropriate success page
-          if (
-            data.eventName === 'form_submitted' ||
-            data.type === 'redirect' ||
-            data.success
-          ) {
-            setTimeout(() => {
-              onClose();
-              
-              // Preserve UTM parameters and test_event_code across navigation
-              const currentParams = new URLSearchParams(window.location.search);
-              const queryString = currentParams.toString();
-              const pathSuffix = queryString ? `?${queryString}` : '';
-              
-              // Redirect to weight loss success page for weight loss form
-              if (formId === 'wz9f6DHcnCdzO5C7vX0x') {
-                router.push(`/weight-loss/success${pathSuffix}`);
-              } else {
-                router.push(`/book${pathSuffix}`);
-              }
-            }, 500);
-          }
-        }
+  const onSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setError('');
+    setSubmitting(true);
+    try {
+      const res = await fetch('/api/voucher-optin', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          offer: config.offer,
+          firstName: form.firstName,
+          lastName: form.lastName,
+          email: form.email,
+          phone: form.phone,
+          smsConsent: form.smsConsent,
+          smsConsentText: form.smsConsent ? SMS_CONSENT_SERVICE_FULL_TEXT : '',
+          smsMarketingConsent: form.smsMarketingConsent,
+          smsMarketingConsentText: form.smsMarketingConsent ? SMS_CONSENT_MARKETING_FULL_TEXT : '',
+          smsConsentVersion: form.smsConsent || form.smsMarketingConsent ? SMS_CONSENT_VERSION : '',
+          sourceUrl: window.location.href,
+          website: form.website,
+        }),
+      });
+      if (!res.ok) {
+        const data = (await res.json().catch(() => ({}))) as { error?: string };
+        throw new Error(data.error || 'Something went wrong. Please try again or call (813) 932-9798.');
       }
-    };
-
-    window.addEventListener('message', handleMessage);
-    return () => window.removeEventListener('message', handleMessage);
-  }, [onClose, router, formId]);
+      setForm(EMPTY);
+      onClose();
+      // Keep campaign parameters (UTM, test codes) across the redirect.
+      const query = window.location.search;
+      router.push(`${config.successPath}${query}`);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Something went wrong. Please try again.');
+    } finally {
+      setSubmitting(false);
+    }
+  };
 
   if (!mounted || !isOpen) return null;
 
-  return (
+  const input =
+    'w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent';
+
+  // Portalled to <body>: the pages open this from inside sections with a
+  // backdrop blur, and a blur makes that section the frame for anything
+  // `fixed`, so the overlay was clipped to the section instead of the screen.
+  return createPortal(
     <div
       className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm animate-in fade-in duration-200 overflow-y-auto"
       onClick={onClose}
     >
       <div className="min-h-full flex items-center justify-center p-4">
         <div
-          className="relative w-full max-w-2xl bg-white rounded-2xl shadow-2xl animate-in zoom-in-95 duration-300"
+          className="relative w-full max-w-xl bg-white rounded-2xl shadow-2xl animate-in zoom-in-95 duration-300"
           onClick={(e) => e.stopPropagation()}
         >
-          {/* Close Button */}
           <button
             onClick={onClose}
             className="absolute -top-4 -right-4 z-10 w-12 h-12 flex items-center justify-center rounded-full bg-white hover:bg-gray-100 shadow-lg transition-all hover:scale-110"
             aria-label="Close form"
           >
-            <svg
-              className="w-6 h-6 text-gray-700"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M6 18L18 6M6 6l12 12"
-              />
+            <svg className="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
             </svg>
           </button>
 
-          {/* Form Content */}
-          <div className="w-full rounded-2xl overflow-hidden">
-            <iframe
-              src={config.src}
-              style={{
-                width: '100%',
-                height: config.height,
-                border: 'none',
-              }}
-              id={`inline-${formId}`}
-              data-layout="{'id':'INLINE'}"
-              data-trigger-type="alwaysShow"
-              data-trigger-value=""
-              data-activation-type="alwaysActivated"
-              data-activation-value=""
-              data-deactivation-type="neverDeactivate"
-              data-deactivation-value=""
-              data-form-name={config.title}
-              data-height={config.dataHeight}
-              data-layout-iframe-id={`inline-${formId}`}
-              data-form-id={formId}
-              title={config.title}
-            />
-          </div>
+          <form onSubmit={onSubmit} className="p-6 sm:p-8 space-y-4">
+            <div>
+              <h2 className="text-2xl font-bold text-gray-900">{config.heading}</h2>
+              <p className="mt-1 text-sm text-gray-600">{config.sub}</p>
+            </div>
+
+            <div className="grid sm:grid-cols-2 gap-4">
+              <div>
+                <label htmlFor="vo-first" className="block text-sm font-medium text-gray-700 mb-1">First name *</label>
+                <input id="vo-first" required autoComplete="given-name" value={form.firstName}
+                  onChange={(e) => set('firstName', e.target.value)} className={input} />
+              </div>
+              <div>
+                <label htmlFor="vo-last" className="block text-sm font-medium text-gray-700 mb-1">Last name *</label>
+                <input id="vo-last" required autoComplete="family-name" value={form.lastName}
+                  onChange={(e) => set('lastName', e.target.value)} className={input} />
+              </div>
+            </div>
+            <div>
+              <label htmlFor="vo-email" className="block text-sm font-medium text-gray-700 mb-1">Email *</label>
+              <input id="vo-email" type="email" required autoComplete="email" value={form.email}
+                onChange={(e) => set('email', e.target.value)} className={input} />
+            </div>
+            <div>
+              <label htmlFor="vo-phone" className="block text-sm font-medium text-gray-700 mb-1">Phone *</label>
+              <input id="vo-phone" type="tel" required autoComplete="tel" value={form.phone}
+                onChange={(e) => set('phone', e.target.value)} className={input} />
+            </div>
+
+            {/* Honeypot: hidden from people, filled by bots. */}
+            <input type="text" name="website" tabIndex={-1} autoComplete="off" aria-hidden="true"
+              value={form.website} onChange={(e) => set('website', e.target.value)}
+              style={{ position: 'absolute', left: '-10000px', width: 1, height: 1, opacity: 0 }} />
+
+            {/* SMS opt-ins (A2P 10DLC): TWO separate boxes, both optional and
+                unchecked, either one alone. Same wording as every other form. */}
+            <div className="space-y-3">
+              <label className="flex items-start gap-3 rounded-lg border border-gray-200 p-4 cursor-pointer">
+                <input type="checkbox" name="smsConsent" checked={form.smsConsent}
+                  onChange={(e) => set('smsConsent', e.target.checked)} className="mt-1 h-4 w-4 flex-shrink-0" />
+                <span className="text-xs leading-relaxed text-gray-600">
+                  <span className="font-semibold text-gray-800">{SMS_CONSENT_SERVICE_LEAD_IN}</span>{' '}
+                  {SMS_CONSENT_SERVICE_TEXT} See our{' '}
+                  <a href={config.privacyHref} className="underline">Privacy Policy &amp; Terms</a>.
+                </span>
+              </label>
+              <label className="flex items-start gap-3 rounded-lg border border-gray-200 p-4 cursor-pointer">
+                <input type="checkbox" name="smsMarketingConsent" checked={form.smsMarketingConsent}
+                  onChange={(e) => set('smsMarketingConsent', e.target.checked)} className="mt-1 h-4 w-4 flex-shrink-0" />
+                <span className="text-xs leading-relaxed text-gray-600">
+                  <span className="font-semibold text-gray-800">{SMS_CONSENT_MARKETING_LEAD_IN}</span>{' '}
+                  {SMS_CONSENT_MARKETING_TEXT} See our{' '}
+                  <a href={config.privacyHref} className="underline">Privacy Policy &amp; Terms</a>.
+                </span>
+              </label>
+            </div>
+
+            {error && <p className="text-sm text-red-600" role="alert">{error}</p>}
+
+            <button type="submit" disabled={submitting}
+              className="w-full py-4 rounded-xl font-bold text-white bg-red-600 hover:bg-red-700 disabled:opacity-60 transition-colors">
+              {submitting ? 'Sending…' : 'Claim my voucher'}
+            </button>
+          </form>
         </div>
       </div>
-    </div>
+    </div>,
+    document.body,
   );
 }

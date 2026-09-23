@@ -2,38 +2,41 @@
 
 import { useState, useEffect } from 'react';
 
+/**
+ * Two-step booking: choose an office, then pick a time on that office's
+ * booking page on the Glory Operations Platform (ops.gloryregenerative.com).
+ * Until 2026-09-23 step 2 framed a GoHighLevel calendar from
+ * link.esceety-us.com, which has served another site's 404 since 2026-09-06.
+ * The platform page reports its content height ('ceety:embed-height'), so
+ * the frame grows with it on phones instead of clipping the time slots.
+ */
 interface Location {
   id: string;
   name: string;
   address: string;
   iframeUrl: string;
-  iframeId: string;
 }
+
+const BOOKING_ORIGIN = 'https://ops.gloryregenerative.com';
 
 const locations: Location[] = [
   {
     id: 'tampa',
     name: 'Tampa',
     address: '8019 N. Himes Ave., Suite 200, Tampa, FL 33614',
-    iframeUrl:
-      'https://link.esceety-us.com/widget/booking/gCPl71CVES7GLObW5Dam',
-    iframeId: 'gCPl71CVES7GLObW5Dam_1765900295400',
+    iframeUrl: `${BOOKING_ORIGIN}/book/tampa`,
   },
   {
     id: 'lakeland',
     name: 'Lakeland',
-    address: '1818 Harden Blvd, Suite 110, Lakeland, FL 33803',
-    iframeUrl:
-      'https://link.esceety-us.com/widget/booking/EuY0MqMtvTYQuVsxwqQv',
-    iframeId: 'EuY0MqMtvTYQuVsxwqQv_1765900305715',
+    address: '1818 Harden Blvd., Suite 110, Lakeland, FL 33803',
+    iframeUrl: `${BOOKING_ORIGIN}/book/lakeland`,
   },
   {
     id: 'newportrichey',
     name: 'New Port Richey',
-    address: '5622 Marine Parkway, Suite 8, New Port Richey, 34652',
-    iframeUrl:
-      'https://link.esceety-us.com/widget/booking/5YhjHb59G10dCmhnZZko',
-    iframeId: '5YhjHb59G10dCmhnZZko_1765900315932',
+    address: '5622 Marine Parkway, Suite 8, New Port Richey, FL 34652',
+    iframeUrl: `${BOOKING_ORIGIN}/book/new-port-richey`,
   },
 ];
 
@@ -42,85 +45,19 @@ export function MultiStepCalendar() {
   const [selectedLocation, setSelectedLocation] = useState<Location | null>(
     null
   );
-  const [userFormData, setUserFormData] = useState<any>(null);
+  const [frameHeight, setFrameHeight] = useState(1200);
 
   useEffect(() => {
-    // Load the calendar embed script
-    const script = document.createElement('script');
-    script.src = 'https://link.esceety-us.com/js/form_embed.js';
-    script.async = true;
-    document.body.appendChild(script);
-
-    return () => {
-      if (script.parentNode) {
-        script.parentNode.removeChild(script);
+    const onMessage = (event: MessageEvent) => {
+      if (event.origin !== BOOKING_ORIGIN) return;
+      const data = event.data as { type?: string; height?: number } | null;
+      if (data?.type === 'ceety:embed-height' && typeof data.height === 'number' && data.height > 200) {
+        setFrameHeight(Math.ceil(data.height));
       }
     };
+    window.addEventListener('message', onMessage);
+    return () => window.removeEventListener('message', onMessage);
   }, []);
-
-  useEffect(() => {
-    // Check URL parameters first (in case redirected from form with data)
-    if (typeof window !== 'undefined') {
-      const urlParams = new URLSearchParams(window.location.search);
-      const firstName =
-        urlParams.get('first_name') || urlParams.get('firstName');
-      const lastName = urlParams.get('last_name') || urlParams.get('lastName');
-      const email = urlParams.get('email');
-      const phone = urlParams.get('phone') || urlParams.get('phoneNumber');
-
-      if (firstName || email || phone) {
-        const urlData = {
-          firstName: firstName || '',
-          lastName: lastName || '',
-          email: email || '',
-          phone: phone || '',
-          timestamp: new Date().toISOString(),
-        };
-        localStorage.setItem('userFormData', JSON.stringify(urlData));
-        setUserFormData(urlData);
-        return;
-      }
-    }
-
-    // Read stored form data from localStorage
-    try {
-      const storedData = localStorage.getItem('userFormData');
-      if (storedData) {
-        const data = JSON.parse(storedData);
-        // Check if data is recent (within last 24 hours)
-        const timestamp = new Date(data.timestamp);
-        const now = new Date();
-        const hoursDiff =
-          (now.getTime() - timestamp.getTime()) / (1000 * 60 * 60);
-
-        if (hoursDiff < 24) {
-          setUserFormData(data);
-        } else {
-          // Clear old data
-          localStorage.removeItem('userFormData');
-        }
-      }
-    } catch (error) {
-      console.error('Error reading form data:', error);
-    }
-  }, []);
-
-  const getIframeUrlWithParams = (baseUrl: string) => {
-    if (!userFormData) return baseUrl;
-
-    const params = new URLSearchParams();
-
-    // Add available data as URL parameters
-    if (userFormData.firstName)
-      params.append('first_name', userFormData.firstName);
-    if (userFormData.lastName)
-      params.append('last_name', userFormData.lastName);
-    if (userFormData.email) params.append('email', userFormData.email);
-    if (userFormData.phone) params.append('phone', userFormData.phone);
-
-    const queryString = params.toString();
-    return queryString ? `${baseUrl}?${queryString}` : baseUrl;
-  };
 
   const handleLocationSelect = (location: Location) => {
     setSelectedLocation(location);
@@ -279,25 +216,17 @@ export function MultiStepCalendar() {
               </div>
             </div>
 
-            <div className="rounded-lg w-full" style={{ minHeight: '1200px' }}>
+            <div className="rounded-lg w-full">
               <iframe
                 key={selectedLocation.id}
-                src={getIframeUrlWithParams(selectedLocation.iframeUrl)}
+                src={selectedLocation.iframeUrl}
+                title={`Book an appointment in ${selectedLocation.name}`}
                 style={{
                   width: '100%',
-                  height: '1200px',
-                  minHeight: '1200px',
+                  height: `${frameHeight}px`,
                   border: 'none',
-                  overflow: 'hidden',
                 }}
-                scrolling="no"
-                id={selectedLocation.iframeId}
               />
-              {userFormData && (
-                <p className="text-xs text-gray-500 mt-2 text-center">
-                  ✓ Your information has been pre-filled
-                </p>
-              )}
             </div>
           </div>
         )}
