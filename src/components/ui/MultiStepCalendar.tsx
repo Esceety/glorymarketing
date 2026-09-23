@@ -10,7 +10,7 @@ import { useState, useEffect } from 'react';
  * The platform page reports its content height ('ceety:embed-height'), so
  * the frame grows with it on phones instead of clipping the time slots.
  */
-interface Location {
+export interface Location {
   id: string;
   name: string;
   address: string;
@@ -19,7 +19,7 @@ interface Location {
 
 const BOOKING_ORIGIN = 'https://ops.gloryregenerative.com';
 
-const locations: Location[] = [
+const DEFAULT_LOCATIONS: Location[] = [
   {
     id: 'tampa',
     name: 'Tampa',
@@ -40,10 +40,27 @@ const locations: Location[] = [
   },
 ];
 
-export function MultiStepCalendar() {
-  const [currentStep, setCurrentStep] = useState(1);
+/**
+ * The stem-cell funnel passes its own single calendar (the Tampa stem-cell
+ * consultation) so a stem-cell lead never books the pain clinic's general
+ * new-patient visit; with one office the visitor starts on the time picker.
+ */
+export const STEM_CELL_LOCATIONS: Location[] = [
+  {
+    id: 'stem-cell-tampa',
+    name: 'Tampa',
+    address: '8019 N. Himes Ave., Suite 200, Tampa, FL 33614',
+    iframeUrl: `${BOOKING_ORIGIN}/book/stem-cell-consultation`,
+  },
+];
+
+export function MultiStepCalendar({
+  locations = DEFAULT_LOCATIONS,
+}: { locations?: Location[] } = {}) {
+  const only = locations.length === 1 ? locations[0] : null;
+  const [currentStep, setCurrentStep] = useState(only ? 2 : 1);
   const [selectedLocation, setSelectedLocation] = useState<Location | null>(
-    null
+    only
   );
   const [frameHeight, setFrameHeight] = useState(1200);
 

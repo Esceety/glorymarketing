@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import Image from 'next/image';
 import { Badge } from '@/components/ui/Badge';
-import { MultiStepCalendar } from '@/components/ui/MultiStepCalendar';
+import { MultiStepCalendar, STEM_CELL_LOCATIONS } from '@/components/ui/MultiStepCalendar';
 
 export const metadata: Metadata = {
   title: 'Book Your Stem Cell Consultation | Glory Regenerative',
@@ -110,9 +110,10 @@ export default function StemCellBookPage() {
                 Ready to Book Your Stem Cell Consultation?
               </h3>
               <p className="text-gray-700 text-base sm:text-lg leading-relaxed">
-                Great! Let&apos;s get you scheduled. Simply select your
-                preferred location below, and you&apos;ll be able to choose a
-                convenient date and time for your consultation. We look forward
+                Great! Let&apos;s get you scheduled. Choose a convenient date
+                and time below. Stem cell consultations are held at our Tampa
+                office; if Lakeland or New Port Richey suits you better, call
+                us and we&apos;ll arrange it. We look forward
                 to helping you explore if stem cell therapy is the right
                 solution for your pain!
               </p>
@@ -122,7 +123,7 @@ export default function StemCellBookPage() {
 
         {/* Multi-Step Calendar */}
         <div>
-          <MultiStepCalendar />
+          <MultiStepCalendar locations={STEM_CELL_LOCATIONS} />
         </div>
 
         {/* What to Expect */}
