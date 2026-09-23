@@ -9,16 +9,19 @@ import { NextRequest, NextResponse } from 'next/server';
  * Submissions now come here first so that, when the optional SMS box is
  * ticked, the opt-in is written to the consent table on
  * gloryregenerative.com (same store as consultation opt-ins) before the lead
- * is forwarded to GHL exactly as before.
+ * is handed to the Glory Operations Platform (GoHighLevel until 2026-09-23).
  *
- * The lead still reaches GHL even if the consent write fails; a booking is
- * never lost over an audit record.
+ * The lead still reaches the platform even if the consent write fails; a
+ * booking is never lost over an audit record.
  */
 export const runtime = 'nodejs';
 
-const GHL_WEBHOOK_URL =
-  process.env.WEIGHT_LOSS_WEBHOOK_URL ??
-  'https://services.leadconnectorhq.com/hooks/frOF5AUZh2Y3wYJ8wlQw/webhook-trigger/a71bc017-5d5a-4e54-b07c-35e7887106bd';
+// The Glory Operations Platform replaced the GoHighLevel webhook at go-live
+// (2026-09-23). `PLATFORM_INTAKE_URL` overrides the target for local testing
+// only.
+const PLATFORM_INTAKE_URL =
+  process.env.PLATFORM_INTAKE_URL ||
+  'https://ops.gloryregenerative.com/api/public/intake';
 
 const CONSENT_ENDPOINT =
   process.env.SMS_CONSENT_ENDPOINT ??
@@ -98,15 +101,31 @@ export async function POST(req: NextRequest) {
     }
   }
 
-  // 2. Forward the lead to GoHighLevel, unchanged.
+  // 2. Hand the lead to the platform: it becomes a patient at the chosen
+  // office with a card on Patient Journey → New Lead, the whole request kept
+  // on the record (current and goal weight included) and the clinic's
+  // automations fired. `services` names the program, because notes are
+  // optional here and the platform needs a message or a service. The
+  // visitor's IP and browser go along so the platform records the person.
+  const ip = clientIp(req);
   try {
-    const res = await fetch(GHL_WEBHOOK_URL, {
+    const res = await fetch(PLATFORM_INTAKE_URL, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload),
+      headers: {
+        'Content-Type': 'application/json',
+        ...(ip ? { 'x-forwarded-for': ip } : {}),
+        'user-agent': req.headers.get('user-agent') || 'gloryregenerativemed.com',
+      },
+      body: JSON.stringify({
+        ...payload,
+        formKey: 'weight-loss-booking',
+        productLine: 'weight_loss',
+        services: ['Weight Loss Program'],
+      }),
+      cache: 'no-store',
     });
     if (!res.ok) {
-      console.error('[weight-loss-booking] webhook returned', res.status);
+      console.error('[weight-loss-booking] platform intake returned', res.status);
       return NextResponse.json(
         { error: 'Submission failed. Please try again.' },
         { status: 502 },
