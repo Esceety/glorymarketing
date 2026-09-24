@@ -303,7 +303,7 @@ export default function WeightLossSuccessPage() {
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <a
-            href="tel:+18135551234"
+            href="tel:+18139329798"
             className="inline-flex items-center justify-center px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-colors"
           >
             <svg
@@ -322,7 +322,7 @@ export default function WeightLossSuccessPage() {
             Call Us
           </a>
           <a
-            href="mailto:info@gloryregenerativemd.com"
+            href="mailto:info@gloryregenerative.com"
             className="inline-flex items-center justify-center px-6 py-3 bg-gray-600 hover:bg-gray-700 text-white font-semibold rounded-lg transition-colors"
           >
             <svg

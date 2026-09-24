@@ -133,7 +133,7 @@ function PaymentCancelledContent() {
                 about the voucher, we&apos;re here to help.
               </p>
               <a
-                href="tel:+18135551234"
+                href="tel:+18139329798"
                 className="inline-flex items-center text-cyan-600 hover:text-cyan-700 font-medium"
               >
                 <svg
@@ -149,7 +149,7 @@ function PaymentCancelledContent() {
                     d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
                   />
                 </svg>
-                (813) 555-1234
+                (813) 932-9798
               </a>
               <p className="text-sm text-gray-500 mt-2">
                 Monday - Friday, 9 AM - 5 PM EST
