@@ -31,6 +31,8 @@ export function SiteHeader() {
   const isBookingPage =
     pathname === '/book' ||
     pathname === '/stem-cell/book' ||
+    pathname === '/book/requested' ||
+    pathname === '/stem-cell/book/requested' ||
     pathname === '/weight-loss/book' ||
     pathname === '/success' ||
     pathname === '/stem-cell/success' ||

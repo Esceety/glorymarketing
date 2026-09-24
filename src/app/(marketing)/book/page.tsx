@@ -71,7 +71,7 @@ export default function BookPage() {
 
         {/* Multi-Step Calendar */}
         <div>
-          <MultiStepCalendar service="pain-relief-voucher" />
+          <MultiStepCalendar service="pain-relief-voucher" successPath="/book/requested" />
         </div>
 
         {/* What to Expect */}

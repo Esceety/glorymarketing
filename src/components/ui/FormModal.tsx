@@ -117,6 +117,18 @@ export function FormModal({ isOpen, onClose, formId = 'ouANN3PSeW0qb7AAdVpr' }: 
         throw new Error(data.error || 'Something went wrong. Please try again or call (813) 932-9798.');
       }
       const data = (await res.json().catch(() => ({}))) as { leadPass?: string | null };
+      // Meta "Lead" at the claim itself. The old /success pages fired it;
+      // since the pop-up leads straight to booking (2026-09-23) nothing did.
+      // (A /success page still fires it itself: weight loss.)
+      if (typeof window !== 'undefined' && window.fbq && !config.successPath.endsWith('/success')) {
+        const testEventCode = new URLSearchParams(window.location.search).get('test_event_code');
+        const leadData = { content_name: config.heading, content_category: config.offer };
+        if (testEventCode) {
+          window.fbq('track', 'Lead', leadData, { eventID: `lead_${config.offer}_${Date.now()}`, test_event_code: testEventCode });
+        } else {
+          window.fbq('track', 'Lead', leadData, { eventID: `lead_${config.offer}_${Date.now()}` });
+        }
+      }
       setForm(EMPTY);
       onClose();
       // Keep campaign parameters (UTM, test codes) across the redirect, and

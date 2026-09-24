@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 
 /**
  * Two-step booking: choose an office, then pick a time on that office's
@@ -50,8 +51,14 @@ const DEFAULT_LOCATIONS: Location[] = [
 export function MultiStepCalendar({
   locations = DEFAULT_LOCATIONS,
   service,
+  successPath,
 }: {
   locations?: Location[];
+  /**
+   * Where a finished booking goes (2026-09-24): its own confirmation URL, so
+   * ad platforms can count it. Absent = the confirmation stays in the frame.
+   */
+  successPath?: string;
   /** Preselects the offer on the platform page's "What would you like to discuss?" (2026-09-24). */
   service?: string;
 } = {}) {
@@ -64,6 +71,7 @@ export function MultiStepCalendar({
   // The voucher opt-in's lead pass (?lead=), handed to the platform page so
   // it recognises the visitor instead of asking their details again.
   const [lead, setLead] = useState<string | null>(null);
+  const router = useRouter();
   useEffect(() => {
     const v = new URLSearchParams(window.location.search).get('lead');
     if (v && /^[sp]\.[0-9a-f-]{36}\.\d{9,11}\.[A-Za-z0-9_-]{20,}$/.test(v)) setLead(v);
@@ -76,10 +84,22 @@ export function MultiStepCalendar({
       if (data?.type === 'ceety:embed-height' && typeof data.height === 'number' && data.height > 200) {
         setFrameHeight(Math.ceil(data.height));
       }
+      // The platform page reports a finished booking: open the confirmation
+      // page, keeping the ad codes (utm_*, click ids, test_event_code).
+      const done = event.data as { type?: string; ref?: string; slug?: string; status?: string } | null;
+      if (successPath && done?.type === 'ceety:booking-complete' && done.ref && done.slug) {
+        const q = new URLSearchParams();
+        const here = new URLSearchParams(window.location.search);
+        for (const [k, v] of here) if (/^(utm_|fbclid$|gclid$|test_event_code$)/.test(k)) q.set(k, v);
+        q.set('office', done.slug);
+        q.set('ref', done.ref);
+        q.set('status', done.status === 'confirmed' ? 'confirmed' : 'requested');
+        router.push(`${successPath}?${q.toString()}`);
+      }
     };
     window.addEventListener('message', onMessage);
     return () => window.removeEventListener('message', onMessage);
-  }, []);
+  }, [successPath, router]);
 
   const handleLocationSelect = (location: Location) => {
     setSelectedLocation(location);
