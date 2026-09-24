@@ -41,19 +41,12 @@ const DEFAULT_LOCATIONS: Location[] = [
 ];
 
 /**
- * The stem-cell funnel passes its own single calendar (the Tampa stem-cell
- * consultation) so a stem-cell lead never books the pain clinic's general
- * new-patient visit; with one office the visitor starts on the time picker.
+ * The pain (/book) and stem-cell (/stem-cell/book) funnels are one offer and
+ * book the same three Glory Regenerative consultation calendars (owner
+ * 2026-09-24); the platform tells them apart by the lead's tag. A caller can
+ * still pass its own list; with one office the visitor starts on the time
+ * picker.
  */
-export const STEM_CELL_LOCATIONS: Location[] = [
-  {
-    id: 'stem-cell-tampa',
-    name: 'Tampa',
-    address: '8019 N. Himes Ave., Suite 200, Tampa, FL 33614',
-    iframeUrl: `${BOOKING_ORIGIN}/book/stem-cell-consultation`,
-  },
-];
-
 export function MultiStepCalendar({
   locations = DEFAULT_LOCATIONS,
 }: { locations?: Location[] } = {}) {
