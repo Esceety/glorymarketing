@@ -122,7 +122,7 @@ export default function StemCellBookPage() {
 
         {/* Multi-Step Calendar */}
         <div>
-          <MultiStepCalendar />
+          <MultiStepCalendar service="stem-cell-voucher" />
         </div>
 
         {/* What to Expect */}

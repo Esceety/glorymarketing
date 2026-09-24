@@ -49,7 +49,12 @@ const DEFAULT_LOCATIONS: Location[] = [
  */
 export function MultiStepCalendar({
   locations = DEFAULT_LOCATIONS,
-}: { locations?: Location[] } = {}) {
+  service,
+}: {
+  locations?: Location[];
+  /** Preselects the offer on the platform page's "What would you like to discuss?" (2026-09-24). */
+  service?: string;
+} = {}) {
   const only = locations.length === 1 ? locations[0] : null;
   const [currentStep, setCurrentStep] = useState(only ? 2 : 1);
   const [selectedLocation, setSelectedLocation] = useState<Location | null>(
@@ -229,7 +234,7 @@ export function MultiStepCalendar({
             <div className="rounded-lg w-full">
               <iframe
                 key={selectedLocation.id}
-                src={selectedLocation.iframeUrl}
+                src={`${selectedLocation.iframeUrl}${service ? `?service=${encodeURIComponent(service)}` : ''}`}
                 title={`Book an appointment in ${selectedLocation.name}`}
                 style={{
                   width: '100%',
