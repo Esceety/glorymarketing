@@ -42,7 +42,9 @@ const OFFERS: Record<
     offer: 'stem-cell',
     heading: 'Claim your $100 Stem Cell Consultation Voucher',
     sub: 'Full health history, comprehensive evaluation and a personalized treatment plan.',
-    successPath: '/book',
+    // Its own booking page, which preselects the stem-cell voucher (it sent
+    // stem-cell leads to /book, the pain-relief page, until 2026-09-24).
+    successPath: '/stem-cell/book',
     privacyHref: '/privacy-policy-terms-conditions',
   },
   wz9f6DHcnCdzO5C7vX0x: {
