@@ -61,6 +61,13 @@ export function MultiStepCalendar({
     only
   );
   const [frameHeight, setFrameHeight] = useState(1200);
+  // The voucher opt-in's lead pass (?lead=), handed to the platform page so
+  // it recognises the visitor instead of asking their details again.
+  const [lead, setLead] = useState<string | null>(null);
+  useEffect(() => {
+    const v = new URLSearchParams(window.location.search).get('lead');
+    if (v && /^[sp]\.[0-9a-f-]{36}\.\d{9,11}\.[A-Za-z0-9_-]{20,}$/.test(v)) setLead(v);
+  }, []);
 
   useEffect(() => {
     const onMessage = (event: MessageEvent) => {
@@ -234,7 +241,7 @@ export function MultiStepCalendar({
             <div className="rounded-lg w-full">
               <iframe
                 key={selectedLocation.id}
-                src={`${selectedLocation.iframeUrl}${service ? `?service=${encodeURIComponent(service)}` : ''}`}
+                src={`${selectedLocation.iframeUrl}${bookingQuery(service, lead)}`}
                 title={`Book an appointment in ${selectedLocation.name}`}
                 style={{
                   width: '100%',
@@ -277,4 +284,13 @@ export function MultiStepCalendar({
       </div>
     </div>
   );
+}
+
+/** `?service=…&lead=…` for the platform page (either may be absent). */
+function bookingQuery(service: string | undefined, lead: string | null): string {
+  const q = new URLSearchParams();
+  if (service) q.set('service', service);
+  if (lead) q.set('lead', lead);
+  const s = q.toString();
+  return s ? `?${s}` : '';
 }

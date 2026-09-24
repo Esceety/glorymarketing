@@ -85,7 +85,7 @@ export async function recordSmsConsents(
 export async function forwardToPlatform(
   req: NextRequest,
   body: Record<string, unknown>,
-): Promise<{ ok: boolean; status: number }> {
+): Promise<{ ok: boolean; status: number; body?: Record<string, unknown> }> {
   const ip = clientIp(req);
   try {
     const res = await fetch(PLATFORM_INTAKE_URL, {
@@ -98,7 +98,11 @@ export async function forwardToPlatform(
       body: JSON.stringify(body),
       cache: 'no-store',
     });
-    return { ok: res.ok, status: res.status };
+    // The platform answers with a lead pass (a signed reference to this
+    // submission), so the booking calendar that follows need not ask the
+    // visitor's details again (2026-09-24).
+    const reply = (await res.json().catch(() => null)) as Record<string, unknown> | null;
+    return { ok: res.ok, status: res.status, ...(reply ? { body: reply } : {}) };
   } catch {
     return { ok: false, status: 0 };
   }

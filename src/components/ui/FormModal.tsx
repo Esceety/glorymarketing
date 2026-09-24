@@ -116,11 +116,17 @@ export function FormModal({ isOpen, onClose, formId = 'ouANN3PSeW0qb7AAdVpr' }: 
         const data = (await res.json().catch(() => ({}))) as { error?: string };
         throw new Error(data.error || 'Something went wrong. Please try again or call (813) 932-9798.');
       }
+      const data = (await res.json().catch(() => ({}))) as { leadPass?: string | null };
       setForm(EMPTY);
       onClose();
-      // Keep campaign parameters (UTM, test codes) across the redirect.
-      const query = window.location.search;
-      router.push(`${config.successPath}${query}`);
+      // Keep campaign parameters (UTM, test codes) across the redirect, and
+      // add the lead pass: the booking calendar then shows "Booking as …"
+      // instead of asking name, email and phone again. The pass names no one;
+      // it is a signed reference the platform checks (2026-09-24).
+      const query = new URLSearchParams(window.location.search);
+      if (data.leadPass) query.set('lead', data.leadPass);
+      const qs = query.toString();
+      router.push(`${config.successPath}${qs ? `?${qs}` : ''}`);
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Something went wrong. Please try again.');
     } finally {

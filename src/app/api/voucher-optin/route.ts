@@ -84,5 +84,6 @@ export async function POST(req: NextRequest) {
       { status: 502 },
     );
   }
-  return NextResponse.json({ ok: true });
+  const leadPass = typeof result.body?.leadPass === 'string' ? result.body.leadPass : null;
+  return NextResponse.json({ ok: true, leadPass });
 }
