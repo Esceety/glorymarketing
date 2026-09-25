@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import Image from 'next/image';
 import { Badge } from '@/components/ui/Badge';
-import { WeightLossBookingForm } from '@/components/ui/WeightLossBookingForm';
+import { MultiStepCalendar, WEIGHT_LOSS_LOCATIONS } from '@/components/ui/MultiStepCalendar';
 import { SmsConsentDisclosure } from '@/components/ui/SmsConsentDisclosure';
 
 export const metadata: Metadata = {
@@ -83,9 +83,10 @@ export default function WeightLossBookPage() {
         </p>
       </div>
 
-      {/* Booking Form */}
+      {/* Booking calendars (the platform's weight-loss calendars; the old
+          request-only form is retired, 2026-09-24) */}
       <div className="max-w-4xl mx-auto">
-        <WeightLossBookingForm />
+        <MultiStepCalendar locations={WEIGHT_LOSS_LOCATIONS} successPath="/weight-loss/book/requested" />
       </div>
 
       {/* Always in the initial HTML: carriers read the opt-in wording

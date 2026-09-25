@@ -20,6 +20,28 @@ export interface Location {
 
 const BOOKING_ORIGIN = 'https://ops.gloryregenerative.com';
 
+/** The three weight-loss calendars (Weight Loss Visit; no payment, staff confirm). */
+export const WEIGHT_LOSS_LOCATIONS: Location[] = [
+  {
+    id: 'tampa',
+    name: 'Tampa',
+    address: '8019 N. Himes Ave., Suite 200, Tampa, FL 33614',
+    iframeUrl: `${BOOKING_ORIGIN}/book/weight-loss-tampa`,
+  },
+  {
+    id: 'lakeland',
+    name: 'Lakeland',
+    address: '1818 Harden Blvd., Suite 110, Lakeland, FL 33803',
+    iframeUrl: `${BOOKING_ORIGIN}/book/weight-loss-lakeland`,
+  },
+  {
+    id: 'newportrichey',
+    name: 'New Port Richey',
+    address: '5622 Marine Parkway, Suite 8, New Port Richey, FL 34652',
+    iframeUrl: `${BOOKING_ORIGIN}/book/weight-loss-new-port-richey`,
+  },
+];
+
 const DEFAULT_LOCATIONS: Location[] = [
   {
     id: 'tampa',

@@ -13,7 +13,8 @@ import { useEffect, useRef, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
 
 const BOOKING_ORIGIN = 'https://ops.gloryregenerative.com';
-const OFFICES = new Set(['tampa', 'lakeland', 'new-port-richey']);
+// The consultation calendars and the weight-loss ones (weight-loss-tampa, …).
+const CALENDAR = /^(weight-loss-)?(tampa|lakeland|new-port-richey)$/;
 const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 
 export function BookingRequested({ offer }: { offer: string }) {
@@ -22,7 +23,7 @@ export function BookingRequested({ offer }: { offer: string }) {
   const ref = params?.get('ref') ?? '';
   // The platform's confirmation (inside the frame) says requested or confirmed.
   const status = params?.get('status') === 'confirmed' ? 'confirmed' : 'requested';
-  const valid = OFFICES.has(office) && UUID.test(ref);
+  const valid = CALENDAR.test(office) && UUID.test(ref);
   const [height, setHeight] = useState(900);
   const tracked = useRef(false);
 

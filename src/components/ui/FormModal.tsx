@@ -51,7 +51,9 @@ const OFFERS: Record<
     offer: 'weight-loss',
     heading: 'Claim 50% off your first month',
     sub: 'Physician-supervised medical weight loss for new patients.',
-    successPath: '/weight-loss/success',
+    // The weight-loss calendars, like the other offers (2026-09-24; the old
+    // /weight-loss/success page had no way to book).
+    successPath: '/weight-loss/book',
     privacyHref: '/weight-loss/privacy-policy-terms-conditions',
   },
 };
