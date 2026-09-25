@@ -12,6 +12,7 @@ import {
   SMS_CONSENT_SERVICE_TEXT,
   SMS_CONSENT_VERSION,
 } from '@/lib/sms-consent';
+import { TurnstileWidget, turnstileEnabled } from './TurnstileWidget';
 
 interface FormModalProps {
   isOpen: boolean;
@@ -73,6 +74,10 @@ export function FormModal({ isOpen, onClose, formId = 'ouANN3PSeW0qb7AAdVpr' }: 
   const [form, setForm] = useState(EMPTY);
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState('');
+  // Bot check: one token per submit; a failed submit remounts for a new one.
+  const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
+  const [turnstileFailed, setTurnstileFailed] = useState(false);
+  const [turnstileKey, setTurnstileKey] = useState(0);
   const router = useRouter();
   const config = OFFERS[formId] ?? OFFERS['ouANN3PSeW0qb7AAdVpr'];
 
@@ -101,6 +106,7 @@ export function FormModal({ isOpen, onClose, formId = 'ouANN3PSeW0qb7AAdVpr' }: 
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           offer: config.offer,
+          turnstileToken: turnstileToken ?? '',
           firstName: form.firstName,
           lastName: form.lastName,
           email: form.email,
@@ -142,6 +148,10 @@ export function FormModal({ isOpen, onClose, formId = 'ouANN3PSeW0qb7AAdVpr' }: 
       const qs = query.toString();
       router.push(`${config.successPath}${qs ? `?${qs}` : ''}`);
     } catch (err) {
+      if (turnstileEnabled) {
+        setTurnstileToken(null);
+        setTurnstileKey((k) => k + 1);
+      }
       setError(err instanceof Error ? err.message : 'Something went wrong. Please try again.');
     } finally {
       setSubmitting(false);
@@ -233,9 +243,23 @@ export function FormModal({ isOpen, onClose, formId = 'ouANN3PSeW0qb7AAdVpr' }: 
               </label>
             </div>
 
+            <TurnstileWidget
+              key={turnstileKey}
+              onToken={(t, failed) => {
+                setTurnstileToken(t);
+                setTurnstileFailed(Boolean(failed));
+              }}
+            />
+            {turnstileEnabled && !turnstileToken && (
+              <p className="text-xs text-center text-gray-500">
+                {turnstileFailed
+                  ? 'The security check could not load. Please refresh the page, or call (813) 932-9798.'
+                  : 'Checking your connection is secure…'}
+              </p>
+            )}
             {error && <p className="text-sm text-red-600" role="alert">{error}</p>}
 
-            <button type="submit" disabled={submitting}
+            <button type="submit" disabled={submitting || (turnstileEnabled && !turnstileToken)}
               className="w-full py-4 rounded-xl font-bold text-white bg-red-600 hover:bg-red-700 disabled:opacity-60 transition-colors">
               {submitting ? 'Sending…' : 'Claim my voucher'}
             </button>

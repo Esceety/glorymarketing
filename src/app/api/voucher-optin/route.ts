@@ -76,6 +76,8 @@ export async function POST(req: NextRequest) {
     smsConsentVersion: text('smsConsentVersion'),
     sourceUrl: text('sourceUrl'),
     website: text('website'), // honeypot, passed through for the platform's spam check
+    // Turnstile: verified by the platform intake with the visitor's IP (2026-09-25).
+    turnstileToken: text('turnstileToken'),
   });
   if (!result.ok) {
     console.error(`[voucher-optin] platform intake returned ${result.status}`);
