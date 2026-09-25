@@ -13,6 +13,7 @@ import {
   SMS_CONSENT_VERSION,
 } from '@/lib/sms-consent';
 import { TurnstileWidget, turnstileEnabled } from './TurnstileWidget';
+import { getAttribution } from '@/lib/attribution';
 
 interface FormModalProps {
   isOpen: boolean;
@@ -107,6 +108,7 @@ export function FormModal({ isOpen, onClose, formId = 'ouANN3PSeW0qb7AAdVpr' }: 
         body: JSON.stringify({
           offer: config.offer,
           turnstileToken: turnstileToken ?? '',
+          attribution: getAttribution(),
           firstName: form.firstName,
           lastName: form.lastName,
           email: form.email,

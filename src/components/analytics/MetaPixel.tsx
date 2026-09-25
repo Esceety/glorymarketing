@@ -3,6 +3,8 @@
 import { useEffect } from 'react';
 import { usePathname, useSearchParams } from 'next/navigation';
 
+import { captureAttribution } from '@/lib/attribution';
+
 declare global {
   interface Window {
     fbq: any;
@@ -15,6 +17,8 @@ export function MetaPixel() {
   const searchParams = useSearchParams();
 
   useEffect(() => {
+    // Remember where this visitor came from (ad codes, landing page) for the opt-in.
+    captureAttribution();
     // Track PageView on route change with test_event_code support
     if (window.fbq) {
       const testEventCode = searchParams?.get('test_event_code');
