@@ -1,5 +1,6 @@
 'use client';
 
+import { captureAttribution, getAttribution, type Attribution } from '@/lib/attribution';
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 
@@ -93,10 +94,15 @@ export function MultiStepCalendar({
   // The voucher opt-in's lead pass (?lead=), handed to the platform page so
   // it recognises the visitor instead of asking their details again.
   const [lead, setLead] = useState<string | null>(null);
+  // Where the visitor came from, passed to the platform's booking page so a
+  // booking without an opt-in still counts for its ad or channel (2026-09-25).
+  const [attribution, setAttribution] = useState<Attribution | null>(null);
   const router = useRouter();
   useEffect(() => {
     const v = new URLSearchParams(window.location.search).get('lead');
     if (v && /^[sp]\.[0-9a-f-]{36}\.\d{9,11}\.[A-Za-z0-9_-]{20,}$/.test(v)) setLead(v);
+    captureAttribution();
+    setAttribution(getAttribution());
   }, []);
 
   useEffect(() => {
@@ -283,7 +289,7 @@ export function MultiStepCalendar({
             <div className="rounded-lg w-full">
               <iframe
                 key={selectedLocation.id}
-                src={`${selectedLocation.iframeUrl}${bookingQuery(service, lead)}`}
+                src={`${selectedLocation.iframeUrl}${bookingQuery(service, lead, attribution)}`}
                 title={`Book an appointment in ${selectedLocation.name}`}
                 style={{
                   width: '100%',
@@ -328,11 +334,23 @@ export function MultiStepCalendar({
   );
 }
 
-/** `?service=…&lead=…` for the platform page (either may be absent). */
-function bookingQuery(service: string | undefined, lead: string | null): string {
+/** `?service=…&lead=…` plus the visit's ad codes / landing page / referrer. */
+function bookingQuery(service: string | undefined, lead: string | null, a: Attribution | null): string {
   const q = new URLSearchParams();
   if (service) q.set('service', service);
   if (lead) q.set('lead', lead);
+  if (a) {
+    const put = (k: string, v: string | undefined) => { if (v) q.set(k, v); };
+    put('utm_source', a.utmSource);
+    put('utm_medium', a.utmMedium);
+    put('utm_campaign', a.utmCampaign);
+    put('utm_content', a.utmContent);
+    put('utm_term', a.utmTerm);
+    put('fbclid', a.fbclid);
+    put('gclid', a.gclid);
+    put('lp', a.landingPage);
+    put('rf', a.referrer);
+  }
   const s = q.toString();
   return s ? `?${s}` : '';
 }
